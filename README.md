@@ -1,5 +1,5 @@
-# Meu Repositório
+# Repositório Residência TIC18
 
 ```
-Começo de tudo
+Espaço destinado a arquivos produzidos na residência.
 ```
