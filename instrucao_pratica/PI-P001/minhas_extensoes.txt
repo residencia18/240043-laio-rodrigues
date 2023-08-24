@@ -1,0 +1,15 @@
+# Atualmente possuo as seguintes extensões instaladas:
+
+> C/C++
+> C/C++ Compile Run
+> C/C++ Extension Pack
+> C/C++ Themes
+
+# Fiz a instalação de duas extensões:
+
+> Material Icon Theme: esta extensão adiciona ícones ao lado do arquivo que auxiliam na identificação do tipo do arquivo.
+> GitLens: esta extensão auxilia no gerenciamento dos repositórios Git.
+
+# Customizando a IDE - Temas
+
+Após baixar a extensão Drácula, configurei o tema dark na minha IDE através da própria aba da extensão.
