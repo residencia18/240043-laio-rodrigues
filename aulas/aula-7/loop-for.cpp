@@ -3,25 +3,36 @@
 
 using namespace std;
 
+bool isPrimo(int num){
+    int i;
+    for (i = 2; i <= sqrt(num) ; i++){
+        if(num%i == 0){
+            return false;
+        }
+    }
+    return true;
+}
+
 int main(){
-    int i, j, num;
-    bool flag;
+    int i = 2, j = 0, num;
 
     cout << "Digite um número: ";
     cin >> num;
     cout << endl;
 
-    for (i = 1; i < num; i++){
-        flag = true;
-        for (j = 2; j <= sqrt(i); j++){
-            if(j%i == 0){
-                flag = false;
-                break;
-            }
+    while (j < num){
+        if (isPrimo(i)){
+            cout << i << ", ";
+            j++;
         }
-        if (flag){
-            cout << i;
-        }
+        i++;
     }
+    
+
+    for (i = 1; i < num; i++){
+        
+    }
+    
+    
     return 0;
 }
