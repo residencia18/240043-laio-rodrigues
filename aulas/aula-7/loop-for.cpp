@@ -16,7 +16,7 @@ bool isPrimo(int num){
 int main(){
     int i = 2, j = 0, num;
 
-    cout << "Digite um nÃºmero: ";
+    cout << "Digite um número: ";
     cin >> num;
     cout << endl;
 
