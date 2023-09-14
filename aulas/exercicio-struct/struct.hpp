@@ -14,6 +14,13 @@ typedef struct T_data{
 typedef struct T_cliente{
     string nome;
     string cpf;
+    vector<Veiculo> veiculos;
 } Cliente;
+
+typedef struct T_veiculo{
+    string marca;
+    string cor;
+    string placa;
+} Veiculo;
 
 #endif 

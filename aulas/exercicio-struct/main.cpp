@@ -1,7 +1,7 @@
 #include<iostream>
 #include<string>
 #include<vector>
-#include "struct.hpp"
+#include "veiculo.hpp"
 #include "data.hpp"
 #include "menu.hpp"
 #include "cliente.hpp"
@@ -30,6 +30,10 @@ int main(){
             break;
         case 5:
             alteraNome(&lista);
+            break;
+        case 6:
+
+            break;
         default:
             break;
         }

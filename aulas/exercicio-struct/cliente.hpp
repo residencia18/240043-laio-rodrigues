@@ -4,10 +4,34 @@
 #include<iostream>
 #include<string>
 #include<vector>
-#include "struct.hpp"
 #include "data.hpp"
+#include "veiculo.hpp"
 
 using namespace std;
+
+typedef struct T_cliente{
+    string nome;
+    string cpf;
+    vector<Veiculo> veiculos;
+
+    void dispDadosCliente(){
+        system("clear");
+        cout << "********* Dados do Cliente *********" << endl << endl;
+        cout << "Nome completo: " << this->nome << endl
+            << "CPF: " << this->cpf << endl;
+        cin.ignore();
+        getchar();
+    }
+
+    void dispListaClientes(int id){
+        cout << endl << "********* Dados do Cliente #" << id
+            << " *********" << endl << endl;
+        cout << "Nome completo: " << this->nome << endl
+            << "CPF: " << this->cpf << endl;
+    }
+
+
+} Cliente;
 
 void setCliente(vector<Cliente> *lista){
     Cliente cliente;
@@ -22,28 +46,10 @@ void setCliente(vector<Cliente> *lista){
     system("clear");
     cout << "********* Cadastro de Cliente *********" << endl << endl;
     cout << "Cliente cadastrado com sucesso!" << endl;
-    cin.ignore();
     getchar();
 }
 
-void dispCliente(Cliente cliente){
-    system("clear");
-    cout << "********* Dados do Cliente *********" << endl << endl;
-    cout << "Nome completo: " << cliente.nome << endl
-         << "CPF: " << cliente.cpf << endl;
-    cin.ignore();
-    getchar();
-}
 
-void dispCliente(Cliente cliente, int id){
-    system("clear");
-    cout << "********* Dados do Cliente #" << id
-         << " *********" << endl << endl;
-    cout << "Nome completo: " << cliente.nome << endl
-         << "CPF: " << cliente.cpf << endl;
-    cin.ignore();
-    getchar();
-}
 
 int indexCliente(string CPF, vector<Cliente> lista){
     for (size_t i = 0; i < lista.size(); i++){
@@ -70,7 +76,7 @@ void findCliente(vector<Cliente> lista){
     if(idCliente < 0){
         return;
     }
-    dispCliente(lista[idCliente]);
+    lista[idCliente].dispDadosCliente();
 }
 
 void deleteCliente(vector<Cliente> *lista){
@@ -83,12 +89,14 @@ void deleteCliente(vector<Cliente> *lista){
     if(idCliente < 0){
         return;
     }
-    dispCliente((*lista)[idCliente], idCliente+1);
+    (*lista)[idCliente].dispDadosCliente();
     cout << "Deseja remover este cliente? ([S]im / [N]ao)" << endl << "> ";
     cin >> op;
     if(toupper(op) == 'S'){
         (*lista).erase((*lista).begin()+idCliente);
         cout << "Cliente removido com sucesso!";
+        cin.ignore();
+        getchar();
     }
     return;
 }
@@ -96,7 +104,7 @@ void deleteCliente(vector<Cliente> *lista){
 void listaClientes(vector<Cliente> lista){
     system("clear");
     for (int i = 0; i < lista.size(); i++){
-        dispCliente(lista[i], i+1);
+        lista[i].dispListaClientes(i);
     }
     cin.ignore();
     getchar();
@@ -113,7 +121,7 @@ void alteraNome(vector<Cliente> *lista){
     if(idCliente < 0){
         return;
     }
-    dispCliente((*lista)[idCliente]);
+    (*lista)[idCliente].dispDadosCliente();
 
     cout << "Informe o novo nome do cliente:" << endl << "> ";
     cin.ignore();
@@ -121,8 +129,7 @@ void alteraNome(vector<Cliente> *lista){
     (*lista)[idCliente].nome = nome;
     
     cout << "Nome alterado com sucesso!";
-        cin.ignore();
-        getchar();   
+    getchar();   
 }
 
 void limpaTela(){
