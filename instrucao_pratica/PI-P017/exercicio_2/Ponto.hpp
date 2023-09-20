@@ -31,7 +31,7 @@ double Ponto::calcularDistancia(){
 
 string Ponto::dispPonto(){
     string ponto = "(";
-    ponto.push_back(to_string(this->x));
+    ponto.push_back();
     ponto += (", ");
     ponto.push_back(this->y);
     ponto += ")";
