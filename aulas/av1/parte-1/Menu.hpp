@@ -216,7 +216,7 @@ int dispMenuOcorrencia(void){
     cin >> op;
     limpaBuffer();
         
-    while (op < 0 || op > 3){
+    while (op < 0 || op > 5){
         limpaTela();
         cout << "********* LocaFINA S/A *********" << endl;
         cout << "\t" << data.toString() << endl;

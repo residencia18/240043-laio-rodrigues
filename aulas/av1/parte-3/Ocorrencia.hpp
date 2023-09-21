@@ -8,7 +8,6 @@
 #include "../parte-1/Utilitarios.hpp"
 #include "../parte-1/Cliente.hpp"
 #include "../parte-1/Veiculo.hpp"
-#include "../parte-1/Menu.hpp"
 
 using namespace std;
 
@@ -80,7 +79,7 @@ void setOcorrencia(vector<Locacao> *lista){
     if(idLoc < 0)
         return;
     if((*lista)[idLoc].ocorrencia.ativa == 's'){
-        cout << "A locacao ja possui uma ocorrencia registrada!"
+        cout << "A locacao ja possui uma ocorrencia registrada!" << endl
             << "(Pressione qualquer tecla para continuar...)";
         getchar();
         return;
@@ -118,7 +117,7 @@ void deleteOcorrencia(vector<Locacao> *lista){
     if(idLoc < 0)
         return;
     if((*lista)[idLoc].ocorrencia.ativa == 'n'){
-        cout << "A locacao nao possui uma ocorrencia ativa registrada!"
+        cout << "A locacao nao possui uma ocorrencia ativa registrada!" << endl
             << "(Pressione qualquer tecla para continuar...)";
         getchar();
         return;
@@ -145,7 +144,7 @@ void alteraOcorrencia(vector<Locacao> *lista){
         return;
     }
     if((*lista)[idLoc].ocorrencia.ativa == 'n'){
-        cout << "A locacao nao possui uma ocorrencia ativa registrada!"
+        cout << "A locacao nao possui uma ocorrencia ativa registrada!" << endl
             << "(Pressione qualquer tecla para continuar...)";
         getchar();
         return;
@@ -190,6 +189,62 @@ void alteraOcorrencia(vector<Locacao> *lista){
             limpaBuffer();
         }
     } while (op != 0);
+}
+
+void listaOcorrenciaCliente(vector<Locacao> lista){
+    string cpf;
+    int k = 0;
+
+    limpaTela();
+    cout << "Informe o CPF do cliente (apenas numeros): ";
+    getline(cin, cpf);
+    while(cpf.size() > 11 || cpf.size() < 9){
+        cout << "Digite um CPF valido (apenas numeros): ";
+        getline(cin, cpf);
+    }
+
+    for (size_t i = 0; i < lista.size(); i++){
+        if(lista[i].cliente.CPF.compare(cpf) == 0){
+            k++;
+            lista[i].ocorrencia.dispListaOcorrencia(k);
+        }
+    }
+    if(k == 0){
+        cout << "Nao ha ocorrencias registradas para o CPF informado!" << endl
+            << "(Pressione qualquer tecla para continuar...)";
+        getchar();
+        return;
+    }
+    cout << "(Pressione qualquer tecla para continuar...)";
+    getchar();
+    return;
+}
+
+void listaOcorrenciaVeiculo(vector<Locacao> lista){
+    string placa;
+    int k = 0;
+    
+    limpaTela();
+    cout << "Informe a placa do veiculo: ";
+    getline(cin, placa);
+
+    for (size_t i = 0; i < lista.size(); i++){
+        if(lista[i].veiculo.Placa.compare(placa) == 0){
+            if(lista[i].ocorrencia.ativa == 's'){
+                k++;
+                lista[i].ocorrencia.dispListaOcorrencia(k);
+            }
+        }
+    }
+    if(k == 0){
+        cout << "Nao ha ocorrencias registradas para o veiculo informado!" << endl
+            << "(Pressione qualquer tecla para continuar...)";
+        getchar();
+        return;
+    }
+    cout << "(Pressione qualquer tecla para continuar...)";
+    getchar();
+    return;
 }
 
 

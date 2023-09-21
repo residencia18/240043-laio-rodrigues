@@ -29,6 +29,12 @@ int main(){
         case 3:
             alteraOcorrencia(&lista);
             break;
+        case 4:
+            listaOcorrenciaCliente(lista);
+            break;
+        case 5:
+            listaOcorrenciaVeiculo(lista);
+            break;
         default:
             break;
         }
