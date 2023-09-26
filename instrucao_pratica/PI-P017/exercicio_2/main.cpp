@@ -7,10 +7,15 @@
 using namespace std;
 
 int main(){
-    Ponto p1(3,4);
-    double distancia = p1.calcularDistancia();
-
-    cout << "A distancia do ponto " << p1.dispPonto();
+    Ponto pontos[3];
+    pontos[0].setCoordenadas(2, 2);
+    pontos[1].setCoordenadas(-1, 5);
+    pontos[2].setCoordenadas(0, 0);
+    
+    for (int i = 0; i < 3; ++i) {
+    double distancia = pontos[i].calcularDistancia();
+    cout << "Distância do ponto " << i + 1 << " até a origem: " << distancia << endl;
+    }
 
     return 0;
 }
