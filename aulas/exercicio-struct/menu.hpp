@@ -14,7 +14,7 @@ int dispMenu(void){
 
     system("clear");
     cout << "********* Mecânica Resitic *********" << endl << endl << "\t";
-    dispData(data);
+    data.toString();
     cout << "Seja bem vindo(a)! O que deseja?" << endl << endl
         << "#1. Adicionar novo cliente" << endl
         << "#2. Encontrar um cliente" << endl
@@ -29,7 +29,7 @@ int dispMenu(void){
     while (op < 0 || op > 6){
         system("clear");
         cout << "********* Mecânica Resitic *********" << endl << endl << "\t";
-        dispData(data);
+        data.toString();
         cout << "Seja bem vindo(a)! O que deseja?" << endl << endl
             << "#1. Adicionar novo cliente" << endl
             << "#2. Encontrar um cliente" << endl

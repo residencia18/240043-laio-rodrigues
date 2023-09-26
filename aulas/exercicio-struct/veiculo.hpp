@@ -17,7 +17,7 @@ typedef struct T_veiculo{
         ult_revisao.mes = 00,
         ult_revisao.ano = 00
     };
-    Data prox_revisao = ;
+    Data prox_revisao;
     string situacao = "Nao avaliado";
 
     void dispDadosVeiculo(){

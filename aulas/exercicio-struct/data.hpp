@@ -95,7 +95,7 @@ typedef struct T_data{
         return dia_semana;
     }
 
-    Data somaData(int dias){
+    struct T_data somaDias(int dias){
         int k = 1;
         Data nova{
             nova.dia = this->dia,
@@ -105,20 +105,29 @@ typedef struct T_data{
 
         nova.dia += dias;
         while (k!=0){
-            switch (nova.mes){
-            case 1:
-                /* code */
-                break;
-            
-            default:
-                break;
+            if((nova.mes==1 || nova.mes==3 || nova.mes==5 || nova.mes==7 || nova.mes==8 || nova.mes==10 || nova.mes==12) && nova.dia>31){
+                nova.dia -= 31;
+                nova.mes += 1;
+            }else if((nova.mes==4 || nova.mes==6 || nova.mes==9 || nova.mes==11) && nova.dia > 30){
+                nova.dia -= 30;
+                nova.mes += 1;
+            }else if(nova.ano%4 == 0 && (nova.ano%400 == 0 || nova.ano%100 != 0) && nova.dia > 29){
+                nova.dia -= 29;
+                nova.mes += 1;
+            }else if (!(nova.ano%4 == 0 && (nova.ano%400 == 0 || nova.ano%100 != 0)) && nova.dia > 28){
+                nova.dia -= 28;
+                nova.mes += 1;
+            }else
+                k = 0;
+            if(nova.mes > 12){
+                nova.mes -= 12;
+                nova.ano += 1;
             }
         }
-        
-
+        return nova;
     }
 
-} Data;
+}Data;
 
 Data getDataAtual(){
     Data data;
