@@ -14,7 +14,7 @@ int main(){
     
     for (int i = 0; i < 3; ++i) {
     double distancia = pontos[i].calcularDistancia();
-    cout << "Distância do ponto " << i + 1 << " até a origem: " << distancia << endl;
+    cout << "Distancia do ponto " << i + 1 << " ate a origem: " << distancia << endl;
     }
 
     return 0;
