@@ -11,7 +11,9 @@ class Estoque
 private:
     static vector<Produto> estoque;
     public:
-        Estoque();
+        Estoque(){
+
+        }
 
         static void reabastecimento(Produto novo, int qtd){
             int indice = indexProduto(novo);
@@ -51,6 +53,14 @@ private:
             return false;
         }
 
+        static int getQTD(Produto produto){
+            for(Produto p : estoque){
+                if(p.getCodigo() == produto.getCodigo())
+                    return p.getQTD();
+            }
+            return -1;
+        }
+
         static bool hasProduto(Produto produto){
             for(Produto p: estoque){
                 if(p.getCodigo() == produto.getCodigo())
@@ -67,7 +77,9 @@ private:
             return -1;
         }
 
-        ~Estoque();
+        ~Estoque(){
+
+        }
 };
 
 #endif // ESTOQUE_HPP

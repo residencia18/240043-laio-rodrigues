@@ -3,13 +3,14 @@
 
 #include<iostream>
 #include<string>
+#include<iomanip>
 
 using namespace std;
 
 class Produto{
     private:
         static int cont;
-        string codigo;
+        int codigo;
         string nome;
         double preco;
         int qtd;
@@ -21,10 +22,10 @@ class Produto{
             this->nome = nome;
             this->preco = valor;
             cont++;
-            this->codigo = 1000 + cont;
+            this->codigo = cont;
         }
 
-        string getCodigo(){
+        int getCodigo(){
             return this->codigo;
         }
 
@@ -46,9 +47,14 @@ class Produto{
 
         string toString(){
             string texto;
-            texto = "#" + this->getCodigo() + " - " + this->getNome()
-                    + " (R$" + to_string(this->getPreco()) + ") x " 
-                    + to_string(this->getQTD());
+            double preco = this->getPreco();
+
+            stringstream stream;
+            stream << fixed << setprecision(2) << preco;
+            string precoFormatado = stream.str();
+
+            texto = "#" + to_string(this->getCodigo()) + " - " + this->getNome()
+                + " (R$" + precoFormatado + ") x " + to_string(this->getQTD());
             return texto;
         }
 
