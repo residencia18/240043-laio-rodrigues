@@ -11,11 +11,12 @@ class Data{
     private:
         int dia, mes, ano;
     public:
-        Data();
+        Data(){}
         Data(int dia, int mes, int ano);
         int anoEntre(Data dt);
         static bool isAnoBissexto(int ano);
         static int diasNoMes(int mes, int ano);
+        bool estaEntre(Data dt1, Data dt2);
         int diaEntre(Data dt);
         bool isData();
         int diaDaSemana();

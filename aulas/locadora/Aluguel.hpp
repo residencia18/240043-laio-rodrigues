@@ -10,6 +10,7 @@ class Aluguel{
     private:
         static int cont;
         string id;
+        string status;
         Veiculo* veiculo;
         Cliente* cliente;
         Funcionario* funcionario;
@@ -21,7 +22,7 @@ class Aluguel{
 
     public:
         Aluguel();
-        void setId(string _id);
+        void setStatus(string _status);
         void setVeiculo(Veiculo _veiculo);
         void setCliente(Cliente _cliente);
         void setFuncionario(Funcionario _funcionario);
@@ -42,7 +43,7 @@ class Aluguel{
         string toString();
         float calcularValorFinal();
         string verificaStatus();
-        ~Aluguel();
+        ~Aluguel(){}
 };
 
 #endif // ALUGUEL_HPP

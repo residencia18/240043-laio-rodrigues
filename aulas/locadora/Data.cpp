@@ -29,19 +29,50 @@ bool Data::isAnoBissexto(int ano){
     return (ano % 4 == 0 && (ano % 100 != 0 || ano % 400 == 0));
 }
 
-// int Data::diaEntre(Data dt){
-//     int dias = 0;
-    
-//     Data d1;
-//     d1.ano = this->ano;
-//     d1.mes = this->mes;
-//     d1.dia = this->dia;
+int Data::diasNoMes(int _mes, int ano){
+    int mes[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    if(isAnoBissexto(ano)){
+        mes[1] = 29;
+    }
+    return mes[_mes-1];
+}
 
-//     while(d1.ano<dt.ano || (d1.ano==dt.ano && d1.mes<dt.mes)){
-//         dias = 
-//     }
+bool Data::estaEntre(Data dt1, Data dt2){
+    if(this->diaEntre(dt1) < 0 && this->diaEntre(dt2) > 0)
+        return true;
+    return false;
+}
+
+int Data::diaEntre(Data dt){
+    int dias = 0;
     
-// }
+    Data d1;
+    d1.ano = this->ano;
+    d1.mes = this->mes;
+    d1.dia = this->dia;
+
+    if(d1.ano>dt.ano || (d1.ano==dt.ano && d1.mes>dt.mes) || (d1.ano==dt.ano && d1.mes==dt.mes && d1.dia>dt.dia)){
+        return -1;
+    }
+
+    while(d1.ano<dt.ano || (d1.ano==dt.ano && d1.mes<dt.mes)){
+        dias += (Data::diasNoMes(d1.mes, d1.ano) - d1.dia + 1);
+        d1.dia = 1;
+        d1.mes++;
+        
+        if(d1.mes > 12){
+            d1.mes = 1;
+            d1.ano++;
+        }
+        
+        if(d1.ano > dt.ano)
+            break;
+    }
+    dias += dt.dia - d1.dia;
+    return dias;
+
+    
+}
 
 bool Data::isData(){
     if (this->dia < 1 || this->dia > 31 || this->mes < 1 || this->mes > 12)
@@ -74,6 +105,7 @@ bool Data::isData(){
             return true;
             break;
     }
+    return true;
 }
 
 int Data::diaDaSemana(){

@@ -5,6 +5,10 @@ Aluguel::Aluguel(){
     this->id = to_string(cont);
 }
 
+void Aluguel::setStatus(string _status) {
+    this->status = _status;
+}
+
 void Aluguel::setCliente(Cliente _cliente){
     this->cliente = &_cliente;
 }
@@ -71,6 +75,25 @@ float Aluguel::getAdicional(){
 
 string Aluguel::getId(){
     return this->id;
+}
+
+float Aluguel::calcularValorFinal(){
+    int dias;
+    dias = this->dt_inicio.diaEntre(dt_termino);
+    
+    float valorFinal = dias * this->veiculo->getPrecoDiario();
+    valorFinal -= this->getDesconto();
+
+    if(this->verificaStatus().compare("atrasada") == 0){
+        dias = dt_termino.diaEntre(dt_devolucao);
+        this->setAdicional(5.0 * dias * this->veiculo->getPrecoDiario());
+        valorFinal += this->getAdicional();
+    }
+    return valorFinal;
+}
+
+string Aluguel::verificaStatus(){
+    return this->status;
 }
 
 string Aluguel::toString(){

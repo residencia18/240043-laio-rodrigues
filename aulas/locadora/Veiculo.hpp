@@ -7,11 +7,14 @@
 
 using namespace std;
 
+class Aluguel;
+
 class Veiculo{
     private:
         string placa;
         string marca;
         string modelo;
+        vector<Aluguel*> alugueis;
         int ano;
         float precoDiario;
     public:
@@ -19,15 +22,17 @@ class Veiculo{
         void setPlaca(string _placa);
         void setMarca(string _marca);
         void setModelo(string _modelo);
+        void setAluguel(Aluguel* novo);
         void setAno(int _ano);
         void setPrecoDiario(float _precoDiario);
         string getPlaca();
         string getMarca();
         string getModelo();
+        vector<Aluguel*> getAlugueis();
         int getAno();
         float getPrecoDiario();
         string toString();
-        ~Veiculo();
+        ~Veiculo(){}
 };
 
 #endif // VEICULO_HPP

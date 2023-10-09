@@ -20,6 +20,10 @@ void Veiculo::setModelo(string _modelo){
     this->modelo = _modelo;
 }
 
+void Veiculo::setAluguel(Aluguel* novo){
+    this->alugueis.push_back(novo);
+}
+
 void Veiculo::setAno(int _ano){
     this->ano = _ano;
 }
@@ -38,6 +42,10 @@ string Veiculo::getMarca(){
 
 string Veiculo::getModelo(){
     return this->modelo;
+}
+
+vector<Aluguel*> Veiculo::getAlugueis(){
+    return this->alugueis;
 }
 
 int Veiculo::getAno(){
