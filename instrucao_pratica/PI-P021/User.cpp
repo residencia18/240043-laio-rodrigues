@@ -40,37 +40,8 @@ string Usuario::toString(){
     return "#" + this->id + "\t" + this->nome + "\t" + this->email;
 }
 
-void Usuario::addUsuario(Usuario* novo){
-    listaUsuario.push_back(novo);
-}
-
-void Usuario::removerUsuario(size_t idx){
-    listaUsuario.erase(listaUsuario.begin() + idx);
-}
-
-void Usuario::alterarEmailUsuario(size_t idx, string email){
-    listaUsuario[idx]->setEmail(email);
-}
-
-void Usuario::alterarSenhaUsuario(size_t idx, string senha){
-    listaUsuario[idx]->setSenha(senha);
-}
-
-int Usuario::getIdx(string id){
-    for(size_t i = 0; i < listaUsuario.size(); i++){
-        if(listaUsuario[i]->getId().compare(id) == 0){
-            return i;
-        }
-    }
-    return -1;
-}
-
-Usuario* Usuario::getUsuario(size_t idx){
-    return listaUsuario[idx];
-}
-
-vector<Usuario*> Usuario::getListaUsuario(){
-    return listaUsuario;
+bool Usuario::autentica(string senha){
+    return this->senha.compare(senha) == 0;
 }
 
 void Usuario::addEmprestimo(Emprestimo* novo){

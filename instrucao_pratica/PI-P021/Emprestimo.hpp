@@ -1,9 +1,9 @@
 #if !defined(EMPRESTIMO_HPP)
 #define EMPRESTIMO_HPP
 
+#include"Data.hpp"
 #include"Livro.hpp"
 #include"User.hpp"
-#include"Data.hpp"
 
 class Emprestimo{
     private:

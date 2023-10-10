@@ -19,6 +19,15 @@ void limpaTela(){
     #endif
 }
 
+// A função pausaTela identifica se o sistema operacional é linux ou windows e executa a função system com o parâmetro correspondente para pausar a execução
+void pausaTela(){
+    #ifdef _WIN32
+        system("pause");
+    #else
+        system("read");
+    #endif
+}
+
 // A função limpaBuffer executa uma limpeza no buffer, ignorando quaisquer resíduos que tenham permanecidos após uma captura da entrada de um usuário.
 void limpaBuffer(){
     int ch;

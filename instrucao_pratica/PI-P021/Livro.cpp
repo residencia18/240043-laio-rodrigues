@@ -48,34 +48,3 @@ string Livro::getId(){
 string Livro::toString(){
     return "#" + this->id + "\t" + this->titulo + "\t" + this->autor + "\t" + to_string(this->copias);
 }
-
-void Livro::addLivro(Livro* livro){
-    lista.push_back(livro);
-}
-
-void Livro::removeLivro(size_t idx){
-    lista.erase(lista.begin() + idx);
-}
-
-void Livro::alterarQTD(size_t idx, int qtd){
-    int i = qtd - lista[idx]->getCopiasTotais();
-    lista[idx]->setCopiasTotais(qtd);
-    lista[idx]->setCopias(lista[idx]->getCopias() + i);
-}
-
-int Livro::getIdx(string id){
-    for(size_t i = 0; i < lista.size(); i++){
-        if(lista[i]->getId().compare(id) == 0){
-            return i;
-        }
-    }
-    return -1;
-}
-
-Livro* Livro::getLivro(size_t idx){
-    return lista[idx];
-}
-
-vector<Livro*> Livro::getLista(){
-    return lista;
-}

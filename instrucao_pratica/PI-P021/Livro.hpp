@@ -5,7 +5,6 @@
 
 class Livro{
     private:
-        static vector<Livro*> lista;
         static int cont;
         string id;
         string titulo;
@@ -13,6 +12,7 @@ class Livro{
         int copias;
         int copiasTotais;
     public:
+        Livro(){}
         Livro(string, string, int);
         
         void setTitulo(string);
@@ -27,14 +27,6 @@ class Livro{
         string getId();
         
         string toString();
-        
-        static void addLivro(Livro*);
-        static void removeLivro(size_t);
-        static void alterarQTD(size_t, int);
-
-        static int getIdx(string);
-        static Livro* getLivro(size_t);
-        static vector<Livro*> getLista();
         
         ~Livro(){}
 };
