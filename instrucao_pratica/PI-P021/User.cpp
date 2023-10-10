@@ -41,24 +41,24 @@ string Usuario::toString(){
 }
 
 void Usuario::addUsuario(Usuario* novo){
-    lista.push_back(novo);
+    listaUsuario.push_back(novo);
 }
 
 void Usuario::removerUsuario(size_t idx){
-    lista.erase(lista.begin() + idx);
+    listaUsuario.erase(listaUsuario.begin() + idx);
 }
 
 void Usuario::alterarEmailUsuario(size_t idx, string email){
-    lista[idx]->setEmail(email);
+    listaUsuario[idx]->setEmail(email);
 }
 
 void Usuario::alterarSenhaUsuario(size_t idx, string senha){
-    lista[idx]->setSenha(senha);
+    listaUsuario[idx]->setSenha(senha);
 }
 
 int Usuario::getIdx(string id){
-    for(size_t i = 0; i < lista.size(); i++){
-        if(lista[i]->getId().compare(id) == 0){
+    for(size_t i = 0; i < listaUsuario.size(); i++){
+        if(listaUsuario[i]->getId().compare(id) == 0){
             return i;
         }
     }
@@ -66,13 +66,28 @@ int Usuario::getIdx(string id){
 }
 
 Usuario* Usuario::getUsuario(size_t idx){
-    return lista[idx];
+    return listaUsuario[idx];
 }
 
-vector<Usuario*> Usuario::getLista(){
-    return lista;
+vector<Usuario*> Usuario::getListaUsuario(){
+    return listaUsuario;
 }
 
+void Usuario::addEmprestimo(Emprestimo* novo){
+    listaEmprestimo.push_back(novo);
+}
+
+void Usuario::removerEmprestimo(size_t idx){
+    listaEmprestimo.erase(listaEmprestimo.begin() + idx);
+}
+
+Emprestimo* Usuario::getEmprestimo(size_t idx){
+    return listaEmprestimo[idx];
+}
+
+vector<Emprestimo*> Usuario::getListaEmprestimo(){
+    return listaEmprestimo;
+}
 
 
 

@@ -3,9 +3,12 @@
 
 #include"Utilitarios.hpp"
 
+class Emprestimo;
+
 class Usuario{
     private:
-        static vector<Usuario*> lista;
+        static vector<Usuario*> listaUsuario;
+        vector<Emprestimo*> listaEmprestimo;
         static int cont;
         string id;
         string nome;
@@ -17,7 +20,12 @@ class Usuario{
         void setNome(string);
         void setEmail(string);
         void setSenha(string);
-        
+        void addEmprestimo(Emprestimo*);
+        void removerEmprestimo(size_t);
+        void alterarStatusEmprestimo(size_t, string);
+
+        Emprestimo* getEmprestimo(size_t);
+        vector<Emprestimo*> getListaEmprestimo();
         string getNome();
         string getEmail();
         string getSenha();
@@ -31,7 +39,7 @@ class Usuario{
 
         static int getIdx(string);
         static Usuario* getUsuario(size_t);
-        static vector<Usuario*> getLista();
+        static vector<Usuario*> getListaUsuario();
         
 
         ~Usuario(){}
