@@ -13,13 +13,14 @@ class Data{
     public:
         Data(){}
         Data(int dia, int mes, int ano);
-        int anoEntre(Data dt);
+        int anoEntre(Data* dt);
         static bool isAnoBissexto(int ano);
         static int diasNoMes(int mes, int ano);
-        bool estaEntre(Data dt1, Data dt2);
-        int diaEntre(Data dt);
+        bool estaEntre(Data* dt1, Data* dt2);
+        int diaEntre(Data* dt);
         bool isData();
         int diaDaSemana();
+        static Data* getDataAtual();
         string toString();
         ~Data();
 };

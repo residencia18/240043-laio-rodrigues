@@ -13,9 +13,23 @@ float InteCliente::cotarAluguel(Veiculo* _veiculo, Data* _dt_inicio, Data* _dt_t
         }
     }
 
-    return _dt_inicio->diaEntre(*_dt_termino) * _veiculo->getPrecoDiario();
+    return _dt_inicio->diaEntre(_dt_termino) * _veiculo->getPrecoDiario();
 }
 
-Aluguel InteCliente::solicitaAluguel(Veiculo* _veiculo, Data* _dt_inicio, Data* _dt_termino){
-    
+Aluguel* InteCliente::solicitaAluguel(Veiculo* _veiculo, Data* _dt_inicio, Data* _dt_termino){
+    Aluguel* novo;
+
+    novo->setStatus("agendada");
+    novo->setVeiculo(_veiculo);
+    novo->setCliente(this->cliente);
+    novo->setDt_inicio(_dt_inicio);
+    novo->setDt_termino(_dt_termino);
+
+    return novo;
 }
+
+void InteCliente::devolverVeiculo(Aluguel* _aluguel, Data* _dt_devolucao){
+    _aluguel->setDt_devolucao(_dt_devolucao);
+    _aluguel->setStatus("em devolucao");
+}
+

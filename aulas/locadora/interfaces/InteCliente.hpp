@@ -16,7 +16,7 @@ class InteCliente{
     public:
         InteCliente(Cliente* _cliente, vector<Veiculo*> _veiculos, vector<Aluguel*> _alugueis);
         float cotarAluguel(Veiculo* _veiculo, Data* _dt_inicio, Data* _dt_termino);
-        Aluguel solicitaAluguel(Veiculo* _veiculo, Data* _dt_inicio, Data* _dt_termino);
+        Aluguel* solicitaAluguel(Veiculo* _veiculo, Data* _dt_inicio, Data* _dt_termino);
         void devolverVeiculo(Aluguel* _aluguel, Data* _dt_devolucao);
         int dispMenu();
         void Menu();

@@ -7,18 +7,18 @@ Data::Data(int dia, int mes, int ano){
     this->ano = ano;
 }
 
-int Data::anoEntre(Data dt){
-    int k = this->ano-dt.ano;
+int Data::anoEntre(Data* dt){
+    int k = this->ano - dt->ano;
     if(k < 0){
-        k = dt.ano - this->ano;
-        if(dt.mes < this->mes)
+        k = dt->ano - this->ano;
+        if(dt->mes < this->mes)
             k--;
-        else if(dt.mes == this->mes && dt.dia < this->dia)
+        else if(dt->mes == this->mes && dt->dia < this->dia)
             k--;
     }else if(k > 0){
-        if(dt.mes > this->mes)
+        if(dt->mes > this->mes)
             k--;
-        else if(dt.mes == this->mes && dt.dia > this->dia)
+        else if(dt->mes == this->mes && dt->dia > this->dia)
             k--;
     }
     return k;
@@ -37,38 +37,38 @@ int Data::diasNoMes(int _mes, int ano){
     return mes[_mes-1];
 }
 
-bool Data::estaEntre(Data dt1, Data dt2){
+bool Data::estaEntre(Data* dt1, Data* dt2){
     if(this->diaEntre(dt1) < 0 && this->diaEntre(dt2) > 0)
         return true;
     return false;
 }
 
-int Data::diaEntre(Data dt){
+int Data::diaEntre(Data* dt){
     int dias = 0;
     
-    Data d1;
-    d1.ano = this->ano;
-    d1.mes = this->mes;
-    d1.dia = this->dia;
+    Data* d1;
+    d1->ano = this->ano;
+    d1->mes = this->mes;
+    d1->dia = this->dia;
 
-    if(d1.ano>dt.ano || (d1.ano==dt.ano && d1.mes>dt.mes) || (d1.ano==dt.ano && d1.mes==dt.mes && d1.dia>dt.dia)){
+    if(d1->ano>dt->ano || (d1->ano==dt->ano && d1->mes>dt->mes) || (d1->ano==dt->ano && d1->mes==dt->mes && d1->dia>dt->dia)){
         return -1;
     }
 
-    while(d1.ano<dt.ano || (d1.ano==dt.ano && d1.mes<dt.mes)){
-        dias += (Data::diasNoMes(d1.mes, d1.ano) - d1.dia + 1);
-        d1.dia = 1;
-        d1.mes++;
+    while(d1->ano<dt->ano || (d1->ano==dt->ano && d1->mes<dt->mes)){
+        dias += (Data::diasNoMes(d1->mes, d1->ano) - d1->dia + 1);
+        d1->dia = 1;
+        d1->mes++;
         
-        if(d1.mes > 12){
-            d1.mes = 1;
-            d1.ano++;
+        if(d1->mes > 12){
+            d1->mes = 1;
+            d1->ano++;
         }
         
-        if(d1.ano > dt.ano)
+        if(d1->ano > dt->ano)
             break;
     }
-    dias += dt.dia - d1.dia;
+    dias += dt->dia - d1->dia;
     return dias;
 
     
@@ -141,6 +141,16 @@ string Data::toString(){
     data += to_string(this->ano);
     
     return data;
+}
+
+Data* Data::getDataAtual(){
+    Data* dt;
+    time_t t = time(NULL);
+    struct tm *tm = localtime(&t);
+    dt->dia = tm->tm_mday;
+    dt->mes = tm->tm_mon + 1;
+    dt->ano = tm->tm_year + 1900;
+    return dt;
 }
 
 Data::~Data(){}
