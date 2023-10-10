@@ -13,12 +13,12 @@ class Livro{
         int copias;
         int copiasTotais;
     public:
-        Livro(string titulo, string autor, int copias);
+        Livro(string, string, int);
         
-        void setTitulo(string titulo);
-        void setAutor(string autor);
-        void setCopias(int copias);
-        void setCopiasTotais(int copiasTotais);
+        void setTitulo(string);
+        void setAutor(string);
+        void setCopias(int);
+        void setCopiasTotais(int);
         
         string getTitulo();
         string getAutor();
@@ -28,12 +28,12 @@ class Livro{
         
         string toString();
         
-        static void addLivro(Livro* livro);
-        static void removeLivro(size_t idx);
-        static void alterarQTD(size_t idx, int qtd);
+        static void addLivro(Livro*);
+        static void removeLivro(size_t);
+        static void alterarQTD(size_t, int);
 
-        static int getIdx(string id);
-        static Livro* getLivro(size_t idx);
+        static int getIdx(string);
+        static Livro* getLivro(size_t);
         static vector<Livro*> getLista();
         
         ~Livro(){}
