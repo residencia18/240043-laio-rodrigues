@@ -1,7 +1,9 @@
 #if !defined(LIVRO_HPP)
 #define LIVRO_HPP
 
-#include"Utilitarios.hpp"
+#include<string>
+
+using namespace std;
 
 class Livro{
     private:

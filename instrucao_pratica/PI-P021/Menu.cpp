@@ -29,9 +29,136 @@ void Menu::dispGetNomeLivro(string *nome, string *autor){
     getline(cin, *autor);
 }
 
+void Menu::dispGetCopiasLivro(int *copias){
+    limpaTela();
+    cout << "********** BIBLIOTECA **********" << endl;
+    cout << "********* QTD DE COPIAS ********" << endl << endl;
+    cout << "Qual a quantidade de copias deste livro?" << endl;
+    cin >> *copias;
+    limpaBuffer();
+}
 
+void Menu::dispGetIdLivro(string *id){
+    limpaTela();
+    cout << "********** BIBLIOTECA **********" << endl;
+    cout << "********* ID DO LIVRO ********" << endl << endl;
+    cout << "Digite o id do livro: ";
+    getline(cin, *id);
+}
 
+void Menu::dispGetNomeUser(string *nome, string *email){
+    limpaTela();
+    cout << "********** BIBLIOTECA **********" << endl;
+    cout << "******* DADOS DO USUARIO *******" << endl << endl;
+    cout << "Digite o nome do usuario: ";
+    getline(cin, *nome);
+    cout << "Digite o email do usuario: ";
+    getline(cin, *email);
+}
 
+void Menu::dispGetSenhaUser(string *senha){
+    limpaTela();
+    cout << "********** BIBLIOTECA **********" << endl;
+    cout << "******* SENHA DO USUARIO *******" << endl << endl;
+    cout << "Digite a senha do usuario: ";
+    getline(cin, *senha);
+}
+
+void Menu::dispGetIdUser(string *id){
+    limpaTela();
+    cout << "********** BIBLIOTECA **********" << endl;
+    cout << "********* ID DO USUARIO ********" << endl << endl;
+    cout << "Digite o id do usuario: ";
+    getline(cin, *id);
+}
+
+int Menu::dispMenuLivro(){
+    int op;
+    limpaTela();
+    cout << "********** BIBLIOTECA **********" << endl;
+    cout << "**** GERENCIAMENTO DE LIVROS ***" << endl << endl;
+    cout << "1 - Adicionar novo livro" << endl;
+    cout << "2 - Remover um livro" << endl;
+    cout << "3 - Alterar estoque de um livro" << endl;
+    cout << "4 - Exibir todos os livros" << endl;
+    cout << "0 - Sair" << endl;
+    cout << "Opcao: ";
+    cin >> op;
+    limpaBuffer();
+    return op;
+}
+
+void Menu::errorNFlivro(){
+    limpaTela();
+    cout << "********** BIBLIOTECA **********" << endl;
+    cout << "******* ERRO NA OPERAÇÃO *******" << endl << endl;
+    cout << "Livro nao encontrado!" << endl;
+    pausaTela();
+}
+
+void Menu::errorNFuser(){
+    limpaTela();
+    cout << "********** BIBLIOTECA **********" << endl;
+    cout << "******* ERRO NA OPERAÇÃO *******" << endl << endl;
+    cout << "Usuario nao encontrado!" << endl;
+    pausaTela();
+}
+
+void Menu::errorNFcopias(){
+    limpaTela();
+    cout << "********** BIBLIOTECA **********" << endl;
+    cout << "******* ERRO NA OPERAÇÃO *******" << endl << endl;
+    cout << "Livro nao possui copias disponíveis!" << endl;
+    pausaTela();
+}
+
+void Menu::errorAutenticacao(){
+    limpaTela();
+    cout << "********** BIBLIOTECA **********" << endl;
+    cout << "******* ERRO NA OPERAÇÃO *******" << endl << endl;
+    cout << "Senha incorreta!" << endl;
+    pausaTela();
+}
+
+void Menu::errorLimite(){
+    limpaTela();
+    cout << "********** BIBLIOTECA **********" << endl;
+    cout << "******* ERRO NA OPERAÇÃO *******" << endl << endl;
+    cout << "Limite excedido de tentativas de autenticacao do usuario!" << endl;
+    cout << "Verifique a senha do usuario e tente novamente!" << endl;
+    pausaTela();
+}
+
+void Menu::errorLivroExiste(){
+    cout << "Livro ja existente na biblioteca!" << endl;
+    cout << "Por favor, faca alteracao do estoque!" << endl;
+    pausaTela();
+}
+
+void Menu::errorEmpCopias(){
+    limpaTela();
+    cout << "********** BIBLIOTECA **********" << endl;
+    cout << "******* ERRO NA OPERAÇÃO *******" << endl << endl;
+    cout << "O livro possui copias em emprestimo!" << endl;
+    cout << "Solicite a devolucao de todas a copias!" << endl; 
+    pausaTela();
+}
+
+void Menu::successEmprestimo(){
+    limpaTela();
+    cout << "********** BIBLIOTECA **********" << endl;
+    cout << "****** SUCESSO NA OPERAÇÃO *****" << endl << endl;
+    cout << "Livro emprestado com sucesso!" << endl;
+    pausaTela();
+}
+
+void Menu::successAddLivro(){
+    limpaTela();
+    cout << "********** BIBLIOTECA **********" << endl;
+    cout << "****** SUCESSO NA OPERAÇÃO *****" << endl << endl;
+    cout << "Livro adicionado com sucesso!" << endl;
+    pausaTela();
+}
 
 
 

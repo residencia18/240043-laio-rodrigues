@@ -24,6 +24,192 @@ void Biblioteca::init(){
     } while (op != 0);
 }
 
+Livro* Biblioteca::getLivroByNome(){
+    int idx;
+    string t1, t2;
+
+    Menu::dispGetNomeLivro(&t1, &t2);
+
+    idx = getIdxLivroByNome(t1, t2);
+
+    if(idx < 0){
+        Menu::errorNFlivro();
+        return NULL;
+    }
+
+    return getLivro(idx);
+}
+
+Livro* Biblioteca::getLivroById(){
+    int idx;
+    string id;
+
+    Menu::dispGetIdLivro(&id);
+
+    idx = getIdxLivroById(id);
+
+    if(idx < 0){
+        Menu::errorNFlivro();
+        return NULL;
+    }
+
+    return getLivro(idx);
+}
+
+Usuario* Biblioteca::getUserById(){
+    int idx;
+    string id;
+
+    Menu::dispGetIdUser(&id);
+
+    idx = getIdxUsuarioById(id);
+
+    if(idx < 0){
+        Menu::errorNFuser();
+        return NULL;
+    }
+
+    return getUsuario(idx);
+}
+
+Usuario* Biblioteca::getUsuarioByNome(){
+    int idx;
+    string nome, email;
+
+    Menu::dispGetNomeUser(&nome, &email);
+
+    idx = getIdxUsuarioByNome(nome, email);
+
+    if(idx < 0){
+        Menu::errorNFuser();
+        return NULL;
+    }
+
+    return getUsuario(idx);
+}
+
+bool Biblioteca::autentica(Usuario* usuario){
+    string senha;
+
+    Menu::dispGetSenhaUser(&senha);
+
+    return usuario->autentica(senha);
+}
+
+void Biblioteca::emprestimo(){
+    Livro* livro;
+    Usuario* usuario;
+    int tempo = 7, k = 0;
+    string status = "Emprestado";
+
+    livro = getLivroById();
+    if(livro == NULL){
+        return;
+    }
+
+    if(livro->getCopias() == 0){
+        Menu::errorNFcopias();
+        return;
+    }
+
+    usuario = getUserById();
+    if(usuario == NULL){
+        return;
+    }
+
+    Data* dt_retirada = new Data(10, 10, 2023);
+
+    do{
+        if(autentica(usuario)){
+            Emprestimo* novo = new Emprestimo(livro, usuario, status, dt_retirada, tempo);
+            livro->setCopias(livro->getCopias() - 1);
+            usuario->addEmprestimo(novo);
+            k = 10;
+            Menu::successEmprestimo();
+        }else{
+            k++;
+            Menu::errorAutenticacao();
+        }
+    } while (k < 3);
+    if(k < 5){
+        Menu::errorLimite();
+    }
+}
+
+void Biblioteca::pesquisa(){
+    Livro* livro = getLivroByNome();
+    if(livro == NULL){
+        return;
+    }
+    cout << livro->toString();
+    getchar();
+}
+
+void Biblioteca::menuLivro(){
+    int op;
+    
+    do{
+        op = Menu::dispMenuLivro();
+        switch (op){
+            case 1:
+                novoLivro();
+                break;
+            case 2:
+                rmLivro();
+                break;
+            case 3:
+                alterarEstoque();
+                break;
+            case 4:
+                listarTodosLivros();
+                break;
+            default:
+                break;
+        }
+    } while (op != 0);
+}
+
+void Biblioteca::novoLivro(){
+    string t1, t2;
+    int copias;
+
+    Menu::dispGetNomeLivro(&t1, &t2);
+    Menu::dispGetCopiasLivro(&copias);
+
+    if(getIdxLivroByNome(t1, t2) >= 0){
+        Menu::errorLivroExiste();
+        return;
+    }
+
+    Livro* livro = new Livro(t1, t2, copias);
+    addLivro(livro);
+
+    Menu::successAddLivro();
+}
+
+void Biblioteca::rmLivro(){
+    string id;
+    
+    Menu::dispGetIdLivro(&id);
+    int idx = getIdxLivroById(id);
+    
+    if(idx < 0){
+        Menu::errorNFlivro();
+        return;
+    }
+    
+    if(livros[idx]->getCopias() != livros[idx]->getCopiasTotais()){
+        Menu::errorEmpCopias();
+        return;
+    }
+
+    removeLivro(idx);
+}
+
+
+
+
+
 
 
 void Biblioteca::addUsuario(Usuario* novo){
@@ -74,6 +260,7 @@ void Biblioteca::addLivro(Livro* livro){
 }
 
 void Biblioteca::removeLivro(size_t idx){
+
     livros.erase(livros.begin() + idx);
 }
 

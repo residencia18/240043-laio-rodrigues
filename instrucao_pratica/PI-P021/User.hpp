@@ -1,19 +1,22 @@
 #if !defined(USER_HPP)
 #define USER_HPP
 
-#include"Utilitarios.hpp"
+#include<string>
+#include<vector>
+
+using namespace std;
 
 class Emprestimo;
 
 class Usuario{
     private:
         vector<Emprestimo*> listaEmprestimo;
-        static int cont;
         string id;
         string nome;
         string email;
         string senha;
     public:
+        static int cont;
         Usuario(){}
         Usuario(string, string, string);
 

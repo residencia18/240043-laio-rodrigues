@@ -13,6 +13,32 @@ class Biblioteca{
 
         static void init();
 
+        static Livro* getLivroByNome();
+        static Livro* getLivroById();
+        static Usuario* getUserById();
+        static Usuario* getUsuarioByNome();
+        static bool autentica(Usuario*);
+
+        static void emprestimo();
+
+        static void pesquisa();
+
+        static void menuLivro();
+        static void novoLivro();
+        static void rmLivro();
+        static void alterarEstoque(){}
+        static void listarTodosLivros(){}
+        static void listarLivrosUsuario(){}
+
+        static void menuUser(){}
+        static void novoUser(){}
+        static void rmUser(){}
+        static void alterarEmail(){}
+        static void alterarSenha(){}
+        static void listarUsuarios(){}
+
+
+
         static void addUsuario(Usuario*);
         static void removerUsuario(size_t);
         static void alterarEmailUsuario(size_t, string);
