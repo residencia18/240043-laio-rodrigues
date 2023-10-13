@@ -7,8 +7,17 @@ Emprestimo::Emprestimo(Livro* _livro, Usuario* _usuario, string _status, Data* _
     this->usuario = _usuario;
     this->status = _status;
     this->dt_retirada = _dt_retirada;
-    this->dt_devolucao = _dt_retirada;
-    this->dt_devolucao->somaDias(_tempo);
+    Data* dt_nova = new Data(_dt_retirada->getDia(), _dt_retirada->getMes(), _dt_retirada->getAno());
+    dt_nova->somaDias(_tempo);
+    this->dt_devolucao = dt_nova;
+}
+
+void Emprestimo::setCont(int cont){
+    this->cont = cont;
+}
+
+void Emprestimo::setId(string id){
+    this->id = id;
 }
 
 void Emprestimo::setLivro(Livro* _livro){

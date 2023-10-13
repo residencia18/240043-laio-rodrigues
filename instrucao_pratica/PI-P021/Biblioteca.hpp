@@ -3,15 +3,27 @@
 
 #include"Emprestimo.hpp"
 #include"Menu.hpp"
+#include<fstream>
+#include<sstream>
 
 class Biblioteca{
     private:
         static vector<Livro*> livros;
         static vector<Usuario*> usuarios;
+        static vector<Emprestimo*> emprestimos;
+
     public:
         Biblioteca(){}
 
         static void init();
+
+        static void abrirArqUser();
+        static void abrirArqLivros();
+        static void abrirArqEmprestimo();
+
+        static void salvarArqUser();
+        static void salvarArqLivros();
+        static void salvarArqEmprestimo();
 
         static Livro* getLivroByNome();
         static Livro* getLivroById();
@@ -20,22 +32,22 @@ class Biblioteca{
         static bool autentica(Usuario*);
 
         static void emprestimo();
-
         static void pesquisa();
+        static void devolucao();
 
         static void menuLivro();
         static void novoLivro();
         static void rmLivro();
-        static void alterarEstoque(){}
-        static void listarTodosLivros(){}
-        static void listarLivrosUsuario(){}
+        static void alterarEstoque();
+        static void listarTodosLivros();
+        static void listarLivrosUsuario();
 
-        static void menuUser(){}
-        static void novoUser(){}
-        static void rmUser(){}
-        static void alterarEmail(){}
-        static void alterarSenha(){}
-        static void listarUsuarios(){}
+        static void menuUser();
+        static void novoUser();
+        static void rmUser();
+        static void alterarEmail();
+        static void alterarSenha();
+        static void listarUsuarios();
 
 
 
@@ -55,6 +67,11 @@ class Biblioteca{
         static int getIdxLivroByNome(string, string);
         static Livro* getLivro(size_t);
         static vector<Livro*> getLista();
+
+        static void addEmprestimo(Emprestimo*);
+        static void removerEmprestimo(size_t);
+        static Emprestimo* getEmprestimo(size_t);
+        static vector<Emprestimo*> getListaEmprestimo();
 
         ~Biblioteca(){}
 };

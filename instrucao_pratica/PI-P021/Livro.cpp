@@ -9,6 +9,14 @@ Livro::Livro(string titulo, string autor, int copias){
     this->copias = copias;
 }
 
+void Livro::setCont(int cont){
+    this->cont = cont;
+}
+
+void Livro::setId(string id){
+    this->id = id;
+}
+
 void Livro::setTitulo(string titulo){
     this->titulo = titulo;
 }
@@ -45,6 +53,19 @@ string Livro::getId(){
     return this->id;
 }
 
+string Livro::dispToString(){
+    return "#Id\tDisponiveis\tEstoque\tLivro\t\t\t\tAutor";
+
+}
+
 string Livro::toString(){
-    return "#" + this->id + "\t" + this->titulo + "\t" + this->autor + "\t" + to_string(this->copias);
+    return "#" + this->id + "\t" + to_string(this->copias) + "\t\t" + to_string(this->copiasTotais) + "\t" + this->titulo + "\t\t" + this->autor;
+}
+
+string Livro::dispToStringEmp(){
+    return "#Id\tStatus\t\tData de Devolucao\tLivro\t\t\tAutor";
+}
+
+string Livro::toStringEmp(string status, string dev){
+    return "#" + this->id + "\t" + status + "\t" + dev + "\t\t" + this->titulo + "\t" + this->autor;
 }

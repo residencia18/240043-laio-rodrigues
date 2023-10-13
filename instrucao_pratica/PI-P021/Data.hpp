@@ -13,6 +13,18 @@ class Data{
     public:
         Data(){}
         Data(int dia, int mes, int ano);
+        void setDia(int d){
+            this->dia = d;
+        }
+        void setMes(int m){
+            this->mes = m;
+        }
+        void setAno(int a){
+            this->ano = a;
+        }
+        int getDia();
+        int getMes();
+        int getAno();
         int anoEntre(Data* dt);
         static bool isAnoBissexto(int ano);
         static int diasNoMes(int mes, int ano);

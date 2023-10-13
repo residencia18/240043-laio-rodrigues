@@ -6,33 +6,30 @@
 
 using namespace std;
 
-class Emprestimo;
-
 class Usuario{
     private:
-        vector<Emprestimo*> listaEmprestimo;
+        static int cont;
         string id;
         string nome;
         string email;
         string senha;
     public:
-        static int cont;
         Usuario(){}
         Usuario(string, string, string);
 
+        void setCont(int);
+        void setId(string);
         void setNome(string);
         void setEmail(string);
         void setSenha(string);
-        void addEmprestimo(Emprestimo*);
-        void removerEmprestimo(size_t);
         bool autentica(string);
-
-        Emprestimo* getEmprestimo(size_t);
-        vector<Emprestimo*> getListaEmprestimo();
+        
         string getNome();
         string getEmail();
         string getSenha();
         string getId();
+
+        static string dispToString();
         string toString();
 
         ~Usuario(){}

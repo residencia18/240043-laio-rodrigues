@@ -7,6 +7,18 @@ Data::Data(int dia, int mes, int ano){
     this->ano = ano;
 }
 
+int Data::getDia(){
+    return this->dia;
+}
+
+int Data::getMes(){
+    return this->mes;
+}
+
+int Data::getAno(){
+    return this->ano;
+}
+
 int Data::anoEntre(Data* dt){
     int k = this->ano - dt->ano;
     if(k < 0){
@@ -46,29 +58,29 @@ bool Data::estaEntre(Data* dt1, Data* dt2){
 int Data::diaEntre(Data* dt){
     int dias = 0;
     
-    Data* d1;
-    d1->ano = this->ano;
-    d1->mes = this->mes;
-    d1->dia = this->dia;
+    Data* d1 = new Data();
+    d1->setAno(this->ano);
+    d1->setMes(this->mes);
+    d1->setDia(this->dia);
 
-    if(d1->ano>dt->ano || (d1->ano==dt->ano && d1->mes>dt->mes) || (d1->ano==dt->ano && d1->mes==dt->mes && d1->dia>dt->dia)){
+    if(d1->getAno()>dt->getAno() || (d1->getAno()==dt->getAno() && d1->getMes()>dt->getMes()) || (d1->getAno()==dt->getAno() && d1->getMes()==dt->getMes() && d1->getDia()>dt->getDia())){
         return -1;
     }
 
-    while(d1->ano<dt->ano || (d1->ano==dt->ano && d1->mes<dt->mes)){
-        dias += (Data::diasNoMes(d1->mes, d1->ano) - d1->dia + 1);
-        d1->dia = 1;
-        d1->mes++;
+    while(d1->getAno()<dt->getAno() || (d1->getAno()==dt->getAno() && d1->getMes()<dt->getMes())){
+        dias += (Data::diasNoMes(d1->getMes(), d1->getAno()) - d1->getDia() + 1);
+        d1->setDia(1);
+        d1->setMes(d1->getMes()+1);
         
-        if(d1->mes > 12){
-            d1->mes = 1;
-            d1->ano++;
+        if(d1->getMes() > 12){
+            d1->setMes(1);
+            d1->setAno(d1->getAno()+1);
         }
         
-        if(d1->ano > dt->ano)
+        if(d1->getAno() > dt->getAno())
             break;
     }
-    dias += dt->dia - d1->dia;
+    dias += dt->getDia() - d1->getDia();
     return dias;
 
     
@@ -143,7 +155,6 @@ void Data::somaDias(int dias){
 
 string Data::toString(){
     string data = "";
-
     if(this->dia <10)
         data += "0";
     data += to_string(this->dia) + "/";
@@ -157,12 +168,9 @@ string Data::toString(){
 }
 
 Data* Data::getDataAtual(){
-    Data* dt;
     time_t t = time(NULL);
     struct tm *tm = localtime(&t);
-    dt->dia = tm->tm_mday;
-    dt->mes = tm->tm_mon + 1;
-    dt->ano = tm->tm_year + 1900;
+    Data* dt = new Data(tm->tm_mday, tm->tm_mon + 1, tm->tm_year + 1900);
     return dt;
 }
 

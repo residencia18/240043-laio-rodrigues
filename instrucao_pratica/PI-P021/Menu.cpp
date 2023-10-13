@@ -1,17 +1,14 @@
 #include"Menu.hpp"
 
-void Menu::init(){
-    
-}
-
 int Menu::dispMain(){
     int op;
     limpaTela();
     cout << "********** BIBLIOTECA **********" << endl << endl;
     cout << "1 - Novo emprestimo" << endl;
     cout << "2 - Pesquisar livro" << endl;
-    cout << "3 - Gerenciamento de livros" << endl;
-    cout << "4 - Gerenciamento de usuarios" << endl;
+    cout << "3 - Devolucao de livro" << endl;
+    cout << "4 - Gerenciamento de livros" << endl;
+    cout << "5 - Gerenciamento de usuarios" << endl;
     cout << "0 - Sair" << endl;
     cout << "Opcao: ";
     cin >> op;
@@ -46,12 +43,18 @@ void Menu::dispGetIdLivro(string *id){
     getline(cin, *id);
 }
 
-void Menu::dispGetNomeUser(string *nome, string *email){
+void Menu::dispGetNomeUser(string *nome){
     limpaTela();
     cout << "********** BIBLIOTECA **********" << endl;
     cout << "******* DADOS DO USUARIO *******" << endl << endl;
     cout << "Digite o nome do usuario: ";
     getline(cin, *nome);
+}
+
+void Menu::dispGetEmailUser(string *email){
+    limpaTela();
+    cout << "********** BIBLIOTECA **********" << endl;
+    cout << "******* EMAIL DO USUARIO *******" << endl << endl;
     cout << "Digite o email do usuario: ";
     getline(cin, *email);
 }
@@ -81,6 +84,24 @@ int Menu::dispMenuLivro(){
     cout << "2 - Remover um livro" << endl;
     cout << "3 - Alterar estoque de um livro" << endl;
     cout << "4 - Exibir todos os livros" << endl;
+    cout << "5 - Exibir livros em emprestimo" << endl;
+    cout << "0 - Sair" << endl;
+    cout << "Opcao: ";
+    cin >> op;
+    limpaBuffer();
+    return op;
+}
+
+int Menu::dispMenuUser(){
+    int op;
+    limpaTela();
+    cout << "********** BIBLIOTECA ***********" << endl;
+    cout << "*** GERENCIAMENTO DE USUARIOS ***" << endl << endl;
+    cout << "1 - Adicionar novo usuario" << endl;
+    cout << "2 - Remover um usuario" << endl;
+    cout << "3 - Alterar e-mail do usuario" << endl;
+    cout << "4 - Alterar senha do usuario" << endl;
+    cout << "5 - Exibir todos os usuarios" << endl;
     cout << "0 - Sair" << endl;
     cout << "Opcao: ";
     cin >> op;
@@ -112,6 +133,14 @@ void Menu::errorNFcopias(){
     pausaTela();
 }
 
+void Menu::errorNFdevolucao(){
+    limpaTela();
+    cout << "********** BIBLIOTECA **********" << endl;
+    cout << "******* ERRO NA OPERAÇÃO *******" << endl << endl;
+    cout << "Devolucao ja efetuada!" << endl;
+    pausaTela();
+}
+
 void Menu::errorAutenticacao(){
     limpaTela();
     cout << "********** BIBLIOTECA **********" << endl;
@@ -135,6 +164,11 @@ void Menu::errorLivroExiste(){
     pausaTela();
 }
 
+void Menu::errorUserExiste(){
+    cout << "Usuario ja existente no cadastro!" << endl;
+    pausaTela();
+}
+
 void Menu::errorEmpCopias(){
     limpaTela();
     cout << "********** BIBLIOTECA **********" << endl;
@@ -144,22 +178,24 @@ void Menu::errorEmpCopias(){
     pausaTela();
 }
 
-void Menu::successEmprestimo(){
+void Menu::success(string msg){
     limpaTela();
     cout << "********** BIBLIOTECA **********" << endl;
     cout << "****** SUCESSO NA OPERAÇÃO *****" << endl << endl;
-    cout << "Livro emprestado com sucesso!" << endl;
-    pausaTela();
-}
-
-void Menu::successAddLivro(){
-    limpaTela();
-    cout << "********** BIBLIOTECA **********" << endl;
-    cout << "****** SUCESSO NA OPERAÇÃO *****" << endl << endl;
-    cout << "Livro adicionado com sucesso!" << endl;
+    cout << msg << endl;
     pausaTela();
 }
 
 
+void Menu::limpaTela(){
+    system("clear || cls");
+}
 
+void Menu::pausaTela(){
+    system("pause || read");
+}
 
+void Menu::limpaBuffer(){
+    int ch;
+    while ( ( ch = fgetc ( stdin ) ) != EOF && ch != '\n' );
+}

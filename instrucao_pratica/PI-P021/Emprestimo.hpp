@@ -15,8 +15,11 @@ class Emprestimo{
         Data* dt_retirada;
         Data* dt_devolucao;
     public:
+        Emprestimo(){}
         Emprestimo(Livro*, Usuario*, string, Data*, int);
         
+        void setCont(int);
+        void setId(string);
         void setLivro(Livro*);
         void setUsuario(Usuario*);
         void setStatus(string);

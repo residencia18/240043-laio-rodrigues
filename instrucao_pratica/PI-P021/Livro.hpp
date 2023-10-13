@@ -17,6 +17,8 @@ class Livro{
         Livro(){}
         Livro(string, string, int);
         
+        void setCont(int);
+        void setId(string);
         void setTitulo(string);
         void setAutor(string);
         void setCopias(int);
@@ -28,7 +30,10 @@ class Livro{
         int getCopiasTotais();
         string getId();
         
+        static string dispToString();
         string toString();
+        static string dispToStringEmp();
+        string toStringEmp(string, string);
         
         ~Livro(){}
 };
