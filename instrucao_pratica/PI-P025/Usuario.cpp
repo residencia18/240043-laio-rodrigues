@@ -1,10 +1,5 @@
 #include"Usuario.hpp"
 
-/*
-    1 - Verificar se o nome de usuario já existe no cadastro
-
-*/
-
 Usuario::Usuario(string _username, string _nome, string _senha){
     this->username = _username;
     this->nome = _nome;
