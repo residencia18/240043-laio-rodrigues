@@ -2,6 +2,8 @@
 #define REDESOCIAL_HPP
 
 #include"Tweet.hpp"
+#include<fstream>
+#include<sstream>
 
 class RedeSocial{
     private:
@@ -11,6 +13,11 @@ class RedeSocial{
         RedeSocial(){}
 
         static void init();
+        
+        static void abrirArqUsuarios();
+        static void abrirArqTweets();
+        static void salvarArqUsuarios();
+        static void salvarArqTweets();
 
         static void registrar();
         static Usuario* fazerLogin();
@@ -33,6 +40,7 @@ class RedeSocial{
         
         static void addUsuario(Usuario*);
         static void addTweet(Tweet*);
+        static bool hasUsuario(string);
         static int getIdxUsuario(string);
         static vector<int> getIdxTweets(string);
         static void removeUsuario(string);

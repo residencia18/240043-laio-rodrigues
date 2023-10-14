@@ -2,16 +2,16 @@
 
 void RedeSocial::init(){
     int op;
+    Usuario* u;
 
-    // abrirArqUser();
-    // abrirArqLivros();
-    // abrirArqEmprestimo();
+    abrirArqUsuarios();
+    abrirArqTweets();
     
     do{
         op = Menu::dispMain();
         switch (op){
             case 1:
-                Usuario* u = fazerLogin();
+                u = fazerLogin();
                 if(u != NULL)
                     home(u);
                 break;
@@ -19,9 +19,8 @@ void RedeSocial::init(){
                 registrar();
                 break;
             case 0:
-                // salvarArqUser();
-                // salvarArqLivros();
-                // salvarArqEmprestimo();
+                salvarArqUsuarios();
+                salvarArqTweets();
                 break;
             default:
                 break;
@@ -29,13 +28,156 @@ void RedeSocial::init(){
     } while (op != 0);
 }
 
+void RedeSocial::abrirArqUsuarios(){
+    ifstream is("usuarios.txt");
+    
+    if (!is.is_open()) {
+        cout << "Erro ao abrir o arquivo usuarios.txt" << endl;
+        exit(1);
+    }
+    
+    string linha;
+    
+    while (getline(is, linha)) {
+        istringstream ss(linha);
+        string username, nome, senha;
+        
+        // Lê os campos separados por vírgulas
+        if (getline(ss, username, ',')) {
+            getline(ss, nome, ',');
+            getline(ss, senha, ',');
+        }
+        
+        // Crie um novo objeto Usuario e atribua os valores lidos
+        Usuario *novoUsuario = new Usuario(username, nome, senha);
+        
+        // Agora, vamos lidar com os seguidores e seguindo
+        string token;
+        while (getline(ss, token, ',')) {
+            istringstream token_ss(token);
+            string label;
+            token_ss >> label;
+            if (label == "Seguidores:") {
+                string seguidorUsername;
+                while (token_ss >> seguidorUsername) {
+                    Usuario *seguidor = getUsuario(seguidorUsername);
+                    if (seguidor) {
+                        novoUsuario->addSeguidor(seguidor);
+                    }
+                }
+            } else if (label == "Seguindo:") {
+                string seguindoUsername;
+                while (token_ss >> seguindoUsername) {
+                    Usuario *seguido = getUsuario(seguindoUsername);
+                    if (seguido) {
+                        novoUsuario->addSeguindo(seguido);
+                    }
+                }
+            }
+        }
+        
+        // Adicione o usuário carregado ao vetor de usuários
+        usuarios.push_back(novoUsuario);
+    }
+    
+    is.close();
+}
+
+void RedeSocial::abrirArqTweets(){
+    ifstream is("tweets.txt");
+    
+    if (!is.is_open()) {
+        cout << "Erro ao abrir o arquivo tweets.txt" << endl;
+        exit(1);
+    }
+    
+    string linha;
+    
+    while (getline(is, linha)) {
+        istringstream ss(linha);
+        string autorUsername, conteudo, dataCriacaoStr;
+        
+        // Lê os campos separados por vírgulas
+        if (getline(ss, autorUsername, ',')) {
+            getline(ss, conteudo, ',');
+            getline(ss, dataCriacaoStr, ',');
+        }
+        
+        // Crie um novo objeto Tweet e atribua os valores lidos
+        Usuario* autor = getUsuario(autorUsername);
+
+        istringstream dt(dataCriacaoStr);
+        string dia, mes, ano;
+        if(getline(dt, dia, '/') && getline(dt, mes, '/') && getline(dt, ano, '/')){
+            Data* nova = new Data(stoi(dia), stoi(mes), stoi(ano));
+        }
+        
+        Tweet* novoTweet = new Tweet(autor, conteudo, nova);
+        
+        // Adicione o tweet carregado ao vetor de tweets
+        tweets.push_back(novoTweet);
+    }
+    
+    is.close();
+}
+
+void RedeSocial::salvarArqUsuarios(){
+    ofstream os("usuarios.txt");
+    
+    if (!os.is_open()){
+        cout << "Erro ao abrir arquivo usuarios.txt" << endl;
+        exit(1);
+    }
+    
+    for (int i = 0; i < usuarios.size(); i++) {
+        os << usuarios[i]->getUsername() << ',';
+        os << usuarios[i]->getNome() << ',';
+        os << usuarios[i]->getSenha() << ',';
+        
+        // Salvando seguidores
+        os << "Seguidores: ";
+        for (int j = 0; j < usuarios[i]->getSeguidores().size(); j++) {
+            os << usuarios[i]->getSeguidores()[j]->getUsername() << ',';
+        }
+        
+        // Salvando seguindo
+        os << "Seguindo: ";
+        for (int j = 0; j < usuarios[i]->getSeguindo().size(); j++) {
+            os << usuarios[i]->getSeguindo()[j]->getUsername() << ',';
+        }
+        
+        os << endl;
+    }
+    
+    os.close();
+}
+
+void RedeSocial::salvarArqTweets(){
+    ofstream os("tweets.txt");
+    
+    if (!os.is_open()) {
+        cout << "Erro ao abrir o arquivo tweets.txt" << endl;
+        exit(1);
+    }
+    
+    for (int i = 0; i < tweets.size(); i++) {
+        os << tweets[i]->getAutor()->getUsername() << ',';
+        os << tweets[i]->getConteudo() << ',';
+        os << tweets[i]->getDt_criacao()->toString() << ','; // Suponhamos que você tenha um método toString() para a classe Data
+        os << endl;
+    }
+    
+    os.close();
+}
+
+
 
 void RedeSocial::registrar(){
     string _nome, _username, _password;
     
     Menu::dispRegister(&_nome, &_username, &_password);
 
-    if(getIdxUsuario(_username) >= 0){
+    if(hasUsuario(_username)){
         Menu::error("O nome de usuario nao esta disponivel!");
         return;
     }
@@ -52,12 +194,11 @@ Usuario* RedeSocial::fazerLogin(){
     
     int idx = getIdxUsuario(_username);
     if(idx < 0){
-        Menu::error("Usuario nao encontrado!");
         return NULL;
     }
     
-    Usuario* usuario = getUsuario(idx);
-    if(usuario->getPasswd()!= _password){
+    Usuario* usuario = usuarios[idx];
+    if(usuario->getSenha()!= _password){
         Menu::error("Senha incorreta!");
         return NULL;
     }
@@ -68,6 +209,7 @@ Usuario* RedeSocial::fazerLogin(){
 
 void RedeSocial::home(Usuario* _usuario){
     int op;
+    Usuario* _pesq;
     do{
         op = Menu::dispHome(_usuario->getUsername(), _usuario->getNome(), _usuario->getSeguidores().size(), _usuario->getSeguindo().size());
         switch (op){
@@ -78,7 +220,7 @@ void RedeSocial::home(Usuario* _usuario){
                 novoTweet(_usuario);
                 break;
             case 3:
-                Usuario* _pesq = pesquisar();
+                _pesq = pesquisar();
                 if(_pesq != NULL)
                     verUsuario(_usuario, _pesq);
                 break;
@@ -87,6 +229,7 @@ void RedeSocial::home(Usuario* _usuario){
                 break;
             case 5:
                 excluir(_usuario);
+                op = 0;
                 break;
             case 0:
                 Menu::dispLogout();
@@ -99,32 +242,28 @@ void RedeSocial::home(Usuario* _usuario){
 
 void RedeSocial::verFeed(){
     vector<Tweet*> _tweets = getTweets();
+    Menu::limpaTela();
     cout << "*************** XWITTER ***************" << endl;
     cout << "***************  FEED   ***************" << endl << endl;
     for(Tweet* tt : _tweets){
-        Menu::dispFeed(tt->getAutor(), tt->getConteudo(), tt->getDt_criacao()->toString());
+        Menu::dispFeed(tt->getAutor()->getUsername(), tt->getConteudo(), tt->getDt_criacao()->toString());
     }
     cout << "*************** XWITTER ***************" << endl << endl;
-    pausaTela();
+    Menu::pausaTela();
 }
 
 void RedeSocial::novoTweet(Usuario* _usuario){
     string _conteudo;
-    Menu::dispNewTweet(&_conteudo);
-    Tweet* novo = new Tweet(_usuario->getUsername(), _conteudo, Data::getDataAtual());
+    Menu::dispTweet(&_conteudo);
+    Tweet* novo = new Tweet(_usuario, _conteudo, Data::getDataAtual());
     addTweet(novo);
     Menu::success("Tweet enviado com sucesso!");
 }
 
 Usuario* RedeSocial::pesquisar(){
     string _username;
-    Menu::dispPesquisar(&_username);
-    int idx = getIdxUsuario(_username);
-    if(idx < 0){
-        Menu::error("Usuario nao encontrado!");
-        return NULL;
-    }
-    return getUsuario(idx);
+    Menu::dispPesquisa(&_username);
+    return getUsuario(_username);
 }
 
 void RedeSocial::verUsuario(Usuario* _usuario, Usuario* _pesq){
@@ -165,24 +304,26 @@ void RedeSocial::seguir(Usuario* _usuario, Usuario* _pesq){
 
 void RedeSocial::verTweets(Usuario* _usuario){
     vector<Tweet*> _tweets = getTweets(_usuario->getUsername());
+    Menu::limpaTela();
     cout << "*************** XWITTER ***************" << endl;
     cout << "***************  FEED   ***************" << endl << endl;
     for(Tweet* tt : _tweets){
-        Menu::dispFeed(tt->getAutor(), tt->getConteudo(), tt->getDt_criacao()->toString());
+        Menu::dispFeed(tt->getAutor()->getUsername(), tt->getConteudo(), tt->getDt_criacao()->toString());
     }
     cout << "*************** XWITTER ***************" << endl << endl;
-    pausaTela();
+    Menu::pausaTela();
 }
 
 void RedeSocial::verSeguidores(Usuario* _usuario){
     vector<Usuario*> _seguidores = _usuario->getSeguidores();
+    Menu::limpaTela();
     cout << "*************** XWITTER ***************" << endl;
     cout << "***************  FOLLOWERS   ***************" << endl << endl;
     for(Usuario* us : _seguidores){
         Menu::dispSeguidores(us->getUsername(), us->getNome(), us->getSeguidores().size(), us->getSeguindo().size());
     }
     cout << "*************** XWITTER ***************" << endl << endl;
-    pausaTela();
+    Menu::pausaTela();
 }
 
 void RedeSocial::excluir(Usuario* _usuario){
@@ -207,11 +348,12 @@ Usuario* RedeSocial::getUsuario(string _username){
     if(idx >= 0){
         return usuarios[idx];
     }
+    return NULL;
 }
 
 vector<Tweet*> RedeSocial::getTweets(){
     vector<Tweet*> tts;
-    for(size_t i = tweets.size()-1; i >= 0; i--){
+    for(int i = tweets.size()-1; i >= 0; i--){
         tts.push_back(tweets[i]);
     }
     return tts;
@@ -220,7 +362,7 @@ vector<Tweet*> RedeSocial::getTweets(){
 vector<Tweet*> RedeSocial::getTweets(string _username){
     vector<Tweet*> tts;
 
-    for(size_t i = tweets.size()-1; i >= 0; i--){
+    for(int i = tweets.size()-1; i >= 0; i--){
         if(tweets[i]->getAutor()->getUsername().compare(_username) == 0)
             tts.push_back(tweets[i]);
     }
@@ -234,6 +376,14 @@ void RedeSocial::addUsuario(Usuario* novo){
 
 void RedeSocial::addTweet(Tweet* novo){
     tweets.push_back(novo);
+}
+
+bool RedeSocial::hasUsuario(string _username){
+    for(Usuario* u : usuarios){
+        if(u->getUsername().compare(_username) == 0)
+            return true;
+    }
+    return false;
 }
 
 int RedeSocial::getIdxUsuario(string _username){
@@ -262,9 +412,9 @@ void RedeSocial::removeUsuario(string _username){
             _seguindo[i]->removeSeguidor(_username);
         }
 
-        vector<int> idx = getIdxTweets(_username);
-        for(size_t i = 0; i < idx.size(); i++){
-            removeTweet(idx[i]);
+        vector<int> _idx = getIdxTweets(_username);
+        for(size_t i = 0; i < _idx.size(); i++){
+            removeTweet(_idx[i]);
         }
 
         delete usuarios[idx];

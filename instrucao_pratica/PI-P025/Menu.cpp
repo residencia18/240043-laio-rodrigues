@@ -91,14 +91,15 @@ int Menu::dispHome(string _username, string _nome, int _qtdSd, int _qtdSn){
 }
 
 void Menu::dispFeed(string _username, string _conteudo, string _dt){
-    cout << "+-------------------+-------------------+" << endl
-         << "|\t  " <<_dt << "\t|\t " << _username << "\t\t|" << endl
-         << "+-------------------+-------------------+" << endl
+    cout << "+---------------+---------------+" << endl
+         << "| " <<_dt << "\t|  " << _username << "\t|" << endl
+         << "+---------------+---------------+" << endl
          << _conteudo << endl
-         << "+-------------------+-------------------+" << endl << endl;
+         << "+---------------+---------------+" << endl << endl;
 }
 
 void Menu::dispTweet(string* _conteudo){
+    limpaTela();
     cout << "*************** XWITTER ***************" << endl;
     cout << "************** NOVO TWEET *************" << endl << endl;
 
@@ -118,7 +119,7 @@ void Menu::dispPesquisa(string* _pesquisa){
     cout << "*************** XWITTER ***************" << endl;
     cout << "************** PESQUISAR **************" << endl << endl;
     cout << "Digite um nome de usuario" << endl << ">";
-    getline(cin, _pesquisa);
+    getline(cin, *_pesquisa);
     cout << endl;
     cout << "*************** XWITTER ***************" << endl << endl;
 }
@@ -144,11 +145,11 @@ int Menu::dispUsuario(string _username, string _nome, int _qtdSd, int _qtdSn, bo
 }
 
 void Menu::dispSeguidores(string _username, string _nome, int _qtdSd, int _qtdSn){
-    cout << "+------------------+-------------------+" << endl
-         << "|\t " <<_username << "\t\t|\t\t" << _nome << "|" << endl
-         << "+------------------+-------------------+" << endl
-         << "|  " << _qtdSd << " seguidores\t|\t" << _qtdSn << " sequindo \t\t|" << endl
-         << "+------------------+-------------------+" << endl << endl;
+    cout << "+---------------+---------------+" << endl
+         << "| " <<_username << "\t|  " << _nome << "\t|" << endl
+         << "+---------------+---------------+" << endl
+         << "| " << _qtdSd << " seguidores\t|  " << _qtdSn << " seguindo \t|" << endl
+         << "+---------------+---------------+" << endl << endl;
 }
 
 int Menu::dispExcluir(){
@@ -179,7 +180,7 @@ void Menu::dispConfirma(string* _password){
 void Menu::success(string msg){
     limpaTela();
     cout << "*************** XWITTER ***************" << endl;
-    cout << "********* SUCESSO NA OPERACAO *********" << endl << end;
+    cout << "********* SUCESSO NA OPERACAO *********" << endl << endl;
     cout << msg << endl << endl;
     cout << "*************** XWITTER ***************" << endl;
     pausaTela();
@@ -188,7 +189,7 @@ void Menu::success(string msg){
 void Menu::error(string msg){
     limpaTela();
     cout << "*************** XWITTER ***************" << endl;
-    cout << "********* ERRO NA OPERACAO *********" << endl << end;
+    cout << "********* ERRO NA OPERACAO *********" << endl << endl;
     cout << msg << endl << endl;
     cout << "*************** XWITTER ***************" << endl;
     pausaTela();
