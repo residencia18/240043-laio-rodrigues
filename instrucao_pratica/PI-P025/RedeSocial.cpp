@@ -105,11 +105,12 @@ void RedeSocial::abrirArqTweets(){
         
         // Crie um novo objeto Tweet e atribua os valores lidos
         Usuario* autor = getUsuario(autorUsername);
+        Data* nova = new Data();
 
         istringstream dt(dataCriacaoStr);
         string dia, mes, ano;
         if(getline(dt, dia, '/') && getline(dt, mes, '/') && getline(dt, ano, '/')){
-            Data* nova = new Data(stoi(dia), stoi(mes), stoi(ano));
+            nova = new Data(stoi(dia), stoi(mes), stoi(ano));
         }
         
         Tweet* novoTweet = new Tweet(autor, conteudo, nova);
