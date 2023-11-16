@@ -1,0 +1,15 @@
+/home/laio-rodrigues/Área de trabalho/repositorios/resitic18/modulo2/dotNet/Semana2/Aula/Exercicio2/bin/Debug/net7.0/Exercicio2
+/home/laio-rodrigues/Área de trabalho/repositorios/resitic18/modulo2/dotNet/Semana2/Aula/Exercicio2/bin/Debug/net7.0/Exercicio2.deps.json
+/home/laio-rodrigues/Área de trabalho/repositorios/resitic18/modulo2/dotNet/Semana2/Aula/Exercicio2/bin/Debug/net7.0/Exercicio2.runtimeconfig.json
+/home/laio-rodrigues/Área de trabalho/repositorios/resitic18/modulo2/dotNet/Semana2/Aula/Exercicio2/bin/Debug/net7.0/Exercicio2.dll
+/home/laio-rodrigues/Área de trabalho/repositorios/resitic18/modulo2/dotNet/Semana2/Aula/Exercicio2/bin/Debug/net7.0/Exercicio2.pdb
+/home/laio-rodrigues/Área de trabalho/repositorios/resitic18/modulo2/dotNet/Semana2/Aula/Exercicio2/obj/Debug/net7.0/Exercicio2.csproj.AssemblyReference.cache
+/home/laio-rodrigues/Área de trabalho/repositorios/resitic18/modulo2/dotNet/Semana2/Aula/Exercicio2/obj/Debug/net7.0/Exercicio2.GeneratedMSBuildEditorConfig.editorconfig
+/home/laio-rodrigues/Área de trabalho/repositorios/resitic18/modulo2/dotNet/Semana2/Aula/Exercicio2/obj/Debug/net7.0/Exercicio2.AssemblyInfoInputs.cache
+/home/laio-rodrigues/Área de trabalho/repositorios/resitic18/modulo2/dotNet/Semana2/Aula/Exercicio2/obj/Debug/net7.0/Exercicio2.AssemblyInfo.cs
+/home/laio-rodrigues/Área de trabalho/repositorios/resitic18/modulo2/dotNet/Semana2/Aula/Exercicio2/obj/Debug/net7.0/Exercicio2.csproj.CoreCompileInputs.cache
+/home/laio-rodrigues/Área de trabalho/repositorios/resitic18/modulo2/dotNet/Semana2/Aula/Exercicio2/obj/Debug/net7.0/Exercicio2.dll
+/home/laio-rodrigues/Área de trabalho/repositorios/resitic18/modulo2/dotNet/Semana2/Aula/Exercicio2/obj/Debug/net7.0/refint/Exercicio2.dll
+/home/laio-rodrigues/Área de trabalho/repositorios/resitic18/modulo2/dotNet/Semana2/Aula/Exercicio2/obj/Debug/net7.0/Exercicio2.pdb
+/home/laio-rodrigues/Área de trabalho/repositorios/resitic18/modulo2/dotNet/Semana2/Aula/Exercicio2/obj/Debug/net7.0/Exercicio2.genruntimeconfig.cache
+/home/laio-rodrigues/Área de trabalho/repositorios/resitic18/modulo2/dotNet/Semana2/Aula/Exercicio2/obj/Debug/net7.0/ref/Exercicio2.dll
