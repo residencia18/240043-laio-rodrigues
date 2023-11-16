@@ -8,19 +8,19 @@
     "net7.0": []
   },
   "packageFolders": {
-    "/home/laio-rodrigues/.nuget/packages/": {}
+    "C:\\Users\\godof\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/laio-rodrigues/Área de trabalho/repositorios/resitic18/modulo2/dotNet/Semana2/Aula/Exercicio2/Exercicio2.csproj",
+      "projectUniqueName": "E:\\repositorios\\resitic18\\modulo2\\dotNet\\Semana2\\Aula\\Exercicio2\\Exercicio2.csproj",
       "projectName": "Exercicio2",
-      "projectPath": "/home/laio-rodrigues/Área de trabalho/repositorios/resitic18/modulo2/dotNet/Semana2/Aula/Exercicio2/Exercicio2.csproj",
-      "packagesPath": "/home/laio-rodrigues/.nuget/packages/",
-      "outputPath": "/home/laio-rodrigues/Área de trabalho/repositorios/resitic18/modulo2/dotNet/Semana2/Aula/Exercicio2/obj/",
+      "projectPath": "E:\\repositorios\\resitic18\\modulo2\\dotNet\\Semana2\\Aula\\Exercicio2\\Exercicio2.csproj",
+      "packagesPath": "C:\\Users\\godof\\.nuget\\packages\\",
+      "outputPath": "E:\\repositorios\\resitic18\\modulo2\\dotNet\\Semana2\\Aula\\Exercicio2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/laio-rodrigues/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\godof\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -54,12 +54,30 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[7.0.14, 7.0.14]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[7.0.14, 7.0.14]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[7.0.14, 7.0.14]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[7.0.14, 7.0.14]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.113/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "E:\\repositorios\\resitic18\\modulo2\\dotNet\\Semana1\\Semana1.csproj": {}
+    "E:\\repositorios\\resitic18\\modulo2\\dotNet\\Semana1\\Semana.csproj": {}
   },
   "projects": {
-    "E:\\repositorios\\resitic18\\modulo2\\dotNet\\Semana1\\Semana1.csproj": {
+    "E:\\repositorios\\resitic18\\modulo2\\dotNet\\Semana1\\Semana.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\repositorios\\resitic18\\modulo2\\dotNet\\Semana1\\Semana1.csproj",
-        "projectName": "Semana1",
-        "projectPath": "E:\\repositorios\\resitic18\\modulo2\\dotNet\\Semana1\\Semana1.csproj",
+        "projectUniqueName": "E:\\repositorios\\resitic18\\modulo2\\dotNet\\Semana1\\Semana.csproj",
+        "projectName": "Semana",
+        "projectPath": "E:\\repositorios\\resitic18\\modulo2\\dotNet\\Semana1\\Semana.csproj",
         "packagesPath": "C:\\Users\\godof\\.nuget\\packages\\",
         "outputPath": "E:\\repositorios\\resitic18\\modulo2\\dotNet\\Semana1\\obj\\",
         "projectStyle": "PackageReference",

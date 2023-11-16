@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "0GM0Pv7VA4IQtf4FnPt5yiBvoONclPDUNZUVRXLss3cEFZ7PdLmPFPus8LbnuoDVdDDlH62aS8NxGPNMBv0BZg==",
+  "dgSpecHash": "4tgJnVOeM5JLkCTvAU8DVgD4gu8GeZqR6bjc0MPTCHHTsbxjWcgm9UeYmk7Sn2OokcBaMX3128oXxp2/xg42WQ==",
   "success": true,
-  "projectFilePath": "/home/laio-rodrigues/Área de trabalho/repositorios/resitic18/modulo2/dotNet/Semana2/Aula/Exercicio3/Exercicio3.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "E:\\repositorios\\resitic18\\modulo2\\dotNet\\Semana2\\Aula\\Exercicio3\\Exercicio3.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\godof\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.14\\microsoft.netcore.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\godof\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.14\\microsoft.windowsdesktop.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\godof\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.14\\microsoft.aspnetcore.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\godof\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.14\\microsoft.netcore.app.host.win-x64.7.0.14.nupkg.sha512"
+  ],
   "logs": []
 }

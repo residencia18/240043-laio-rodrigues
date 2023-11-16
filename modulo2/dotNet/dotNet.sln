@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Semana1", "Semana1\Semana1.csproj", "{D8457604-F919-4D4D-83E4-AFFA5E1D16B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Semana", "Semana1\Semana.csproj", "{D8457604-F919-4D4D-83E4-AFFA5E1D16B8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Semana2", "Semana2", "{B633795E-A099-40D9-800F-583D626FF3B5}"
 EndProject
@@ -14,6 +14,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercicio2", "Semana2\Aula\Exercicio2\Exercicio2.csproj", "{C804E52B-A3D8-4475-B539-6944691F4C63}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercicio3", "Semana2\Aula\Exercicio3\Exercicio3.csproj", "{A05CA9CF-8E16-4E0F-8CA5-B9CF40DFEF9F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Semana1", "Semana1", "{2923BC77-F747-47AF-A9E1-050AC29E973F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aula", "Aula", "{1102BC72-B3ED-476C-BA11-30E79CA45C86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Primeiro", "Semana1\Aula\Primeiro\Primeiro.csproj", "{54018B62-250F-4389-9BB1-E8B699D2781D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +43,10 @@ Global
 		{A05CA9CF-8E16-4E0F-8CA5-B9CF40DFEF9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A05CA9CF-8E16-4E0F-8CA5-B9CF40DFEF9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A05CA9CF-8E16-4E0F-8CA5-B9CF40DFEF9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54018B62-250F-4389-9BB1-E8B699D2781D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54018B62-250F-4389-9BB1-E8B699D2781D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54018B62-250F-4389-9BB1-E8B699D2781D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54018B62-250F-4389-9BB1-E8B699D2781D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +56,8 @@ Global
 		{0C539874-CF4B-4A7B-AD3F-9AEBD6ECC09A} = {C026578B-5D5A-483B-9BD1-B085A7D19646}
 		{C804E52B-A3D8-4475-B539-6944691F4C63} = {C026578B-5D5A-483B-9BD1-B085A7D19646}
 		{A05CA9CF-8E16-4E0F-8CA5-B9CF40DFEF9F} = {C026578B-5D5A-483B-9BD1-B085A7D19646}
+		{1102BC72-B3ED-476C-BA11-30E79CA45C86} = {2923BC77-F747-47AF-A9E1-050AC29E973F}
+		{54018B62-250F-4389-9BB1-E8B699D2781D} = {1102BC72-B3ED-476C-BA11-30E79CA45C86}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {35710761-D333-44D9-8FAA-FB95E6BF1137}
