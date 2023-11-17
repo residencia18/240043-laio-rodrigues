@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&family=Kdam+Thmor+Pro&family=Mukta+Mahee:wght@400;700&display=swap');
+
+:root{
+    --corBackground: #f1f1f1;
+    --corPrimaria: #000066;
+    --corSecundaria: #87C3F8;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background: url(https://www.designi.com.br/images/preview/10506782.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header{
+    margin: 0;
+    width: 95%;
+    max-width: 1000px;
+    height: 25vh;
+    background: url(https://www.agravo.com.br/wp-content/uploads/2016/01/aerea_nazau_2.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.header span{
+    width: 50%;
+    background-color: var(--corSecundaria);
+    color: var(--corPrimaria);
+    padding-left: 15px;
+    border-radius: 20px 20px 0px 0px;
+    font-family: Mukta Mahee;
+    font-weight: bold;
+    margin-right: 5%;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.header .logo{
+    background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Bras%C3%A3o_UESC.svg/1200px-Bras%C3%A3o_UESC.svg.png);
+    height: 100%;
+    width: 15%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(240, 240, 240, 0.07);
+    margin-right: 5%;
+}
+
+.body{
+    height: 500px;
+    width: 95%;
+    max-width: 1000px;
+    background-color: var(--corBackground);
+}
+
+
+
+
+
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--corSecundaria);
+    width: 95%;
+    max-width: 1000px;
+    height: 5vh;
+    color: var(--corPrimaria);
+    font-weight: bold;
+    font-size: 11px;
+    border-radius: 0px 0px 5px 5px;
+    font-family: Mukta Mahee;
+}
