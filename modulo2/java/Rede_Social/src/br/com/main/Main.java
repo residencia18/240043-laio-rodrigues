@@ -36,24 +36,12 @@ public class Main {
 		novo5.addSeguidor(novo4);
 		
 		
-		System.out.println(novo1.toString());
-		System.out.println(novo1.seguidoresToString());
+		int a = 5;
+		int b = a;
+		a += 1;
 		
-		
-		System.out.println(novo2.toString());
-		System.out.println(novo2.seguidoresToString());
-
-		
-		System.out.println(novo3.toString());
-		System.out.println(novo3.seguidoresToString());
-
-		
-		System.out.println(novo4.toString());
-		System.out.println(novo4.seguidoresToString());
-
-		
-		System.out.println(novo5.toString());
-		System.out.println(novo5.seguidoresToString());
+		System.out.println(a);
+		System.out.println(b);
 
 
 		
