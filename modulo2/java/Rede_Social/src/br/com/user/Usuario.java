@@ -9,6 +9,7 @@ public class Usuario {
 	private String senha;
 	private ArrayList<Usuario> seguidores = new ArrayList<Usuario>();
 	private ArrayList<Usuario> seguindo = new ArrayList<Usuario>();
+	private String quantidadeDePostagens
 
 	public Usuario(String nome, String username, String senha) {
 		this.username = username;

@@ -4,11 +4,11 @@ import br.com.user.*;
 public class Main {
 
 	public static void main(String[] args) {
-		Usuario novo1 = new Usuario("laio", "outlaio", "123");
-		Usuario novo2 = new Usuario("joao", "jvitor", "123");
+		Usuario novo1 = new Usuario("Murilo", "MX23", "123");
+		Usuario novo2 = new Usuario("João", "jvitor", "123");
 		Usuario novo3 = new Usuario("vitor", "rvitor", "123");
 		Usuario novo4 = new Usuario("ticiana", "tici", "123");
-		Usuario novo5 = new Usuario("darley", "dan", "123");
+		Usuario novo5 = new Usuario("danrley", "dan", "123");
 		
 		novo1.addSeguidor(novo2);
 		novo1.addSeguidor(novo3);
@@ -35,7 +35,27 @@ public class Main {
 		novo5.addSeguidor(novo3);
 		novo5.addSeguidor(novo4);
 		
+		
+		System.out.println(novo1.toString());
 		System.out.println(novo1.seguidoresToString());
+		
+		
+		System.out.println(novo2.toString());
+		System.out.println(novo2.seguidoresToString());
+
+		
+		System.out.println(novo3.toString());
+		System.out.println(novo3.seguidoresToString());
+
+		
+		System.out.println(novo4.toString());
+		System.out.println(novo4.seguidoresToString());
+
+		
+		System.out.println(novo5.toString());
+		System.out.println(novo5.seguidoresToString());
+
+
 		
 	}
 
