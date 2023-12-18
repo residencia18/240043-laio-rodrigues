@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&family=Kdam+Thmor+Pro&family=Mukta+Mahee:wght@400;700&display=swap');
+
+:root{
+    --corBackgroundPrimaria: #000066;
+    --corBackgroundSecundaria: #eaeaea;
+    --corBackgroundTerciaria: #87C3F8;
+    --corTextoPrimaria: #000;
+    --corTextoSecundaria: #f1f1f1;
+    --corBordasPrimaria: #a1a1a1;
+}
+
+.head{
+    height: 10%;
+    background-color: var(--corBackgroundPrimaria);
+    color: var(--corTextoSecundaria);
+    font-family: Agbalumo;
+    font-size: 14px;
+    padding-left: 15px;
+    border-radius: 5px 5px 0 0;
+}
+
+.servicos{
+    background-color: var(--corBackgroundSecundaria);
+    border: 0.5px solid var(--corBordasPrimaria);
+    border-radius: 5px;
+    -webkit-box-shadow:0px 0px 9px 3px rgba(0,0,0,0.9);
+    -moz-box-shadow: 0px 0px 9px 3px rgba(0,0,0,0.9);
+    box-shadow: 0px 0px 9px 3px rgba(0,0,0,0.4);
+}
+
+.servicos .content{
+    padding: 10px;
+}
+
+.servicos .setor-titulo{
+    display: inline-block;
+    font-family: 'Agbalumo';
+    font-size: 13px;
+    color: var(--corBackgroundPrimaria);
+    cursor: pointer;
+    margin: 5px;
+}
+
+.servicos .setor-titulo:hover{
+    text-decoration: underline;
+}
+
+.servicos .setor .lista{
+    display: none;
+    margin: 0;
+    list-style-type: none;
+    padding-left: 20px;
+    font-family: 'Kdam Thmor Pro';
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.servicos .setor li{
+    margin-top: 2px;
+}
+
+.servicos .setor a{
+    text-decoration: none;
+}
+
+.servicos .setor a:hover{
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 750px){
+    .head {
+        font-size: 13px;
+    }
+
+    .servicos .content .setor-titulo{
+        font-size: 12px;
+    }
+
+    .servicos .content .lista{
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 610px){
+    .head {
+        font-size: 12px;
+    }
+
+    .servicos .content .setor-titulo{
+        font-size: 11px;
+    }
+
+    .servicos .content .lista{
+        font-size: 9px;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .head {
+        font-size: 12px;
+    }
+
+    .servicos .content .setor-titulo{
+        font-size: 11px;
+    }
+
+    .servicos .content .lista{
+        font-size: 9px;
+    }
+}
+
+@media screen and (max-width: 375px){
+    .head {
+        font-size: 11px;
+    }
+
+    .servicos .content .setor-titulo{
+        font-size: 10px;
+    }
+
+    .servicos .content .lista{
+        font-size: 8px;
+    }
+}

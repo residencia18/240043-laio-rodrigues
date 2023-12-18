@@ -8,4 +8,10 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Exercicio3
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\06798167551\Desktop\repositorios\resitic18\modulo2\dotNet\Semana2\Aula\Exercicio3\
+=======
+build_property.ProjectDir = E:\repositorios\resitic18\modulo2\dotNet\Semana2\Aula\Exercicio3\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+>>>>>>> 1b908bca30a91ebcb07629a881de5a271b6f0515
