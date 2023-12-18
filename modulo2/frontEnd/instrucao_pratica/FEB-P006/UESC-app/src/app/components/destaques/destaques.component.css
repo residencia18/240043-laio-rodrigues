@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&family=Kdam+Thmor+Pro&family=Mukta+Mahee:wght@400;700&display=swap');
+
+:root{
+    --corBackgroundPrimaria: #000066;
+    --corBackgroundSecundaria: #eaeaea;
+    --corBackgroundTerciaria: #87C3F8;
+    --corTextoPrimaria: #000;
+    --corTextoSecundaria: #f1f1f1;
+    --corBordasPrimaria: #a1a1a1;
+}
+
+.head{
+    height: 10%;
+    background-color: var(--corBackgroundPrimaria);
+    color: var(--corTextoSecundaria);
+    font-family: Agbalumo;
+    font-size: 14px;
+    padding-left: 15px;
+    border-radius: 5px 5px 0 0;
+}
+
+.destaques{
+    background-color: var(--corBackgroundSecundaria);
+    border: 0.5px solid var(--corBordasPrimaria);
+    border-radius: 5px;
+    -webkit-box-shadow:0px 0px 9px 3px rgba(0,0,0,0.9);
+    -moz-box-shadow: 0px 0px 9px 3px rgba(0,0,0,0.9);
+    box-shadow: 0px 0px 9px 3px rgba(0,0,0,0.4);
+}
+
+.destaques .content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 92%;
+}
+
+.destaques .content img{
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 750px){
+    .head {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 610px){
+    .head {
+        font-size: 12px;
+    }
+
+    .destaques .content img{
+        width: 75px;
+        height: 75px;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .head {
+        font-size: 12px;
+    }
+
+    .destaques .content{
+        display: flex;
+        flex-direction: row;
+        margin: 20px;
+    }
+
+    .destaques .content img{
+        width: 30%;
+        height: fit-content;
+    }
+
+}
+
+@media screen and (max-width: 375px){
+    .head {
+        font-size: 11px;
+    }
+
+    .destaques .content{
+        display: flex;
+        flex-direction: row;
+        margin: 20px;
+    }
+
+    .destaques .content img{
+        width: 30%;
+        height: fit-content;
+    }
+}

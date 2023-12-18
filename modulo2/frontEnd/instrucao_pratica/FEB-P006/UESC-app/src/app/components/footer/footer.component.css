@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&family=Kdam+Thmor+Pro&family=Mukta+Mahee:wght@400;700&display=swap');
+
+:root{
+    --corBackgroundPrimaria: #000066;
+    --corBackgroundSecundaria: #eaeaea;
+    --corBackgroundTerciaria: #87C3F8;
+    --corTextoPrimaria: #000;
+    --corTextoSecundaria: #f1f1f1;
+    --corBordasPrimaria: #a1a1a1;
+}
+
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--corBackgroundTerciaria);
+    width: 95%;
+    max-width: 1000px;
+    margin-top: 10px;
+    height: 5vh;
+    color: var(--corBackgroundPrimaria);
+    font-weight: bold;
+    font-size: 10px;
+    border-radius: 5px;
+    font-family: 'Mukta Mahee';
+}
+
+.footer span{
+    padding: 3px;
+}
+
+@media screen and (max-width: 750px){
+    .footer {
+        font-size: 9px;
+    }
+
+}
+
+@media screen and (max-width: 610px){
+    .footer {
+        font-size: 8px;
+    }
+
+}
+
+@media screen and (max-width: 500px){
+    .footer {
+        font-size: 8px;
+    }
+
+}
+
+@media screen and (max-width: 375px){
+    .footer {
+        font-size: 7px;
+    }
+
+}

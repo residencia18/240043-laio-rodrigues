@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&family=Kdam+Thmor+Pro&family=Mukta+Mahee:wght@400;700&display=swap');
+
+:root{
+    --corBackgroundPrimaria: #000066;
+    --corBackgroundSecundaria: #eaeaea;
+    --corBackgroundTerciaria: #87C3F8;
+    --corTextoPrimaria: #000;
+    --corTextoSecundaria: #f1f1f1;
+    --corBordasPrimaria: #a1a1a1;
+}
+
+.header{
+    margin: 0;
+    width: 95%;
+    max-width: 1000px;
+    height: 25vh;
+    background: url(https://www.agravo.com.br/wp-content/uploads/2016/01/aerea_nazau_2.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    border-radius: 5px;
+}
+
+.header span{
+    width: 50%;
+    background-color: var(--corBackgroundTerciaria);
+    color: var(--corTextoPrimaria);
+    border-radius: 20px 20px 0px 0px;
+    font-family: Mukta Mahee;
+    font-weight: bold;
+    margin-right: 5%;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.header .logo{
+    background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Bras%C3%A3o_UESC.svg/1200px-Bras%C3%A3o_UESC.svg.png);
+    height: 100%;
+    width: 15%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(240, 240, 240, 0.07);
+    margin-right: 5%;
+}
+
+@media screen and (max-width: 750px){
+    .header span{
+        font-size: 12px;
+        
+    }
+}
+
+@media screen and (max-width: 610px){
+    .header span{
+        font-size: 11px;
+        
+    }
+}
+
+@media screen and (max-width: 500px){
+    .header span{
+        width: 80%;
+        font-size: 11px;
+        
+    }
+}
+
+@media screen and (max-width: 375px){
+    .header span{
+        width: 80%;
+        font-size: 9px;
+        
+    }
+}
