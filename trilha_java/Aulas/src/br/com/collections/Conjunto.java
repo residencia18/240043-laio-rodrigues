@@ -5,6 +5,21 @@ import java.util.ArrayList;
 public class Conjunto {
 	private ArrayList<Integer> carrinho = new ArrayList<Integer>();
 	
+	public Conjunto() {}
+	
+	public Conjunto(Conjunto c, int num) {
+		for (Integer i : c.getCarrinho()) {
+			adicionar(i);
+		}
+		adicionar(num);
+	}
+	
+	public Conjunto(int[] array) {
+		for (int i : array) {
+			adicionar(i);
+		}
+	}
+	
 	public void adicionar(int valor) {
         carrinho.add(valor);
     }

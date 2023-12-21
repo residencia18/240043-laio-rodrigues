@@ -32,4 +32,12 @@ public class ListaDeConjunto {
 		}
         return false;
     }
+	
+	public boolean contains(Conjunto grupo) {
+        for (Conjunto carrinho : compras) {
+			if(carrinho.contains(grupo))
+				return true;
+		}
+        return false;
+    }
 }
