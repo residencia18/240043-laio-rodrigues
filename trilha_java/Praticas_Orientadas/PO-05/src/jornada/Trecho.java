@@ -1,12 +1,18 @@
 package jornada;
 
 public class Trecho {
+	private String id;
+	private static int count = 0;
 	private Ponto partida;
 	private Ponto destino;
 	public Trecho(Ponto partida, Ponto destino) {
-		super();
+		count++;
+		this.id = "T" + count;
 		this.partida = partida;
 		this.destino = destino;
+	}
+	public String getId() {
+		return id;
 	}
 	public Ponto getPartida() {
 		return partida;

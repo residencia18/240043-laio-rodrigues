@@ -15,6 +15,18 @@ public class Checkpoint {
 		this.hora = hora;
 		this.pasageiros = pasageiros;
 	}
+
+	public Ponto getParada() {
+		return parada;
+	}
+
+	public Calendar getHora() {
+		return hora;
+	}
+
+	public ArrayList<Passageiro> getPasageiros() {
+		return pasageiros;
+	}
 	
 	
 }
