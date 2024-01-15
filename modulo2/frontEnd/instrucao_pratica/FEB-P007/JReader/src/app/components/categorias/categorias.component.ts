@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { Veiculo } from '../../Veiculo';
+
 @Component({
   selector: 'app-categorias',
   templateUrl: './categorias.component.html',
@@ -13,7 +15,7 @@ export class CategoriasComponent {
           Name: 'Supermarine Spitire',
           Model: 'Mk V',
           Engine: 'Rolls-Royce Merlin',
-          NumberOfPassengers: 1,
+          NumberOfPassengers: '1',
           Autonomia: '470 miles',
           Alcance: '1,135 miles',
           Teto: '36,500 ft',
@@ -22,7 +24,7 @@ export class CategoriasComponent {
           Name: 'P-51 Mustang',
           Model: 'D',
           Engine: 'Packard V-1650-7',
-          NumberOfPassengers: 1,
+          NumberOfPassengers: '1',
           Autonomia: '1,650 miles',
           Alcance: '2,300 miles',
           Teto: '41,900 ft',
@@ -31,7 +33,7 @@ export class CategoriasComponent {
           Name: 'B-17 Flying Fortress',
           Model: 'G',
           Engine: 'Wright R-1820-97',
-          NumberOfPassengers: 10,
+          NumberOfPassengers: '10',
           Autonomia: '2,000 miles',
           Alcance: '3,750 miles',
           Teto: '35,600 ft',
@@ -47,6 +49,7 @@ export class CategoriasComponent {
           NumberOfPassengers: '5',
           Autonomia: '390 miles',
           Alcance: 'N/A',
+          Teto: 'N/A',
         },
         {
           Name: 'Ford Mustang',
@@ -55,6 +58,7 @@ export class CategoriasComponent {
           NumberOfPassengers: '4',
           Autonomia: 'N/A',
           Alcance: 'N/A',
+          Teto: 'N/A',
         },
         {
           Name: 'Chevrolet Camaro',
@@ -63,6 +67,7 @@ export class CategoriasComponent {
           NumberOfPassengers: '4',
           Autonomia: 'N/A',
           Alcance: 'N/A',
+          Teto: 'N/A',
         },
       ],
     },
@@ -75,6 +80,7 @@ export class CategoriasComponent {
           NumberOfPassengers: '12',
           Autonomia: 'N/A',
           Alcance: 'N/A',
+          Teto: 'N/A',
         },
         {
           Name: 'Azimut Grande',
@@ -83,6 +89,7 @@ export class CategoriasComponent {
           NumberOfPassengers: '10',
           Autonomia: 'N/A',
           Alcance: 'N/A',
+          Teto: 'N/A',
         },
         {
           Name: 'Sunseeker Predator',
@@ -91,6 +98,7 @@ export class CategoriasComponent {
           NumberOfPassengers: '6',
           Autonomia: 'N/A',
           Alcance: 'N/A',
+          Teto: 'N/A',
         },
       ],
     },
@@ -120,77 +128,65 @@ export class CategoriasComponent {
 
   veiculos = [this.avioes, this.carros, this.barcos];
   names: string[] = [];
-  type = "";
+  type = '';
+  idType = -1;
+  veiculo: Veiculo | undefined = undefined;
+  info: string|undefined = undefined;
+  listVeiculos: Veiculo[] = [];
+
+  onAdicionar(){
+    if(this.veiculo != undefined){
+      if(!this.listVeiculos.some(veiculo => veiculo.Name === this.veiculo?.Name))
+        this.listVeiculos.push(this.veiculo);
+    }
+  }
+
+  onDadoSelecionado(index: number): void {
+    switch (index) {
+      case 0:
+        this.info = this.veiculo?.Name;
+        break;
+      case 1:
+        this.info = this.veiculo?.Model;
+        break;
+      case 2:
+        this.info = this.veiculo?.Engine;
+        break;
+      case 3:
+        this.info = this.veiculo?.NumberOfPassengers;
+        break;
+      case 4:
+        this.info = this.veiculo?.Autonomia;
+        break;
+      case 5:
+        this.info = this.veiculo?.Alcance;
+        break;
+      case 6:
+        this.info = this.veiculo?.Teto;
+        break;
+      default:
+        break;
+    }
+  }
+
+  onNomeSelecionado(index: number): void {
+    let temp: Veiculo | undefined = this.veiculos.at(this.idType)!.at(index);
+    this.info = undefined;
+    if (temp != undefined) {
+      this.veiculo = temp;
+    }
+  }
 
   onCategoriaSelecionada(i: number) {
-    this.names.splice(0,3);
-    this.veiculos.at(i)!.map(item=>{
-      this.names.push(item!.Name)
+    this.names.splice(0, 3);
+    this.idType = i;
+    this.veiculos.at(i)!.map((item) => {
+      this.names.push(item!.Name);
     });
   }
 
-  onTipoSelecionado(s: string){
+  onTipoSelecionado(s: string) {
     this.type = s;
+    this.veiculo = undefined;
   }
-
-  // tipos = this.json.map((obj)=>{
-  //   return obj.Type;
-  // })
-
-  // showType = this.tipos.at(0);
-  // preDados = this.json.find((obj)=>{
-  //   return obj.Type === this.showType;
-  // })
-  // dados = this.preDados?.Dados;
-
-  // nomes = this.dados?.map((obj)=>{
-  //   return obj.Name;
-  // })
-
-  // showName = this.nomes?.at(0);
-
-  // propriedade = "";
-  // veiculo = this.dados?.find((obj)=>{
-  //   return obj.Name === this.showName;
-  // })
-
-  // test(){
-
-  // }
-
-  // sName(){
-  //   if(this.veiculo != undefined)
-  //     this.propriedade = this.veiculo.Name;
-  //   console.log('ok')
-  // }
-
-  // sModel(){
-  //   if(this.veiculo!= undefined)
-  //     this.propriedade = this.veiculo.Model;
-  // }
-
-  // sEngine(){
-  //   if(this.veiculo!= undefined)
-  //     this.propriedade = this.veiculo.Engine;
-  // }
-
-  // sAutonomia(){
-  //   if(this.veiculo!= undefined)
-  //     this.propriedade = this.veiculo.Autonomia;
-  // }
-
-  // sAlcance(){
-  //   if(this.veiculo!= undefined)
-  //     this.propriedade = this.veiculo.Alcance;
-  // }
-
-  // sTeto(){
-  //   if(this.veiculo!= undefined)
-  //     this.propriedade = this.veiculo.Teto
-  // }
-
-  // sNumberOfPassengers(){
-  //   if(this.veiculo!= undefined)
-  //     this.propriedade = this.veiculo.NumberOfPassengers.toString();
-  // }
 }

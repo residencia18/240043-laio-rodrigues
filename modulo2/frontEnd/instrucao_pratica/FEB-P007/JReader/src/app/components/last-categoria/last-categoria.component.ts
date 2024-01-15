@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-last-categoria',
@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrl: './last-categoria.component.css'
 })
 export class LastCategoriaComponent {
+  @Input() showName: string|undefined = undefined;
+  @Input() showInfo: string|undefined = undefined;
+  @Output() adicionar = new EventEmitter();
 
+  add(){
+    this.adicionar.emit();
+  }
 }

@@ -9,6 +9,7 @@ import { FirstCategoriaComponent } from './components/first-categoria/first-cate
 import { SecondCategoriaComponent } from './components/second-categoria/second-categoria.component';
 import { ThirdCategoriaComponent } from './components/third-categoria/third-categoria.component';
 import { LastCategoriaComponent } from './components/last-categoria/last-categoria.component';
+import { ListagemComponent } from './components/listagem/listagem.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LastCategoriaComponent } from './components/last-categoria/last-categor
     FirstCategoriaComponent,
     SecondCategoriaComponent,
     ThirdCategoriaComponent,
-    LastCategoriaComponent
+    LastCategoriaComponent,
+    ListagemComponent
   ],
   imports: [
     BrowserModule,

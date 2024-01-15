@@ -5,6 +5,26 @@ li {
   background-color: rgb(1, 120, 251);
   border-radius: 5px;
   padding: 5px 10px;
-  margin: 3px 0;
+  margin: 5px 0;
   color: white;
+  box-shadow: 0 0 3px 0 #000;
+}
+
+li:hover{
+  cursor: pointer;
+  box-shadow: 0 0 3px 0 #fff inset;
+}
+
+.title {
+  background-color: #dc4d10;
+}
+
+.title:hover{
+  cursor: default;
+  box-shadow: 0 0 3px 0 #000;
+}
+
+button {
+  background-color: #18d3c6;
+  border-radius: 5px;
 }

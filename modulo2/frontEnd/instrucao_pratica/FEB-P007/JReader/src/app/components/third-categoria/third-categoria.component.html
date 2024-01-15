@@ -1,12 +1,6 @@
-<!-- <div>
-  <ul *ngIf="showName !== 'nothing'">
-    <li>{{ showName }}</li>
-    <li (click)="sName()">Name</li>
-    <li (click)="sModel()">Model</li>
-    <li (click)="sEngine()">Engine</li>
-    <li (click)="sNumberOfPassengers()">NumberOfPassengers</li>
-    <li (click)="sAutonomia()">Autonomia</li>
-    <li (click)="sAlcance()">Alcance</li>
-    <li *ngIf="showType === 'Aviões'" (click)="sTeto()">Teto</li>
+<div>
+  <ul *ngIf="showName != undefined">
+    <li class="title">{{ showName }}</li>
+    <li (click)="select(listDados.indexOf(tipo))" *ngFor="let tipo of listDados"> {{ tipo }} </li>
   </ul>
-</div> -->
+</div>

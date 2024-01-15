@@ -1,8 +1,9 @@
-<!-- <div class="last-div" *ngIf="showName !== 'nothing'">
+<div class="last-div" *ngIf="showName != undefined ">
   <div>
-    {{ propriedade }}
+    <li class="title"> {{ showName }} </li>
+    <li> {{ showInfo }} </li>
   </div>
   <div>
-    <button>Adicionar</button>
+    <button (click)="add()">Adicionar</button>
   </div>
-</div> -->
+</div>

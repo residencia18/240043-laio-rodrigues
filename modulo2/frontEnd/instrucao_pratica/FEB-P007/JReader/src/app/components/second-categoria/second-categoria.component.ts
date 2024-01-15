@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-second-categoria',
@@ -8,6 +8,9 @@ import { Component, Input } from '@angular/core';
 export class SecondCategoriaComponent {
   @Input() selectedNames: string[] = [];
   @Input() selectedType: string = "";
-  
-  a = console.log(this.selectedType)
+  @Output() nomeSelecionado = new EventEmitter();
+
+  select(nome: number): void {
+    this.nomeSelecionado.emit(nome);
+  }
 }
