@@ -1,4 +1,4 @@
-<app-pesquisa (abrirArquivo)="onAbrirArquivo()"></app-pesquisa>
+<app-pesquisa (abrirArquivo)="onAbrirArquivo($event)"></app-pesquisa>
 <div *ngIf="received" class="categorias">
   <app-first-categoria (categoriaSelecionada)="onCategoriaSelecionada($event)" (tipoSelecionado)="onTipoSelecionado($event)"></app-first-categoria>
   <app-second-categoria [selectedNames]="names" [selectedType]="type" (nomeSelecionado)="onNomeSelecionado($event)"></app-second-categoria>

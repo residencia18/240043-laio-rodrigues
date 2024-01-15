@@ -8,6 +8,7 @@ li {
   margin: 5px 0;
   color: white;
   box-shadow: 0 0 3px 0 #000;
+  transition: 0.5s;
 }
 
 li:hover{

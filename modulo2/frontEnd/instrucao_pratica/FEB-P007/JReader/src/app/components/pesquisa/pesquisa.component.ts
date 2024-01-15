@@ -8,8 +8,9 @@ import { Component, Output, EventEmitter } from '@angular/core';
 
 export class PesquisaComponent {
   @Output() abrirArquivo: EventEmitter<any> = new EventEmitter();
+  name: string = "";
 
   click(){
-    this.abrirArquivo.emit();
+    this.abrirArquivo.emit(this.name);
   }
 }
