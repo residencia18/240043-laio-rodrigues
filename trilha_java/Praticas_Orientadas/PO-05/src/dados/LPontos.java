@@ -22,7 +22,15 @@ public class LPontos {
 		Ponto temp = new Ponto(null, longitude, latitude);
 		for (Ponto ponto : pontos) {
 			if(ponto.distancia(temp) == 0)
-				return temp;
+				return ponto;
+		}
+		return null;
+	}
+	
+	static public Ponto findPonto(String nome) {
+		for (Ponto ponto : pontos) {
+			if(ponto.getLocal().equalsIgnoreCase(nome))
+				return ponto;
 		}
 		return null;
 	}

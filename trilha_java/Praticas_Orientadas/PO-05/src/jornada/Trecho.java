@@ -29,4 +29,8 @@ public class Trecho {
 	public double getTempo() {
 		return partida.tempoAte(destino);
 	}
+	@Override
+    public String toString() {
+        return "Trecho [id=" + id + ", partida=" + partida.getLocal() + ", destino=" + destino.getLocal() + "]";
+    }
 }

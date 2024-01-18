@@ -12,5 +12,8 @@ public class Motorista extends Pessoa {
 	protected void setCNH(String cNH) {
 		this.CNH = cNH;
 	}
-	
+	@Override
+    public String toString() {
+        return "Motorista [nome=" + getNome() + ", cpf=" + getCPF() + ", cnh=" + CNH + "]";
+    }
 }

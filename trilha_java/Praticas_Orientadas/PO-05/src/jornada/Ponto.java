@@ -34,4 +34,8 @@ public class Ponto {
 	public double tempoAte(Ponto proximo) {
 		return this.distancia(proximo)/20.00;
 	}
+	@Override
+    public String toString() {
+        return "Ponto [local=" + local + ", longitude=" + lon + ", latitude=" + lat + "]";
+    }
 }
