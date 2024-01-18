@@ -34,17 +34,33 @@ public class LJornadas implements Serializable {
 	static public void lerArquivo() {
 		try {
 			FileInputStream fis = new FileInputStream("LJornadas.bin");
+			if(fis.available() == 0) {
+				fis.close();
+				return;
+			}
 			ObjectInputStream arquivo = new ObjectInputStream(fis);
 			Object obj = arquivo.readObject();
 			if(obj instanceof ArrayList<?>) {
 				jornadas = (ArrayList<Jornada>) obj;
 			}else {
+				fis.close();
 				arquivo.close();
 				throw new IOException("Erro ao ler os dados do arquivo!");
 			}
+			fis.close();
 			arquivo.close();
-		} catch (IOException | ClassNotFoundException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	static public void listar() {
+		System.out.println("Lista de jornadas:");
+		System.out.println("");
+		for (Jornada item : jornadas) {
+			System.out.println(item.toString());
 		}
 	}
 	

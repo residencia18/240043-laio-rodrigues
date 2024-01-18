@@ -22,7 +22,8 @@ public class App {
 			System.out.println("3 - Menu de Viagem");
 			System.out.println("4 - Menu de Jornada");
 			System.out.println("5 - Menu de Busca");
-			System.out.println("6 - Sair");
+			System.out.println("6 - Menu de Listagem");
+			System.out.println("7 - Sair");
 
 			int opcao = scanner.nextInt();
 			scanner.nextLine();
@@ -44,7 +45,9 @@ public class App {
 				menuBusca();
 				break;
 			case 6:
-				
+				menuLista();
+				break;
+			case 7:
 				Utilitarios.Cx_Msg("Saindo do programa. Até logo!");
 				scanner.close();
 				System.exit(0);
@@ -367,10 +370,12 @@ public class App {
 
 	private static void criarNovaJornada() {
 		Scanner scanner = new Scanner(System.in);
-
-		Utilitarios.Cx_Msg("Digite a data da jornada (formato: dd/MM/yyyy HH:mm):");
-		String dataStr = scanner.nextLine();
-		Calendar data = Utilitarios.obterCalendarDaString(dataStr);
+		Calendar data = null;
+		do {
+			Utilitarios.Cx_Msg("Digite a data da jornada (formato: dd/MM/yyyy HH:mm):");
+			String dataStr = scanner.nextLine();
+			data = Utilitarios.obterCalendarDaString(dataStr);
+		}while(data == null);
 
 		Utilitarios.Cx_Msg("Digite o ID do trajeto:");
 		String idTrajeto = scanner.nextLine();
@@ -521,5 +526,57 @@ public class App {
         }
     }
 
+    private static void menuLista() {
+		Scanner scanner = new Scanner(System.in);
+
+		while (true) {
+			Utilitarios.limpaTela();
+			System.out.println("\nEscolha uma opção:");
+			System.out.println("1 - Listar Veiculos");
+			System.out.println("2 - Listar Motoristas");
+			System.out.println("3 - Listar Cobradores");
+			System.out.println("4 - Listar Passageiros");
+			System.out.println("5 - Listar Pontos");
+			System.out.println("6 - Listar Trechos");
+			System.out.println("7 - Listar Trajetos");
+			System.out.println("8 - Listar Jornadas");
+			System.out.println("9 - Sair");
+
+			int opcao = scanner.nextInt();
+			scanner.nextLine();
+
+			switch (opcao) {
+			case 1:
+				LVeiculos.listar();
+				break;
+			case 2:
+				LPessoas.listarMotoristas();
+				break;
+			case 3:
+				LPessoas.listarCobradores();
+				break;
+			case 4:
+				LPessoas.listarPassageiros();
+				break;
+			case 5:
+				LPontos.listar();
+				break;
+			case 6:
+				LTrechos.listar();
+				break;
+			case 7:
+				LTrajetos.listar();
+				break;
+			case 8:
+				LJornadas.listar();
+				break;
+			case 9:
+				return;
+			default:
+				Utilitarios.Cx_Msg("Opção inválida. Tente novamente.");
+				continue;
+			}
+		}
+	}
 	
 }

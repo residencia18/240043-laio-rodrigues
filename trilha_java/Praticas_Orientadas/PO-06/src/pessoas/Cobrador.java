@@ -1,6 +1,10 @@
 package pessoas;
 
-public class Cobrador extends Pessoa {
+import java.io.Serializable;
+
+public class Cobrador extends Pessoa implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private String contrato;
 	public Cobrador(String nome, String cpf, String contrato) {
 		super(nome, cpf);

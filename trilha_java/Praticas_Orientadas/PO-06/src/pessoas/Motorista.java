@@ -1,6 +1,10 @@
 package pessoas;
 
-public class Motorista extends Pessoa {
+import java.io.Serializable;
+
+public class Motorista extends Pessoa implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private String CNH;
 	public Motorista(String nome, String cpf, String cnh) {
 		super(nome, cpf);
