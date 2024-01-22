@@ -12,11 +12,78 @@ class ConfiguracaoTest {
 		testSetAlfabeto(configuracao);
 		testSetTamSenha(configuracao);
 		testSetMaxTentativas(configuracao);
-		
-		
-		
+		testSetNome(configuracao);
 	}
-
+	
+	private void testSetNome(Configuracao configuracao) {
+		String nome = "Fácil";
+		try {
+			configuracao.setNome(nome);
+		} catch (Exception e) {
+			fail("Gerou exceção indevida");
+			e.printStackTrace();
+		}
+		assertEquals(nome, configuracao.getNome());
+		
+		nome = null;
+		try {
+			configuracao.setNome(nome);
+		} catch (Exception e) {
+			assertEquals("O nome não pode ser nulo", e.getMessage());
+		}
+		assertFalse(configuracao.getNome()==null);
+		
+		nome = "a";
+		try {
+			configuracao.setNome(nome);
+		} catch (Exception e) {
+			assertEquals("O nome precisa ter ao menos 4 caracteres", e.getMessage());
+		}
+		assertNotEquals(nome, configuracao.getNome());
+		
+		nome = "F@cil";
+		try {
+			configuracao.setNome(nome);
+		} catch (Exception e) {
+			assertEquals("O nome não pode conter caracteres especiais", e.getMessage());
+		}
+		assertNotEquals(nome, configuracao.getNome());
+		
+		nome = "F*cil";
+		try {
+			configuracao.setNome(nome);
+		} catch (Exception e) {
+			assertEquals("O nome não pode conter caracteres especiais", e.getMessage());
+		}
+		assertNotEquals(nome, configuracao.getNome());
+		
+		nome = "F´cil";
+		try {
+			configuracao.setNome(nome);
+		} catch (Exception e) {
+			assertEquals("O nome não pode conter caracteres especiais", e.getMessage());
+		}
+		assertNotEquals(nome, configuracao.getNome());
+		
+		nome = "Fácil demais";
+		try {
+			configuracao.setNome(nome);
+		} catch (Exception e) {
+			fail("Gerou exceção indevida");
+			e.printStackTrace();
+		}
+		assertEquals(nome, configuracao.getNome());
+		
+		nome = "Fácil demais 2";
+		try {
+			configuracao.setNome(nome);
+		} catch (Exception e) {
+			fail("Gerou exceção indevida");
+			e.printStackTrace();
+		}
+		assertEquals(nome, configuracao.getNome());
+	}
+	
 	private void testSetMaxTentativas(Configuracao configuracao) {
 		int maxTentativas;
 		maxTentativas = 4;
