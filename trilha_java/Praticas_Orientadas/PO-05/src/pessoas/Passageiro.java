@@ -12,5 +12,8 @@ public class Passageiro extends Pessoa {
 	protected void setCartao(String cartao) {
 		this.cartao = cartao;
 	}
-	
+	@Override
+    public String toString() {
+        return "Passageiro [nome=" + getNome() + ", cpf=" + getCPF() + ", cartao=" + cartao + "]";
+    }
 }

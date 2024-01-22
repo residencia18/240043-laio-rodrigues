@@ -12,5 +12,8 @@ public class Cobrador extends Pessoa {
 	public void setContrato(String contrato) {
 		this.contrato = contrato;
 	}
-	
+	@Override
+    public String toString() {
+        return "Cobrador [nome=" + getNome() + ", cpf=" + getCPF() + ", contrato=" + contrato + "]";
+    }
 }

@@ -42,4 +42,8 @@ public class Trajeto {
 	double getTempo() {
 		return tempo;
 	}
+	@Override
+    public String toString() {
+        return "Trajeto [id=" + id + ", tempo=" + tempo + "h, trechos=" + trechos.size() + "]";
+    }
 }

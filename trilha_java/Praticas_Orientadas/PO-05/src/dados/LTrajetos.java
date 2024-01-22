@@ -15,7 +15,7 @@ public class LTrajetos {
 		Utilitarios.Cx_Msg("Trajeto " + novo.getId() + " criado com sucesso!");
 	}
 	
-	public void preencherTrajeto(String idTrajeto, String idTrecho) {
+	static public void preencherTrajeto(String idTrajeto, String idTrecho) {
 		Trecho t = LTrechos.findTrecho(idTrecho); 
 		if(t == null) {
 			Utilitarios.Cx_Msg("O ID informado não corresponde a um trecho existente!");
@@ -26,7 +26,7 @@ public class LTrajetos {
 
 	static public Trajeto findTrajeto(String id) {
 		for (Trajeto trajeto : trajetos) {
-			if (trajeto.getId() == id)
+			if (trajeto.getId().equalsIgnoreCase(id))
 				return trajeto;
 		}
 		return null;

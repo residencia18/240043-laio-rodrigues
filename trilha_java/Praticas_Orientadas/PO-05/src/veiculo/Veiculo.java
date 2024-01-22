@@ -28,5 +28,8 @@ public class Veiculo {
 	protected void setPlaca(String placa) {
 		this.placa = placa;
 	}
-	
+	@Override
+    public String toString() {
+        return "Veiculo [marca=" + marca + ", modelo=" + modelo + ", placa=" + placa + "]";
+    }
 }

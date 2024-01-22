@@ -1,6 +1,9 @@
 package uteis;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class Utilitarios {
@@ -22,7 +25,7 @@ public class Utilitarios {
 	public static void Cx_Msg(String msg) {
 		limpaTela();
 		System.out.println(msg);
-		pausaTela();
+//		pausaTela();
 		
 	}
 	
@@ -32,4 +35,16 @@ public class Utilitarios {
 			scanner.nextLine();
 		}
 	}
+	
+	static public Calendar obterCalendarDaString(String dataStr) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(sdf.parse(dataStr));
+            return calendar;
+        } catch (ParseException e) {
+            System.out.println("Formato de data inválido. Tente novamente.");
+            return null;
+        }
+    }
 }

@@ -21,5 +21,8 @@ public abstract class Pessoa {
 		CPF = cPF;
 	}
 	
-	
+	@Override
+    public String toString() {
+        return "Pessoa [nome=" + nome + ", cpf=" + CPF + "]";
+    }
 }

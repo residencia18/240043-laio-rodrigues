@@ -27,6 +27,7 @@ public class Jornada {
 		this.trajeto = trajeto;
 		this.motorista = motorista;
 		this.veiculo = veiculo;
+		this.cobrador = null;
 	}
 
 	public ArrayList<Checkpoint> getCheckpoints() {
@@ -57,5 +58,13 @@ public class Jornada {
 		this.checkpoints.add(checkpoint);
 	}
 	
+	public String toString() {
+        String texto = "Jornada [data=" + data.getTime() + ", trajeto=" + trajeto.getId() + ", motorista=" + motorista.getNome() +
+                ", veiculo=" + veiculo.getPlaca();
+        if(cobrador != null)
+        	texto += ", cobrador=" + cobrador.getNome();
+        texto += "]";
+        return texto;
+    }
 	
 }
