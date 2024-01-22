@@ -20,14 +20,20 @@ public class LTrajetos implements Serializable {
 	static public void lerArquivo() {
 		try {
 			FileInputStream fis = new FileInputStream("LTrajetos.bin");
+			if(fis.available() == 0) {
+				fis.close();
+				return;
+			}
 			ObjectInputStream arquivo = new ObjectInputStream(fis);
 			Object obj = arquivo.readObject();
 			if(obj instanceof ArrayList<?>) {
 				trajetos = (ArrayList<Trajeto>) obj;
 			}else {
+				fis.close();
 				arquivo.close();
 				throw new IOException("Erro ao ler os dados do arquivo!");
 			}
+			fis.close();
 			arquivo.close();
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
@@ -45,6 +51,13 @@ public class LTrajetos implements Serializable {
 		}
 	}
 	
+	static public void listar() {
+		System.out.println("Lista de trajetos:");
+		System.out.println("");
+		for (Trajeto item : trajetos) {
+			System.out.println(item.toString());
+		}
+	}
 	
 	static public void newTrajeto() {
 		Trajeto novo = new Trajeto();

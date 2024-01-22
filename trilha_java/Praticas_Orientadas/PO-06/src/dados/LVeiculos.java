@@ -19,17 +19,31 @@ public class LVeiculos implements Serializable {
 	static public void lerArquivo() {
 		try {
 			FileInputStream fis = new FileInputStream("LVeiculos.bin");
+			if(fis.available() == 0) {
+				fis.close();
+				return;
+			}
 			ObjectInputStream arquivo = new ObjectInputStream(fis);
 			Object obj = arquivo.readObject();
 			if(obj instanceof ArrayList<?>) {
 				veiculos = (ArrayList<Veiculo>) obj;
 			}else {
+				fis.close();
 				arquivo.close();
 				throw new IOException("Erro ao ler os dados do arquivo!");
 			}
+			fis.close();
 			arquivo.close();
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	static public void listar() {
+		System.out.println("Lista de veiculos:");
+		System.out.println("");
+		for (Veiculo veiculo : veiculos) {
+			System.out.println(veiculo.toString());
 		}
 	}
 	

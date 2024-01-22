@@ -22,14 +22,20 @@ public class LPessoas implements Serializable {
 	static public void lerArquivo() {
 		try {
 			FileInputStream fis = new FileInputStream("LPessoas.bin");
+			if(fis.available() == 0) {
+				fis.close();
+				return;
+			}
 			ObjectInputStream arquivo = new ObjectInputStream(fis);
 			Object obj = arquivo.readObject();
 			if(obj instanceof ArrayList<?>) {
 				pessoas = (ArrayList<Pessoa>) obj;
 			}else {
+				fis.close();
 				arquivo.close();
 				throw new IOException("Erro ao ler os dados do arquivo!");
 			}
+			fis.close();
 			arquivo.close();
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
@@ -47,12 +53,41 @@ public class LPessoas implements Serializable {
 		}
 	}
 	
-	static public void addPessoa(Pessoa pessoa) {
-		if (pessoas.contains(pessoa)) {
-			Utilitarios.Cx_Msg("A pessoa informada já está cadastrada!");
-			return;
+	static public void listarMotoristas() {
+		System.out.println("Lista de motoristas:");
+		System.out.println("");
+		for (Pessoa item : pessoas) {
+			if(item instanceof Motorista)
+				System.out.println(item.toString());
 		}
-		pessoas.add(pessoa);
+	}
+	
+	static public void listarPassageiros() {
+		System.out.println("Lista de passageiros:");
+		System.out.println("");
+		for (Pessoa item : pessoas) {
+			if(item instanceof Passageiro)
+				System.out.println(item.toString());
+		}
+	}
+	
+	static public void listarCobradores() {
+		System.out.println("Lista de cobradores:");
+		System.out.println("");
+		for (Pessoa item : pessoas) {
+			if(item instanceof Cobrador)
+				System.out.println(item.toString());
+		}
+	}
+	
+	static public void addPessoa(Pessoa nova) {
+		for (Pessoa pessoa : pessoas) {
+			if (pessoa.getCPF().equals(nova.getCPF())) {
+				Utilitarios.Cx_Msg("Já existe cadastro para o cpf informado!");
+				return;
+			}			
+		}
+		pessoas.add(nova);
 		Utilitarios.Cx_Msg("Cadastro realizado com sucesso!");
 	}
 

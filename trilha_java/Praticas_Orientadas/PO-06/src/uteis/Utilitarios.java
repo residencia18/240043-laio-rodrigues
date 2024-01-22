@@ -1,12 +1,16 @@
 package uteis;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Scanner;
 
-public class Utilitarios {
+public class Utilitarios implements Serializable {
+
+	
+	private static final long serialVersionUID = 1L;
 
 	public static void limpaTela() {
 		try {
