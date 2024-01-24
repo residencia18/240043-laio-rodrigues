@@ -45,7 +45,7 @@ class ConfiguracaoTest {
 		try {
 			configuracao.setNome(nome);
 		} catch (Exception e) {
-			assertEquals("O nome não pode conter caracteres especiais", e.getMessage());
+			assertEquals("Não pode conter caracteres especiais", e.getMessage());
 		}
 		assertNotEquals(nome, configuracao.getNome());
 		
@@ -53,7 +53,7 @@ class ConfiguracaoTest {
 		try {
 			configuracao.setNome(nome);
 		} catch (Exception e) {
-			assertEquals("O nome não pode conter caracteres especiais", e.getMessage());
+			assertEquals("Não pode conter caracteres especiais", e.getMessage());
 		}
 		assertNotEquals(nome, configuracao.getNome());
 		
@@ -61,7 +61,7 @@ class ConfiguracaoTest {
 		try {
 			configuracao.setNome(nome);
 		} catch (Exception e) {
-			assertEquals("O nome não pode conter caracteres especiais", e.getMessage());
+			assertEquals("Não pode conter caracteres especiais", e.getMessage());
 		}
 		assertNotEquals(nome, configuracao.getNome());
 		
@@ -198,6 +198,14 @@ class ConfiguracaoTest {
 			assertEquals("Não podem haver caracteres repetidos no alfabeto", e.getMessage());
 		}
 		assertNotEquals("ABCDEFGHIJA", configuracao.getAlfabeto());
+		
+		alfabeto = "ABC´*G@IK";
+		try {
+			configuracao.setAlfabeto(alfabeto);
+		} catch (Exception e) {
+			assertEquals("Não pode conter caracteres especiais", e.getMessage());
+		}
+		assertNotEquals("ABC´*G@I´K", configuracao.getAlfabeto());
 	}
 
 }
