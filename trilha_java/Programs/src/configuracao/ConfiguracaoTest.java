@@ -195,7 +195,7 @@ class ConfiguracaoTest {
 		try {
 			configuracao.setAlfabeto(alfabeto);
 		} catch (Exception e) {
-			assertEquals("Não podem haver caracteres repetidos no alfabeto", e.getMessage());
+			assertEquals("Não podem haver caracteres repetidos", e.getMessage());
 		}
 		assertNotEquals("ABCDEFGHIJA", configuracao.getAlfabeto());
 		
