@@ -27,4 +27,18 @@ public class Utilitarios {
 		}		
 		if (set.size() != alfabeto.length()) throw new Exception("Não podem haver caracteres repetidos");
 	}
+	
+	public static void limpaTela() {
+		try {
+            String os = System.getProperty("os.name").toLowerCase();
+            if (os.contains("windows")) {
+            	Runtime.getRuntime().exec("cls");
+            }
+            else {
+            	Runtime.getRuntime().exec("clear");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+	}
 }

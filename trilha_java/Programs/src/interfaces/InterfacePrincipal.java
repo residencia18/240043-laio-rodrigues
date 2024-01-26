@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import configuracao.Configuracao;
 import jogo.Jogo;
-
+@SuppressWarnings("resource")
 public class InterfacePrincipal {
 
     public static void menuPrincipal() {
@@ -66,10 +66,10 @@ public class InterfacePrincipal {
             }
         } while (opcao != 0);
 
-        scanner.close();
     }
 
-    public static void menuJogar() {
+    
+	public static void menuJogar() {
     	Scanner scanner = new Scanner(System.in);
         int opcao;
         Configuracao configuracao = null;
@@ -104,11 +104,10 @@ public class InterfacePrincipal {
             }
         } while (opcao != 0);
 
-        scanner.close();
     }
 
     public static void menuIniciarJogo(Configuracao config) {
-        Scanner scanner = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
         int opcao;
         Jogo novoJogo = new Jogo(config);
 
@@ -145,6 +144,5 @@ public class InterfacePrincipal {
             }
         } while (opcao != 0);
 
-        scanner.close();
     }
 }

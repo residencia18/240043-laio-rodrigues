@@ -5,6 +5,7 @@ import java.util.Scanner;
 import configuracao.Configuracao;
 import persistencia.ListaConfiguracoes;
 
+@SuppressWarnings("resource")
 public class InterfaceConfiguracoes {
 	public static void criarConfig() {
 		boolean flag = false;
@@ -67,11 +68,9 @@ public class InterfaceConfiguracoes {
 			System.out.println("Confirmar o cadastro? [s/n]");
 			resp = scanner.nextLine();
 			if (resp.equalsIgnoreCase("n")) {
-				scanner.close();
 				return;
 			}
 		}while(!resp.equalsIgnoreCase("s"));
-		scanner.close();
 		
 		ListaConfiguracoes lista = new ListaConfiguracoes("configuracoes.json");
 		try {
@@ -116,7 +115,6 @@ public class InterfaceConfiguracoes {
 		do {
 			op = scanner.nextInt();
 			if (op == 0) {				
-				scanner.close();
 				return;
 			}
 			if (op > lista.getConfigs().size() || op < 1) {
@@ -125,7 +123,6 @@ public class InterfaceConfiguracoes {
 			}
 		}while (op == -1);
 		
-		scanner.close();
 		lista.deleteConfig(op);
 		System.out.println("Configuração excluida!");
 	}

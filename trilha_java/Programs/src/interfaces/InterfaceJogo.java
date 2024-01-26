@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import jogo.Jogo;
 
+@SuppressWarnings("resource")
 public class InterfaceJogo {
 	public static void cadastrarSenha(Jogo jogo) throws Exception {
 		Scanner scanner = new Scanner(System.in);
