@@ -55,6 +55,13 @@ public class Configuracao {
 		this.maxTentativas = maxTentativas;
 	}
 	
-	
+	public String toString() {
+		String txt = "";
+		txt += 	"Nome: " + this.getNome() + "\n" +
+				"Alfabeto: " + this.getAlfabeto() + "\n" +
+				"Tamanho da Senha: " + this.getTamanhoSenha() + "\n" +
+				"Máximo de Tentativas: " + this.getMaxTentativas() + "\n";
+		return txt;
+	}
 	
 }

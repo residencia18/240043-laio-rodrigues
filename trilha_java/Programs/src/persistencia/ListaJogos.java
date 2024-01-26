@@ -67,7 +67,7 @@ public class ListaJogos {
 
 	}
 
-	public void recuperarJogoss(ListaConfiguracoes listaConfigs) throws Exception {
+	public void recuperarJogos(ListaConfiguracoes listaConfigs) throws Exception {
 		JSONArray jogos = new JSONArray();
 		try {
 			FileReader fr = new FileReader(nomeDoArquivo);
@@ -78,7 +78,7 @@ public class ListaJogos {
 			System.out.println("Erro ao abrir arquivo para leitura: " + e.getMessage());
 		}
 		for (int i = 0; i < jogos.length(); i++) {
-			Configuracao config = listaConfigs.getConfigByNome(jogos.getJSONObject(i).getString("nome"));
+			Configuracao config = listaConfigs.getConfigByNome(jogos.getJSONObject(i).getString("configuracao"));
 			Jogo jogo = new Jogo(config);
 			jogo.setSenha(jogos.getJSONObject(i).getString("senha"));
 			jogo.setTentativas(jogos.getJSONObject(i).getInt("tentativas"));

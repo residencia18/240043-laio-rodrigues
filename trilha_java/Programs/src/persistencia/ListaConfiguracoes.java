@@ -44,6 +44,10 @@ public class ListaConfiguracoes {
 		return null;
 	}
 	
+	public void deleteConfig(int index) {
+		this.listaConfig.remove(index);
+	}
+	
 	public void salvarConfigs() {
 		JSONArray json = new JSONArray();
 		for (int i = 0; i < listaConfig.size(); i++) {
