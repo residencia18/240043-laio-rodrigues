@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { ServiceService } from '../../service.service';
 
 @Component({
   selector: 'app-resultado',
@@ -8,8 +7,5 @@ import { ServiceService } from '../../service.service';
 })
 export class ResultadoComponent {
   @Input() busca = "";
-
-  constructor(private apiWiki: ServiceService){
-    
-  }
+  @Input() resultados: any[] = [];
 }
