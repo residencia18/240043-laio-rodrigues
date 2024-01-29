@@ -1,0 +1,10 @@
+<div class="box">
+    <form >
+        <span>Login: </span>
+        <input formControlName = "login" name="login"> 
+        <span *ngIf="!exemploform.valid && exemploform.touched">Invalido</span><br>
+        <span>Senha: </span>
+        <input type="password"> <br>
+        <button type="submit">Enviar</button>
+    </form>
+</div>
