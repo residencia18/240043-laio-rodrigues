@@ -6,6 +6,8 @@ public class Estudante {
 	private float cra;
 	private int anoDeAdmissão;
 	
+	public Estudante() {}
+	
 	public Estudante(String nome, String cpf, float cra, int anoDeAdmissão) {
 		super();
 		this.nome = nome;
@@ -46,5 +48,7 @@ public class Estudante {
 		this.anoDeAdmissão = anoDeAdmissão;
 	}
 	
-	
+	public String toString() {
+		return "Nome: " + nome + ", CRA: " + cra;
+	}
 }
