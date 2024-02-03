@@ -1,0 +1,14 @@
+.last-div {
+  display: grid;
+  grid-template-rows: 1fr 0.5fr;
+  justify-content: center;
+  align-items: center;
+  width: 25vh;
+}
+
+.last-div div {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}

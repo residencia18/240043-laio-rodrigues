@@ -1,0 +1,6 @@
+<div>
+  <ul *ngIf="showName != undefined">
+    <li class="title">{{ showName }}</li>
+    <li (click)="select(listDados.indexOf(tipo))" *ngFor="let tipo of listDados"> {{ tipo }} </li>
+  </ul>
+</div>

@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&family=Kdam+Thmor+Pro&family=Mukta+Mahee:wght@400;700&display=swap');
+
+:root{
+    --corBackgroundPrimaria: #000066;
+    --corBackgroundSecundaria: #eaeaea;
+    --corBackgroundTerciaria: #87C3F8;
+    --corTextoPrimaria: #000;
+    --corTextoSecundaria: #f1f1f1;
+    --corBordasPrimaria: #a1a1a1;
+}
+
+.head{
+    height: 10%;
+    background-color: var(--corBackgroundPrimaria);
+    color: var(--corTextoSecundaria);
+    font-family: Agbalumo;
+    font-size: 14px;
+    padding-left: 15px;
+    border-radius: 5px 5px 0 0;
+}
+
+.resultados{
+    background-color: var(--corBackgroundSecundaria);
+    border: 0.5px solid var(--corBordasPrimaria);
+    border-radius: 5px;
+    -webkit-box-shadow:0px 0px 9px 3px rgba(0,0,0,0.9);
+    -moz-box-shadow: 0px 0px 9px 3px rgba(0,0,0,0.9);
+    box-shadow: 0px 0px 9px 3px rgba(0,0,0,0.4);
+    grid-column: 2 / span 2;
+}
+
+.resultados .content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 90%;
+}
+
+.resultados .content span{
+    width: 98%;
+    font-family: 'Agbalumo';
+    font-size: 13px;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    background-color: var(--corBackgroundTerciaria);
+    padding: 0px 1.001%;
+    text-align: start;
+}
+
+.resultados .content p{
+    margin: 10px;
+    text-align: justify;
+    font-family: 'Kdam Thmor Pro';
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+button{
+    background-color: var(--corBackgroundTerciaria);
+    border: 1px solid var(--corBackgroundPrimaria);
+    font-family: 'Kdam Thmor Pro';
+    font-size: 13px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    color: var(--corBackgroundPrimaria);
+    letter-spacing: 2px;
+    height: 30px;
+    width: 300px;
+    margin: 0px 0px 10px 0px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: var(--corBackgroundPrimaria);
+    color: var(--corTextoSecundaria);
+    transition: 0.5s;
+}
+
+@media screen and (max-width: 750px){
+    .head {
+        font-size: 13px;
+    }
+
+    .resultados .content span{
+        font-size: 12px;
+    }
+
+    .resultados .content p{
+        font-size: 10px;
+    }
+
+    .resultados .content button{
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width: 610px){
+    .head {
+        font-size: 12px;
+    }
+
+    .resultados .content span{
+        font-size: 11px;
+    }
+
+    .resultados .content p{
+        font-size: 9px;
+    }
+
+    .resultados .content button{
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .head {
+        font-size: 12px;
+    }
+
+    .resultados .content span{
+        font-size: 11px;
+    }
+
+    .resultados .content p{
+        font-size: 9px;
+    }
+
+    .resultados .content button{
+        font-size: 10px;
+        width: 60%;
+        height: 25px;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 375px){
+    .head {
+        font-size: 11px;
+    }
+
+    .resultados .content span{
+        font-size: 10px;
+    }
+
+    .resultados .content p{
+        font-size: 8px;
+    }
+
+    .resultados .content button{
+        font-size: 9px;
+        width: 60%;
+        height: 25px;
+        margin-bottom: 10px;
+    }
+}

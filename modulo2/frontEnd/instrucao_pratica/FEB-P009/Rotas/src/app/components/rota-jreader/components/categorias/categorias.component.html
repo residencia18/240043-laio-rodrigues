@@ -1,0 +1,9 @@
+<app-busca (abrirArquivo)="onAbrirArquivo($event)"></app-busca>
+<div *ngIf="received" class="categorias">
+  <app-first-categoria (categoriaSelecionada)="onCategoriaSelecionada($event)" (tipoSelecionado)="onTipoSelecionado($event)"></app-first-categoria>
+  <app-second-categoria [selectedNames]="names" [selectedType]="type" (nomeSelecionado)="onNomeSelecionado($event)"></app-second-categoria>
+  <app-third-categoria [showName]="veiculo?.Name" [type]="type" (dadoSelecionado)="onDadoSelecionado($event)"></app-third-categoria>
+  <app-last-categoria [showName]="veiculo?.Name" [showInfo]="info" (adicionar)="onAdicionar()"></app-last-categoria>
+</div>
+<app-listagem [listVeiculos]="listVeiculos"></app-listagem>
+

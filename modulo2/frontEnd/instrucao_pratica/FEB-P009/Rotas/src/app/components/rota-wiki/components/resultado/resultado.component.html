@@ -1,0 +1,13 @@
+<div *ngIf="resultados.length > 0" class="title">
+  <h3>Resultados para "{{ busca }}"</h3>
+</div>
+<div *ngFor="let resultado of resultados">
+  <div class="resultado-item">
+    <h3 [innerHTML]="resultado.title | boldSearch : busca"></h3>
+    <p [innerHTML]="resultado.snippet | boldSearch : busca"></p>
+    <a
+      [href]="'https://en.wikipedia.org/wiki/' + resultado.title"
+      target="_blank"
+      >Saiba Mais</a>
+  </div>
+</div>
