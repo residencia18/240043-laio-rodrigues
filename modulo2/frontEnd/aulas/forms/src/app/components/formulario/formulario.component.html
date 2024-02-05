@@ -1,10 +1,11 @@
 <div class="box">
-    <form >
-        <span>Login: </span>
-        <input formControlName = "login" name="login"> 
-        <span *ngIf="!exemploform.valid && exemploform.touched">Invalido</span><br>
-        <span>Senha: </span>
-        <input type="password"> <br>
-        <button type="submit">Enviar</button>
-    </form>
+  <form [formGroup]="exemploform" (ngSubmit)="onSubmit()">
+    <label for="Login">Login</label>
+    <input formControlName="login" name="Login" /> <br />
+    <span *ngIf="exemploform.get('login')?.invalid && exemploform.get('login')?.touched">Tente novamente</span><br>
+    <label for="Senha">Senha</label>
+    <input formControlName="senha" name="Senha" /> <br />
+    <span *ngIf="exemploform.get('senha')?.invalid && exemploform.get('senha')?.touched">Tente novamente</span><br>
+    <button type="submit">Enviar</button>
+  </form>
 </div>

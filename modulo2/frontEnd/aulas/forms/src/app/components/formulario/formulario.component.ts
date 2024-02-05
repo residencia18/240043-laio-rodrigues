@@ -15,4 +15,8 @@ export class FormularioComponent {
       'senha': new FormControl(null, [Validators.required, Validators.minLength(4), Validators.maxLength(10)])
     })
   }
+
+  onSubmit(){
+    console.log(this.exemploform);
+  }
 }
