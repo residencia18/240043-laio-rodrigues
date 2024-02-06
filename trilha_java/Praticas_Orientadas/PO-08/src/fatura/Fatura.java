@@ -1,7 +1,8 @@
 package fatura;
 
-import java.util.ArrayList;
 import java.util.Calendar;
+
+import imovel.Imovel;
 
 public class Fatura {
 	private Calendar Data;
@@ -9,24 +10,31 @@ public class Fatura {
 	private int LeituraAtual;
 	private int Valor;
 	private boolean Quitado;
-	private ArrayList<Pagamento> Pagamentos = new ArrayList<Pagamento>();
+	private Imovel Imovel;
 	
-	public Fatura() {}
+	public Fatura(Calendar Data, Imovel Imovel) throws Exception {
+		setData(Data);
+        setImovel(Imovel);
+        LeituraAnterior = this.Imovel.getLeituraAterior();
+        LeituraAtual = this.Imovel.getLeituraAtual();
+        Quitado = false;
+        calcularValor();;
+	}
 	
-	public Fatura(Calendar Data, int LeituraAnterior, int LeituraAtual, int Valor, boolean Quitado) {
-		super();
-        this.Data = Data;
-        this.LeituraAnterior = LeituraAnterior;
-        this.LeituraAtual = LeituraAtual;
-        this.Valor = Valor;
-        this.Quitado = Quitado;
+	public Fatura(Calendar Data, int LeituraAnterior, int LeituraAtual, int Valor, boolean Quitado, Imovel Imovel) throws Exception {
+		setData(Data);
+		setLeituras(LeituraAnterior, LeituraAtual);
+		setValor(Valor);
+		setQuitado(Quitado);
+		setImovel(Imovel);
 	}
 	
 	public Calendar getData() {
         return Data;
     }
 	
-	public void setData(Calendar Data) {
+	public void setData(Calendar Data) throws Exception {
+		if (Data == null) throw new Exception("A data não pode ser nula");
         this.Data = Data;
     }
 	
@@ -38,10 +46,12 @@ public class Fatura {
         return LeituraAtual;
     }
 	
-	public void setLeituraAtual(int Leitura) {
-		this.LeituraAnterior = this.LeituraAtual;
-        this.LeituraAtual = Leitura;
-    }
+	public void setLeituras(int LeituraAnterior, int LeituraAtual) throws Exception {
+		if (LeituraAnterior < 0 || LeituraAtual < 0) throw new Exception("A leitura não pode ser negativa");
+		if (LeituraAtual < LeituraAnterior) throw new Exception("A leitura atual não pode ser menor que a anterior");
+		this.LeituraAnterior = LeituraAnterior;
+        this.LeituraAtual = LeituraAtual;
+    }	
 	
 	public int getValor() {
         return Valor;
@@ -51,7 +61,12 @@ public class Fatura {
 		return LeituraAtual - LeituraAnterior;
 	}
 	
-	public void setValor() {
+	public void setValor(int Valor) throws Exception {
+		if (Valor < 0) throw new Exception("O valor não pode ser negativo");
+        this.Valor = Valor;
+    }
+	
+	public void calcularValor() {
         this.Valor = getConsumo()*10;
     }
 	
@@ -63,16 +78,17 @@ public class Fatura {
         this.Quitado = Quitado;
     }
 	
-	public ArrayList<Pagamento> getPagamentos() {
-        return Pagamentos;
+	public Imovel getImovel() {
+        return Imovel;
     }
 	
-	public void addPagamento(Pagamento Pagamento) {
-		Pagamentos.add(Pagamento);
+	public void setImovel(Imovel Imovel) throws Exception {
+		if (Imovel == null) throw new Exception("O imóvel não pode ser nulo");
+		this.Imovel = Imovel;
 	}
 	
 	@Override
     public String toString() {
-        return "Fatura [Data=" + Data + ", Consumo=" + getConsumo() + ", Valor=" + Valor + ", Quitado=" + (Quitado ? "SIM" : "NÃO") + "]";
+        return "Fatura [Data=" + Data + ", Imóvel=" + Imovel.getMatricula() + ", Consumo=" + getConsumo() + ", Valor=" + Valor + ", Quitado=" + (Quitado ? "SIM" : "NÃO") + "]";
     }
 }
