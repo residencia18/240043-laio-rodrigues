@@ -62,7 +62,7 @@ public class Fatura {
 	}
 	
 	public void setValor(int Valor) throws Exception {
-		if (Valor < 0) throw new Exception("O valor não pode ser negativo");
+		if (Valor < 0) throw new Exception("O valor da fatura não pode ser negativo");
         this.Valor = Valor;
     }
 	

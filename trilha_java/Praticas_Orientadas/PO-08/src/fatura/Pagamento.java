@@ -18,7 +18,7 @@ public class Pagamento {
     }
 	
 	public void setData(Calendar Data) throws Exception {
-		if (Data == null) throw new Exception("Data não pode ser nulo");
+		if (Data == null) throw new Exception("A data não pode ser nula");
         this.Data = Data;
 	}
 	
@@ -27,7 +27,7 @@ public class Pagamento {
     }
 	
 	public void setValor(int Valor) throws Exception {
-		if (Valor < 0) throw new Exception("Valor não pode ser negativo");
+		if (Valor < 0) throw new Exception("O valor do pagamento não pode ser negativo");
         this.Valor = Valor;
     }
 	
@@ -36,7 +36,7 @@ public class Pagamento {
     }
 	
 	public void setFatura(Fatura Fatura) throws Exception {
-		if (Fatura == null) throw new Exception("Fatura não pode ser nula");
+		if (Fatura == null) throw new Exception("A fatura não pode ser nula");
 		this.Fatura = Fatura;
     }
 	

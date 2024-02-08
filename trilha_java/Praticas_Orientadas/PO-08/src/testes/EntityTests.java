@@ -6,6 +6,8 @@ import imovel.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Calendar;
+
 import org.junit.jupiter.api.Test;
 
 class EntityTests {
@@ -15,6 +17,9 @@ class EntityTests {
 		try {
 			testClient();
 			testImovel();
+			testFatura();
+			testPagamento();
+			testReembolso();
 		} catch (Exception e) {
 			fail(e.getMessage());
 		}
@@ -198,13 +203,160 @@ class EntityTests {
 
 	private void testFatura() throws Exception {
 		Fatura fatura = null;
-        
+        Calendar data = Calendar.getInstance();
+        data.set(2024, 01, 01);
+        Imovel imovel = new Imovel("12345678910", "Rua A", 100, 110, new Cliente("12345678910", "Laio Rodrigues"));
+		
+		
 //		Caso 1: Caso Funcional
 		try {
-			fatura = new Fatura(null, 0, 0, 0, false, null)
+			fatura = new Fatura(data, 100, 110, 100, false, imovel);
 		} catch (Exception e) {
-			
+			fail("Exception inesperada");
 		}
+		assertNotNull(fatura);
+		
+//		Caso 2: Data nula
+		fatura = null;
+		try {
+			fatura = new Fatura(null, 100, 110, 100, false, imovel);
+		} catch (Exception e) {
+			assertEquals("A data não pode ser nula",e.getMessage());
+		}
+		assertNull(fatura);
+		
+//		Caso 3: Leitura anterior negativa
+		fatura = null;
+		try {
+			fatura = new Fatura(data, -1, 110, 100, false, imovel);
+		} catch (Exception e) {
+			assertEquals("A leitura não pode ser negativa",e.getMessage());
+		}
+		assertNull(fatura);
+		
+//		Caso 4: Leitura atual negativa
+		fatura = null;
+		try {
+			fatura = new Fatura(data, 100, -1, 100, false, imovel);
+		} catch (Exception e) {
+			assertEquals("A leitura não pode ser negativa",e.getMessage());
+		}
+		assertNull(fatura);
+		
+//		Caso 5: Leitura atual menor que a leitura anterior
+		fatura = null;
+		try {
+			fatura = new Fatura(data, 100, 90, 100, false, imovel);
+		} catch (Exception e) {
+			assertEquals("A leitura atual não pode ser menor que a anterior",e.getMessage());
+		}
+		assertNull(fatura);
+		
+//		Caso 6: O valor da fatura negativo
+		fatura = null;
+		try {
+			fatura = new Fatura(data, 100, 110, -1, false, imovel);
+		} catch (Exception e) {
+			assertEquals("O valor da fatura não pode ser negativo",e.getMessage());
+		}
+		assertNull(fatura);
+		
+//		Caso 7: Imovel nulo
+		fatura = null;
+		try {
+			fatura = new Fatura(data, 100, 110, 100, false, null);
+		} catch (Exception e) {
+			assertEquals("O imóvel não pode ser nulo",e.getMessage());
+		}
+		assertNull(fatura);
 	}
 
+	private void testPagamento() throws Exception {
+		Calendar data = Calendar.getInstance();
+		data.set(2024, 01, 01);
+		Cliente cliente = new Cliente("12345678910", "Laio Rodrigues");
+		Imovel imovel = new Imovel("12345678910", "Rua A", cliente);
+		Fatura fatura = new Fatura(data, 100, 110, 100, false, imovel);
+		
+//		Caso 1: Caso Funcional
+		Pagamento pagamento = null;
+		try {
+            pagamento = new Pagamento(data, 100, fatura);
+        } catch (Exception e) {
+            fail("Exception inesperada");
+        }
+		assertNotNull(pagamento);
+		
+//		Caso 2: Data nula
+		pagamento = null;
+		try {
+            pagamento = new Pagamento(null, 100, fatura);
+        } catch (Exception e) {
+        	assertEquals("A data não pode ser nula",e.getMessage());
+        }
+		assertNull(pagamento);
+		
+//		Caso 3: Valor negativo
+		pagamento = null;
+		try {
+            pagamento = new Pagamento(data, -1, fatura);
+        } catch (Exception e) {
+        	assertEquals("O valor do pagamento não pode ser negativo",e.getMessage());
+        }
+		assertNull(pagamento);
+		
+//		Caso 4: Fatura nula
+		pagamento = null;
+		try {
+            pagamento = new Pagamento(data, 100, null);
+        } catch (Exception e) {
+        	assertEquals("A fatura não pode ser nula",e.getMessage());
+        }
+		assertNull(pagamento);
+	}
+
+	private void testReembolso() throws Exception {
+		Calendar data = Calendar.getInstance();
+        data.set(2024, 01, 01);
+        Cliente cliente = new Cliente("12345678910", "Laio Rodrigues");
+        Imovel imovel = new Imovel("12345678910", "Rua A", cliente);
+        Fatura fatura = new Fatura(data, 100, 110, 100, false, imovel);
+        Pagamento pagamento = new Pagamento(data, 100, fatura);
+        
+//      Caso 1: Caso Funcional
+        Reembolso reembolso = null;
+        try {
+            reembolso = new Reembolso(data, 100, pagamento);
+        } catch (Exception e) {
+            fail("Exception inesperada");
+        }
+        assertNotNull(reembolso);
+        
+//      Caso 2: Data nula
+        reembolso = null;
+        try {
+            reembolso = new Reembolso(null, 100, pagamento);
+        } catch (Exception e) {
+        	assertEquals("A data não pode ser nula",e.getMessage());
+        }
+        assertNull(reembolso);
+        
+//      Caso 3: Valor negativo
+        reembolso = null;
+        try {
+            reembolso = new Reembolso(data, -1, pagamento);
+        } catch (Exception e) {
+        	assertEquals("O valor do reembolso não pode ser negativo",e.getMessage());
+        }
+        assertNull(reembolso);
+        
+//      Caso 3: Pagamento nulo
+        reembolso = null;
+        try {
+            reembolso = new Reembolso(data, 100, null);
+        } catch (Exception e) {
+        	assertEquals("O pagamento não pode ser nulo",e.getMessage());
+        }
+        assertNull(reembolso);
+	}
 }
