@@ -1,13 +1,13 @@
-package com.outlaio.redesocial;
+package com.outlaio.formula1;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RedesocialApplication {
-	
+public class Formula1Application {
+
 	public static void main(String[] args) {
-		SpringApplication.run(RedesocialApplication.class, args);
+		SpringApplication.run(Formula1Application.class, args);
 	}
 
 }

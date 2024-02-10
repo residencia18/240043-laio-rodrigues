@@ -1,13 +1,13 @@
-package com.outlaio.redesocial;
+package com.outlaio.SistemaAviacao;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RedesocialApplication {
-	
+public class SistemaAviacaoApplication {
+
 	public static void main(String[] args) {
-		SpringApplication.run(RedesocialApplication.class, args);
+		SpringApplication.run(SistemaAviacaoApplication.class, args);
 	}
 
 }
