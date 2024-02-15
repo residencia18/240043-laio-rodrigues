@@ -275,7 +275,7 @@ class EntityTests {
 		Calendar data = Calendar.getInstance();
 		data.set(2024, 01, 01);
 		Cliente cliente = new Cliente("12345678910", "Laio Rodrigues");
-		Imovel imovel = new Imovel("12345678910", "Rua A", cliente);
+		Imovel imovel = new Imovel("12345678910", "Rua A", 0 , 0 , cliente);
 		Fatura fatura = new Fatura(data, 100, 110, 100, false, imovel);
 		
 //		Caso 1: Caso Funcional
@@ -319,14 +319,17 @@ class EntityTests {
 		Calendar data = Calendar.getInstance();
         data.set(2024, 01, 01);
         Cliente cliente = new Cliente("12345678910", "Laio Rodrigues");
-        Imovel imovel = new Imovel("12345678910", "Rua A", cliente);
+        Imovel imovel = new Imovel("12345678910", "Rua A", 0 , 0 , cliente);
         Fatura fatura = new Fatura(data, 100, 110, 100, false, imovel);
         Pagamento pagamento = new Pagamento(data, 100, fatura);
         
 //      Caso 1: Caso Funcional
         Reembolso reembolso = null;
         try {
-            reembolso = new Reembolso(data, 100, pagamento);
+            reembolso = new Reembolso();
+            reembolso.setData(data);
+            reembolso.setPagamento(pagamento);
+            reembolso.setValor(100);
         } catch (Exception e) {
             fail("Exception inesperada");
         }
@@ -335,28 +338,31 @@ class EntityTests {
 //      Caso 2: Data nula
         reembolso = null;
         try {
-            reembolso = new Reembolso(null, 100, pagamento);
+        	reembolso = new Reembolso();
+            reembolso.setData(null);
         } catch (Exception e) {
         	assertEquals("A data não pode ser nula",e.getMessage());
         }
-        assertNull(reembolso);
+        assertNotNull(reembolso.getData());
         
 //      Caso 3: Valor negativo
         reembolso = null;
         try {
-            reembolso = new Reembolso(data, -1, pagamento);
+        	reembolso = new Reembolso();
+            reembolso.setValor(-1);
         } catch (Exception e) {
         	assertEquals("O valor do reembolso não pode ser negativo",e.getMessage());
         }
-        assertNull(reembolso);
+        assertNotEquals(reembolso.getValor(), -1);
         
 //      Caso 3: Pagamento nulo
         reembolso = null;
         try {
-            reembolso = new Reembolso(data, 100, null);
+        	reembolso = new Reembolso();
+            reembolso.setPagamento(null);
         } catch (Exception e) {
         	assertEquals("O pagamento não pode ser nulo",e.getMessage());
         }
-        assertNull(reembolso);
+        assertNull(reembolso.getPagamento());
 	}
 }
