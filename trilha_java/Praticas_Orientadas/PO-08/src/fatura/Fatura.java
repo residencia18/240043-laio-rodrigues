@@ -1,27 +1,26 @@
 package fatura;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import imovel.Imovel;
 
-public class Fatura {
+public class Fatura implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private Calendar Data;
 	private int LeituraAnterior;
 	private int LeituraAtual;
-	private int Valor;
+	private double Valor;
 	private boolean Quitado;
 	private Imovel Imovel;
 	
-	public Fatura(Calendar Data, Imovel Imovel) throws Exception {
-		setData(Data);
-        setImovel(Imovel);
-        LeituraAnterior = this.Imovel.getLeituraAterior();
-        LeituraAtual = this.Imovel.getLeituraAtual();
-        Quitado = false;
-        calcularValor();;
+	public Fatura() {		
+		Quitado = false;
+		Calendar Data = Calendar.getInstance();
+		this.Data = Data;
 	}
 	
-	public Fatura(Calendar Data, int LeituraAnterior, int LeituraAtual, int Valor, boolean Quitado, Imovel Imovel) throws Exception {
+	public Fatura(Calendar Data, int LeituraAnterior, int LeituraAtual, double Valor, boolean Quitado, Imovel Imovel) throws Exception {
 		setData(Data);
 		setLeituras(LeituraAnterior, LeituraAtual);
 		setValor(Valor);
@@ -53,7 +52,7 @@ public class Fatura {
         this.LeituraAtual = LeituraAtual;
     }	
 	
-	public int getValor() {
+	public double getValor() {
         return Valor;
     }
 	
@@ -61,7 +60,7 @@ public class Fatura {
 		return LeituraAtual - LeituraAnterior;
 	}
 	
-	public void setValor(int Valor) throws Exception {
+	public void setValor(double Valor) throws Exception {
 		if (Valor < 0) throw new Exception("O valor da fatura não pode ser negativo");
         this.Valor = Valor;
     }
@@ -89,6 +88,6 @@ public class Fatura {
 	
 	@Override
     public String toString() {
-        return "Fatura [Data=" + Data + ", Imóvel=" + Imovel.getMatricula() + ", Consumo=" + getConsumo() + ", Valor=" + Valor + ", Quitado=" + (Quitado ? "SIM" : "NÃO") + "]";
+        return "Fatura [Data=" + Data.getTime() + ", Imóvel=" + Imovel.getMatricula() + ", Consumo=" + getConsumo() + ", Valor=" + Valor + ", Quitado=" + (Quitado ? "SIM" : "NÃO") + "]";
     }
 }

@@ -1,13 +1,20 @@
 package fatura;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class Pagamento {
+public class Pagamento implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private Calendar Data;
-	private int Valor;
+	private double Valor;
 	private Fatura Fatura;
 		
-	public Pagamento(Calendar Data, int Valor, Fatura Fatura) throws Exception {
+	public Pagamento() {
+		Calendar cal = Calendar.getInstance();
+		this.Data = cal;
+	}
+	
+	public Pagamento(Calendar Data, double Valor, Fatura Fatura) throws Exception {
 		setData(Data);
 		setValor(Valor);
 		setFatura(Fatura);
@@ -22,11 +29,11 @@ public class Pagamento {
         this.Data = Data;
 	}
 	
-	public int getValor() {
+	public double getValor() {
         return Valor;
     }
 	
-	public void setValor(int Valor) throws Exception {
+	public void setValor(double Valor) throws Exception {
 		if (Valor < 0) throw new Exception("O valor do pagamento não pode ser negativo");
         this.Valor = Valor;
     }
@@ -42,6 +49,6 @@ public class Pagamento {
 	
 	@Override
     public String toString() {
-        return "Pagamento [Data=" + Data + ", Valor=" + Valor + "]";
+        return "Pagamento [Data=" + Data.getTime() + ", Valor=" + Valor + "]";
     }
 }

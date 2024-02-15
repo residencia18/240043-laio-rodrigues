@@ -54,6 +54,18 @@ public class Utilitarios {
         return numero;
     }
     
+    public static double lerDouble(String mensagem) {
+        String entrada = lerString(mensagem);
+        double numero = 0;
+        try {
+            numero = Double.parseDouble(entrada);
+        } catch (NumberFormatException e) {
+            System.out.println("Erro: Digite um número válido.");
+            return lerInteiro(mensagem);
+        }
+        return numero;
+    }
+    
     public static Calendar lerData(String mensagem) {
     	String entrada = lerString(mensagem);
         String[] partes = entrada.split("/");

@@ -1,18 +1,19 @@
 package fatura;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class Reembolso {
+public class Reembolso implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private Calendar Data;
-	private int Valor;
+	private double Valor;
 	private Pagamento Pagamento;
 	
-	public Reembolso(Calendar data, int Valor, Pagamento Pagamento) throws Exception {
-		setData(data);
-		setValor(Valor);
-		setPagamento(Pagamento);
+	public Reembolso() {
+		Calendar cal = Calendar.getInstance();
+		this.Data = cal;
 	}
-	
+		
 	public Calendar getData() {
         return Data;
     }
@@ -22,11 +23,11 @@ public class Reembolso {
         this.Data = data;
     }
 	
-	public int getValor() {
+	public double getValor() {
         return Valor;
     }
 	
-	public void setValor(int valor) throws Exception {
+	public void setValor(double valor) throws Exception {
 		if (valor < 0) throw new Exception("O valor do reembolso não pode ser negativo");
         this.Valor = valor;
     }
@@ -42,6 +43,6 @@ public class Reembolso {
 	
 	@Override
     public String toString() {
-        return "Reembolso [Data=" + Data + ", Valor=" + Valor + "]";
+        return "Reembolso [Data=" + Data.getTime() + ", Valor=" + Valor + "]";
     }
 }

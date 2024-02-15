@@ -1,9 +1,14 @@
 package cliente;
 
-public class Cliente {
+import java.io.Serializable;
+
+public class Cliente implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private String CPF;
 	private String Nome;
 		
+	public Cliente() {}
+	
 	public Cliente(String CPF, String nome) throws Exception {
         setCPF(CPF);
         setNome(nome);

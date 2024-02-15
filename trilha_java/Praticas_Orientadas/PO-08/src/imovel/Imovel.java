@@ -1,19 +1,18 @@
 package imovel;
 
+import java.io.Serializable;
+
 import cliente.Cliente;
 
-public class Imovel {
+public class Imovel implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private String Matricula;
 	private String Endereco;
 	private int LeituraAterior;
 	private int LeituraAtual;
 	private Cliente Proprietario;
-		
-	public Imovel(String Matricula, String Endereco, Cliente proprietario) throws Exception {
-		setMatricula(Matricula);
-        setEndereco(Endereco);
-        setProprietario(proprietario);
-	}
+	
+	public Imovel() {}
 	
 	public Imovel(String Matricula, String Endereco, int LeituraAterior, int LeituraAtual, Cliente proprietario) throws Exception {
 		setMatricula(Matricula);
