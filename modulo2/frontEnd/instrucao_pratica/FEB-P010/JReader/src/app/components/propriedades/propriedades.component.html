@@ -1,0 +1,6 @@
+<div *ngIf="name != undefined">
+  <span> {{ name }}</span>
+  <ul>
+    <li (click)="onClick(listDados.indexOf(item))" *ngFor="let item of listDados">{{ item }}</li>
+  </ul>
+</div>

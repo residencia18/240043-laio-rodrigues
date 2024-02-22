@@ -1,0 +1,6 @@
+<div>
+  {{ tipo }}
+  <ul>
+    <li (click)="onClick(veiculos.indexOf(item))" *ngFor="let item of veiculos" >{{ item }}</li>
+  </ul>
+</div>

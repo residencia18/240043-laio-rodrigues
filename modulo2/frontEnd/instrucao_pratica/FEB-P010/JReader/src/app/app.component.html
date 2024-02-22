@@ -1,0 +1,8 @@
+<app-pesquisa (abrirArquivo)="ngOnInit()"></app-pesquisa>
+<div *ngIf="arquivoLido">
+  <app-classes (classeSelecionada)="onTipoSelecionado()"></app-classes>
+  <app-objetos (veiculoSelecionado)="onVeiculoSelecionado()" *ngIf="selectedType != ''" [veiculos]="selectedNames" [tipo]="selectedType"></app-objetos>
+  <app-propriedades (dadoSelecionado)="onDadoSelecionado()" *ngIf="veiculoSelecionado"></app-propriedades>
+  <app-valor-propriedade *ngIf="dadosSelecionado"></app-valor-propriedade>
+</div>
+<app-carrinho></app-carrinho>
