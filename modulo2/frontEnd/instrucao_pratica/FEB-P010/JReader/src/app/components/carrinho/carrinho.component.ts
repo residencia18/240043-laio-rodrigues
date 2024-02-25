@@ -13,7 +13,9 @@ export class CarrinhoComponent {
   veiculos: Veiculo[] = [];
 
   ngOnInit(){
-    this.veiculos = this.listService.listVeiculos;
+    this.listService.listaVeiculos.subscribe(veiculos => {
+      this.veiculos = veiculos;
+    })
   }
 
 }

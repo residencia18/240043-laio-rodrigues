@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+.title{
+  background-color: #f5a122;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 300px;
+  margin-top: 10px;
+}
+
+.ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0;
+}
+
+.li {
+  background-color: #3234b8;
+  box-shadow: 0px 0px 2px 0px #202020 inset;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.li:hover {
+  box-shadow: 0px 0px 2px 0px #fff;
+  cursor: pointer;
+  padding: 6px;
+}

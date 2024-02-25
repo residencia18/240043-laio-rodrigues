@@ -10,34 +10,5 @@ import { Veiculo } from './Veiculo';
 export class AppComponent {
   constructor(private listService: ListService) {}
 
-  title = 'JReader';
 
-  arquivoLido: boolean = false;
-
-  ngOnInit() {
-    this.arquivoLido = this.listService.received;
-    this.selectedNames = [];
-    this.selectedType = '';
-  }
-
-  selectedType: string = '';
-  selectedNames: string[] = [];
-  onTipoSelecionado() {
-    this.selectedType = this.listService.type;
-    this.selectedNames = this.listService.names;
-    this.veiculoSelecionado = false;
-    this.dadosSelecionado = false;
-  }
-
-  veiculoSelecionado: boolean = false;
-
-  onVeiculoSelecionado() {
-    this.veiculoSelecionado = !this.veiculoSelecionado;
-    this.dadosSelecionado = false;
-  }
-
-  dadosSelecionado: boolean = false;
-  onDadoSelecionado() {
-    this.dadosSelecionado = !this.dadosSelecionado;
-  }
 }

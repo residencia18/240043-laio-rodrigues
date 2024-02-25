@@ -1,8 +1,8 @@
-<div>
-  <span>Categorias</span>
-  <ul>
-    <li (click)="onClick('Aviões', 0)">Aviões</li>
-    <li (click)="onClick('Carros', 1)">Carros</li>
-    <li (click)="onClick('Barcos', 2)">Barcos</li>
+<div class="box" *ngIf="show">
+  <span class="title">Categorias</span>
+  <ul class="ul">
+    <li class="li" (click)="onClick('Aviões')">Aviões</li>
+    <li class="li" (click)="onClick('Carros')">Carros</li>
+    <li class="li" (click)="onClick('Barcos')">Barcos</li>
   </ul>
 </div>

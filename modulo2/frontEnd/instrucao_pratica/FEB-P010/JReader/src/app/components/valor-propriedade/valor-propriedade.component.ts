@@ -14,11 +14,19 @@ export class ValorPropriedadeComponent {
 
 
   ngOnInit(){
-    this.name = this.listService.veiculo?.Name;
-    this.info = this.listService.info;
+    this.listService.veiculoSelecionado.subscribe(veiculo => {
+      this.name = veiculo.Name;
+    })
+    this.listService.propriedadeSelecionada.subscribe(propriedade => {
+      this.info = propriedade;
+    })
   }
 
   onClick(){
-    this.listService.onAdicionar();
+    let temp;
+    this.listService.veiculoSelecionado.subscribe(veiculo => {
+      temp = veiculo;
+    })
+    this.listService.adicionarVeiculo(temp!);
   }
 }

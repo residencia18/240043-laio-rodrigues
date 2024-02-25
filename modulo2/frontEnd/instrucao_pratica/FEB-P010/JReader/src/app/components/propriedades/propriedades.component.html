@@ -1,6 +1,6 @@
-<div *ngIf="name != undefined">
-  <span> {{ name }}</span>
-  <ul>
-    <li (click)="onClick(listDados.indexOf(item))" *ngFor="let item of listDados">{{ item }}</li>
+<div class="box" *ngIf="name != undefined">
+  <span class="title"> {{ name }}</span>
+  <ul class="ul">
+    <li class="li" (click)="onClick(listDados.indexOf(item))" *ngFor="let item of listDados">{{ item }}</li>
   </ul>
 </div>

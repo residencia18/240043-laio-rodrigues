@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ListService } from '../../services/list.service';
 
 @Component({
@@ -6,13 +6,18 @@ import { ListService } from '../../services/list.service';
   templateUrl: './propriedades.component.html',
   styleUrl: './propriedades.component.css',
 })
-export class PropriedadesComponent {
-  @Output() dadoSelecionado = new EventEmitter();
+export class PropriedadesComponent implements OnInit {
   constructor(private listService: ListService) {}
 
-  name: string|undefined = '';
+  name: string = '';
+  veiculo: any = {};
+
   ngOnInit(){
-    this.name = this.listService.veiculo?.Name;
+    this.listService.veiculoSelecionado.subscribe(veiculo => {
+      this.veiculo = veiculo;
+      this.name = veiculo.Name;
+    })
+    console.log(this.name);
   }
 
   listDados = [
@@ -26,7 +31,6 @@ export class PropriedadesComponent {
   ];
 
   onClick(index: number){
-    this.listService.onDadoSelecionado(index);
-    this.dadoSelecionado.emit();
+    this.listService.selecionarPropriedade(index);
   }
 }

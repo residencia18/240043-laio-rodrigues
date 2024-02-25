@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Veiculo } from '../Veiculo';
 import { Categorias } from '../Categorias';
 import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,101 +10,145 @@ import { HttpClient } from '@angular/common/http';
 export class ListService {
   constructor(private http: HttpClient) {}
 
-  arquivo: string = '';
+  private showSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    false
+  );
+  showClasses: Observable<boolean> = this.showSubject.asObservable();
 
 
-  json: Veiculo[][] = [];
+  private tipoVeiculoSelecionadoSubject = new BehaviorSubject<string>('');
+  tipoVeiculoSelecionado$ = this.tipoVeiculoSelecionadoSubject.asObservable();
 
-  caminho: string = '';
-  received: boolean = false;
-
-  names: string[] = [];
-  type = '';
-  idType = -1;
-  veiculo: Veiculo | undefined = undefined;
-  info: string | undefined = undefined;
-  listVeiculos: Veiculo[] = [];
-
-  onAbrirArquivo(name: string) {
-    this.caminho = name;
-    console.log(name);
-    this.carregarArquivoJSON();
+  selecionarTipoVeiculo(tipo: string): void {
+    this.tipoVeiculoSelecionadoSubject.next(tipo);
+    this.getVeiculos(tipo);
   }
 
-  onAdicionar() {
-    if (this.veiculo != undefined) {
-      if (
-        !this.listVeiculos.some(
-          (veiculo) => veiculo.Name === this.veiculo?.Name
-        )
-      )
-        this.listVeiculos.push(this.veiculo);
-    }
-  }
 
-  onDadoSelecionado(index: number): void {
-    switch (index) {
-      case 0:
-        this.info = this.veiculo?.Name;
+  private veiculosSubject = new BehaviorSubject<Veiculo[]>([]);
+  veiculos = this.veiculosSubject.asObservable();
+
+  getVeiculos(tipo: string){
+    let veiculos: Veiculo[] = [];
+    switch (tipo) {
+      case 'Aviões':
+        veiculos = this.json[0];
         break;
-      case 1:
-        this.info = this.veiculo?.Model;
+      case 'Carros':
+        veiculos = this.json[1];
         break;
-      case 2:
-        this.info = this.veiculo?.Engine;
-        break;
-      case 3:
-        this.info = this.veiculo?.NumberOfPassengers;
-        break;
-      case 4:
-        this.info = this.veiculo?.Autonomia;
-        break;
-      case 5:
-        this.info = this.veiculo?.Alcance;
-        break;
-      case 6:
-        this.info = this.veiculo?.Teto;
+      case 'Barcos':
+        veiculos = this.json[2];
         break;
       default:
         break;
     }
+    this.veiculosSubject.next(veiculos);
   }
 
-  onNomeSelecionado(index: number): void {
-    let temp: Veiculo | undefined = this.json[this.idType][index];
-    this.info = undefined;
-    if (temp != undefined) {
-      this.veiculo = temp;
+
+  private indexSelecionadoSubject = new BehaviorSubject<number>(-1);
+  selecionado = this.indexSelecionadoSubject.asObservable();
+  private veiculoSelecionadoSubject = new BehaviorSubject<any>({});
+  veiculoSelecionado = this.veiculoSelecionadoSubject.asObservable();
+
+  selecionarveiculo(index: number){
+    this.indexSelecionadoSubject.next(index);
+    let temp;
+    this.veiculos.subscribe(veiculo => temp = veiculo[index]);
+    this.setVeiculoSelecionado(temp!);
+  }
+
+  setVeiculoSelecionado(veiculo: Veiculo){
+    this.veiculoSelecionadoSubject.next(veiculo);
+  }
+
+
+  private indexPropriedadeSelecionadaSubject = new BehaviorSubject<number>(-1);
+  indexPropriedadeSelecionada = this.indexPropriedadeSelecionadaSubject.asObservable();
+  private propriedadeSelecionadaSubject = new BehaviorSubject<string>('');
+  propriedadeSelecionada = this.propriedadeSelecionadaSubject.asObservable();
+
+  selecionarPropriedade(index: number){
+    this.indexPropriedadeSelecionadaSubject.next(index);
+    this.setPropriedadeSelecionada(index);
+  }
+
+  setPropriedadeSelecionada(index: number){
+    let propriedade;
+    switch(index){
+      case 0:
+        this.veiculoSelecionado.subscribe(veiculo => {
+          propriedade = veiculo.Name;
+        })
+        break;
+      case 1:
+        this.veiculoSelecionado.subscribe((veiculo) => {
+          propriedade = veiculo.Model;
+        });
+        break;
+      case 2:
+        this.veiculoSelecionado.subscribe((veiculo) => {
+          propriedade = veiculo.Engine;
+        });
+        break;
+      case 3:
+        this.veiculoSelecionado.subscribe((veiculo) => {
+          propriedade = veiculo.NumberOfPassengers;
+        });
+        break;
+      case 4:
+        this.veiculoSelecionado.subscribe((veiculo) => {
+          propriedade = veiculo.Autonomia;
+        });
+        break;
+      case 5:
+        this.veiculoSelecionado.subscribe((veiculo) => {
+          propriedade = veiculo.Alcance;
+        });
+        break;
+      case 6:
+        this.veiculoSelecionado.subscribe((veiculo) => {
+          propriedade = veiculo.Teto;
+        });
+        break;
+      default:
+        break;
     }
+    this.propriedadeSelecionadaSubject.next(propriedade!);
   }
 
-  onCategoriaSelecionada(i: number) {
-    this.names.splice(0, 3);
-    this.idType = i;
-    this.json[i].map((item) => {
-      this.names.push(item.Name);
-    });
+
+
+  private listaVeiculosSubject = new BehaviorSubject<Veiculo[]>([]);
+  listaVeiculos = this.listaVeiculosSubject.asObservable();
+
+  adicionarVeiculo(veiculo: Veiculo) {
+    const listaAtual = this.listaVeiculosSubject.value;
+
+    if (!listaAtual.some((item) => veiculo.Name === item.Name))
+        listaAtual.push(veiculo);
+
+    this.listaVeiculosSubject.next(listaAtual);
   }
 
-  onTipoSelecionado(s: string) {
-    this.type = s;
-    this.veiculo = undefined;
+
+
+  json: Veiculo[][] = [];
+
+  received(value: boolean): void {
+    this.showSubject.next(value);
   }
 
-  carregarArquivoJSON() {
-    this.http.get<Categorias>('assets\\' + this.caminho).subscribe((json) => {
+  carregarArquivoJSON(caminho: string) {
+    this.http.get<Categorias>('assets\\' + caminho).subscribe((json) => {
       this.json = [json.Avioes, json.Carros, json.Barcos];
-      this.received = true;
+      this.received(true);
     });
   }
 
-  onBusca(arquivo: string) {
-    this.arquivo = arquivo;
-    this.onAbrirArquivo(arquivo);
-    console.log(this.arquivo);
-  }
-
-  getArquivo(): string {
-    return this.arquivo;
+  onAbrirArquivo(name: string): Observable<string> {
+    this.carregarArquivoJSON(name);
+    return of(name);
   }
 }

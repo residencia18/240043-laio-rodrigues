@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ListService } from '../../services/list.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-classes',
@@ -7,12 +8,17 @@ import { ListService } from '../../services/list.service';
   styleUrl: './classes.component.css',
 })
 export class ClassesComponent {
-  constructor(private listService: ListService) {}
-  @Output() classeSelecionada: EventEmitter<any> = new EventEmitter();
 
-  onClick(selecionado: string, index: number){
-    this.listService.onCategoriaSelecionada(index);
-    this.listService.onTipoSelecionado(selecionado);
-    this.classeSelecionada.emit();
+  show: boolean = false;
+  private subscription: Subscription;
+
+  constructor(private listService: ListService) {
+    this.subscription = this.listService.showClasses.subscribe(show => {
+      this.show = show;
+    })
+  }
+
+  onClick(selecionado: string){
+    this.listService.selecionarTipoVeiculo(selecionado);
   }
 }

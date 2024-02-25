@@ -1,6 +1,6 @@
-<div>
-  {{ tipo }}
-  <ul>
-    <li (click)="onClick(veiculos.indexOf(item))" *ngFor="let item of veiculos" >{{ item }}</li>
+<div class="box" *ngIf="tipo != ''">
+  <span class="title">{{ tipo }}</span>
+  <ul class="ul">
+    <li class="li" (click)="onClick(veiculos.indexOf(item))" *ngFor="let item of veiculos" >{{ item.Name }}</li>
   </ul>
 </div>

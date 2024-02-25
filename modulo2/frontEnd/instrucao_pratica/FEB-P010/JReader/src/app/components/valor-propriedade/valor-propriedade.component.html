@@ -1,3 +1,5 @@
-<span>{{ name }}</span>
-<div>{{ info }}</div>
-<button (click)="onClick()">Adicionar</button>
+<div class="box" *ngIf="name != undefined">
+  <span class="title">{{ name }}</span>
+  <h3>{{ info }}</h3>
+  <button (click)="onClick()">Adicionar</button>
+</div>
