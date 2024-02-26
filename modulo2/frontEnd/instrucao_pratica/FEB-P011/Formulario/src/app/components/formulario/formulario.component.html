@@ -1,0 +1,49 @@
+<div class="box">
+  <form [formGroup]="formulario" (submit)="onSubmit()">
+    <label for="usuario">Nome de Usuário</label>
+    <input type="text" formControlName="usuario" pattern="^\S+$">
+    <span *ngIf="formulario.get('usuario')?.invalid && formulario.get('usuario')?.touched">Nome Inválido</span>
+    <br>
+    <label for="">Senha</label>
+    <input type="password" formControlName="senha">
+    <span *ngIf="formulario.get('senha')?.invalid && formulario.get('senha')?.touched">Senha Inválida</span>
+    <br>
+    <label for="">Email</label>
+    <input type="email" formControlName="email">
+    <span *ngIf="formulario.get('email')?.invalid && formulario.get('email')?.touched">Email Inválido</span>
+    <br>
+    <label for="">Nome Completo</label>
+    <input type="text" formControlName="nome">
+    <span *ngIf="formulario.get('nome')?.invalid && formulario.get('nome')?.touched">Nome Inválido</span>
+    <br>
+    <label for="">Telefone</label>
+    <input type="text" formControlName="telefone">
+    <span *ngIf="formulario.get('telefone')?.invalid && formulario.get('telefone')?.touched">Telefone Inválido</span>
+    <br>
+    <label for="">Endereço</label>
+    <input type="text" formControlName="endereco">
+    <span *ngIf="formulario.get('endereco')?.invalid && formulario.get('endereco')?.touched">Endereço Inválido</span>
+    <br>
+    <label for="">Data de Nascimento</label>
+    <input type="date" formControlName="nascimento">
+    <span *ngIf="formulario.get('nascimento')?.invalid && formulario.get('nascimento')?.touched">Data Inválida</span>
+    <br>
+    <label for="">Gênero</label>
+    <div>
+      <input type="radio" formControlName="genero" value="Masculino"> Masculino
+      <input type="radio" formControlName="genero" value="Feminino"> Feminino
+    </div>
+    <span *ngIf="formulario.get('genero')?.invalid && formulario.get('genero')?.touched">Gênero Inválido</span>
+    <br>
+    <label for="profissao">Profissão</label>
+    <select name="profissao" formControlName="profissao">
+      <option *ngFor="let profissao of listaProfissoes" [value]="profissao">{{ profissao }}</option>
+    </select>
+    <span *ngIf="formulario.get('profissao')?.invalid && formulario.get('profissao')?.touched">Profissão Inválida</span>
+    <br>
+    <div *ngIf="formulario.invalid && formulario.dirty" class="mensagem-erro">
+      Por favor, preencha o formulário corretamente.
+    </div>
+    <input type="submit" value="Submit" class="submit">
+  </form>
+</div>
