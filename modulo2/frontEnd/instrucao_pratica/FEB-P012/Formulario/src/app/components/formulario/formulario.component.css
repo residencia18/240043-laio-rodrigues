@@ -1,0 +1,40 @@
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000;
+  padding: 15px;
+  background-color: #96a2d9;
+  border-radius: 10px;
+}
+
+label {
+  font-size: 13px;
+}
+
+input {
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #D9C896;
+}
+
+.submit {
+  width: 100px;
+  padding: 5px;
+  margin: 10px 50px;
+}
+
+.submit:hover{
+  background-color: #f5a122;
+  cursor: pointer;
+}
+
+span {
+  color: red;
+}
