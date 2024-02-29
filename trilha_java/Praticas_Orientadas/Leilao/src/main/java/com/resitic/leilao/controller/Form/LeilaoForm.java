@@ -31,7 +31,7 @@ public class LeilaoForm {
 		ValorMinimo = valorMinimo;
 	}
 
-	public boolean isStatus() {
+	public boolean getStatus() {
 		return Status;
 	}
 
