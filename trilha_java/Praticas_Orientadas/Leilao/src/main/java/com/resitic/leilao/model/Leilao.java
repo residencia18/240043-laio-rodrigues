@@ -1,14 +1,34 @@
 package com.resitic.leilao.model;
 
+import java.util.List;
+
 import com.resitic.leilao.utils.Verificacoes;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Tb_Leilao")
 public class Leilao {
 	
 	// Atributos da classe Leilão
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Id;
+	@Column(name = "Descricao")
 	private String Descricao;
+	@Column(name = "Valor_Minimo")
 	private double ValorMinimo;
+	@Column(name = "Status")
 	private boolean Status;
+	@OneToMany(mappedBy = "Tb_Leilao", cascade = CascadeType.ALL)
+	private List<Lance> Lances;
 	
 	// Construtores
 	
@@ -20,7 +40,7 @@ public class Leilao {
 		setId(Id);
 		setDescricao(Descricao);
 		setValorMinimo(ValorMinimo);
-		setStatus(Status);;
+		setStatus(Status);
 	}
 	
 	// Getters e Setters
