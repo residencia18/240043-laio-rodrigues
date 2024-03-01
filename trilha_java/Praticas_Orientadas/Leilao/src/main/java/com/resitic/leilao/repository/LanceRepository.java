@@ -8,7 +8,7 @@ import com.resitic.leilao.model.Lance;
 import com.resitic.leilao.model.Leilao;
 
 public interface LanceRepository extends JpaRepository<Lance, Integer> {
-	ArrayList<Lance> findByIdLeilao(int id);
-	ArrayList<Lance> findByIdConcorrente(int id);
+	ArrayList<Lance> findByLeilaoId(int id);
+	ArrayList<Lance> findByConcorrenteId(int id);
 	Lance findTopByLeilaoOrderByValorDesc(Leilao leilao);
 }

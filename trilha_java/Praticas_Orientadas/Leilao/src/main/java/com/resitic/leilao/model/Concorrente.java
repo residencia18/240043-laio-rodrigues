@@ -14,7 +14,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Tb_Concorrente")
+@Table(name = "Concorrente")
 public class Concorrente {
 	// Atributos da classe Concorrente
 	@Id
@@ -24,7 +24,7 @@ public class Concorrente {
 	private String Nome;
 	@Column(name = "CPF")
 	private String CPF;
-	@OneToMany(mappedBy = "Tb_Concorrente", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "concorrente", cascade = CascadeType.ALL)
 	private List<Lance> Lances;
 	
 	// Construtores

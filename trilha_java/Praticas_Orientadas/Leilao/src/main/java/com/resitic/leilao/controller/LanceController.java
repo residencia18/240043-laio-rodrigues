@@ -58,7 +58,7 @@ public class LanceController {
 
 	@GetMapping("/leilao={Id_Leilao}")
 	public ResponseEntity<?> getLancesByLeilaoId(@PathVariable int Id_Leilao) {
-		List<Lance> lances = lanceRepository.findByIdLeilao(Id_Leilao);
+		List<Lance> lances = lanceRepository.findByLeilaoId(Id_Leilao);
 		if (lances.isEmpty()) return ResponseEntity.notFound().build();
 		List<LanceDTO> lancesDTO = lances.stream().map(LanceDTO::new).collect(Collectors.toList());
 		return ResponseEntity.ok(lancesDTO);
@@ -66,7 +66,7 @@ public class LanceController {
 
 	@GetMapping("/concorrente={Id_Concorrente}")
 	public ResponseEntity<?> getLancesByConcorrenteId(@PathVariable int Id_Concorrente) {
-		List<Lance> lances = lanceRepository.findByIdConcorrente(Id_Concorrente);
+		List<Lance> lances = lanceRepository.findByConcorrenteId(Id_Concorrente);
 		if (lances.isEmpty())return ResponseEntity.notFound().build();
 		List<LanceDTO> lancesDTO = lances.stream().map(LanceDTO::new).collect(Collectors.toList());
 		return ResponseEntity.ok(lancesDTO);
@@ -94,18 +94,24 @@ public class LanceController {
 		if (lanceForm.getValor() < leilao.getValorMinimo()) {
 			return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Não é aceito lances abaixo do valor mínimo!");
 		}
+		
+		Concorrente concorrente = concorrenteOptional.get();
 
-		Lance lance;
-		try {
-			lance = lanceForm.toLance();
-			lanceRepository.save(lance);
-
-			LanceDTO lanceDTO = new LanceDTO(lance);
-			return ResponseEntity.status(HttpStatus.CREATED).body(lanceDTO);
+		Lance lance = new Lance();
+        lance.setConcorrente(concorrente);
+        lance.setLeilao(leilao);
+        try {
+			lance.setValor(lanceForm.getValor());
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
 			return ResponseEntity.badRequest().build();
 		}
+
+
+        lanceRepository.save(lance);
+
+
+        LanceDTO lanceDTO = new LanceDTO(lance);
+        return ResponseEntity.status(HttpStatus.CREATED).body(lanceDTO);
 	}
 
 	@PutMapping("/{id}")
@@ -138,7 +144,9 @@ public class LanceController {
 				return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Não é aceito lances abaixo do valor mínimo!");
 			}
 
-			lance = lanceForm.toLance();
+			lance.setConcorrente(concorrenteOptional.get());
+            lance.setLeilao(leilao);
+            lance.setValor(lanceForm.getValor());
 
 			lanceRepository.save(lance);
 

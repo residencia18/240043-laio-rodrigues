@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.resitic.leilao.controller.DTO.ConcorrenteDTO;
 import com.resitic.leilao.model.Lance;
 import com.resitic.leilao.model.Leilao;
-import com.resitic.leilao.repository.ConcorrenteRepository;
 import com.resitic.leilao.repository.LanceRepository;
 import com.resitic.leilao.repository.LeilaoRepository;
 
@@ -28,9 +27,6 @@ public class VencedorController {
 	@Autowired
 	private LeilaoRepository leilaoRepository;
 	
-	@Autowired
-	private ConcorrenteRepository concorrenteRepository;
-
 	@GetMapping("/{id}")
 	public ResponseEntity<?> obterVencedorLeilao(@PathVariable int id) {
 		try {
@@ -50,7 +46,7 @@ public class VencedorController {
 				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Não foi encontrado um vencedor do leilão!");
 			}
 
-			ConcorrenteDTO concorrenteDTO = new ConcorrenteDTO(concorrenteRepository.getReferenceById(maiorLance.getId_Concorrente()));
+			ConcorrenteDTO concorrenteDTO = new ConcorrenteDTO(maiorLance.getConcorrente());
 
 			JSONObject responseJson = new JSONObject();
 			responseJson.put("id_leilao", leilao.getId());

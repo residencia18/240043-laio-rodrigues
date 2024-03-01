@@ -1,7 +1,5 @@
 package com.resitic.leilao.controller.Form;
 
-import com.resitic.leilao.model.Lance;
-
 public class LanceForm {
 	private int Id_Leilao;
 	private int Id_Concorrente;
@@ -44,11 +42,4 @@ public class LanceForm {
         return "LanceForm [Id_Leilao=" + Id_Leilao + ", Id_Concorrente=" + Id_Concorrente + ", Valor=" + Valor + "]";
     }
 	
-	public Lance toLance() throws Exception {
-		Lance lance = new Lance();
-        lance.setId_Leilao(Id_Leilao);
-        lance.setId_Concorrente(Id_Concorrente);
-        lance.setValor(Valor);
-        return lance;
-	}
 }

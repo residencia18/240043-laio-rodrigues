@@ -19,11 +19,11 @@ public class Lance {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Id;
 	@ManyToOne(cascade = CascadeType.ALL)
-	private int Id_Leilao;
+	private Leilao leilao;
 	@ManyToOne(cascade = CascadeType.ALL)
-	private int Id_Concorrente;
+	private Concorrente concorrente;
 	@Column(name = "Valor")
-	private double Valor;
+	private double valor;
 	
 	// Construtores
 	
@@ -31,10 +31,10 @@ public class Lance {
 	public Lance() {}
 	
 	// Construtor parametrizado
-	public Lance(int id, int id_leilao, int id_concorrente, double valor) throws Exception {
+	public Lance(int id, Leilao leilao, Concorrente concorrente, double valor) throws Exception {
 		setId(id);
-        setId_Leilao(id_leilao);
-        setId_Concorrente(id_concorrente);
+        setLeilao(leilao);
+        setConcorrente(concorrente);
         setValor(valor);
 	}
 	
@@ -45,16 +45,16 @@ public class Lance {
         return Id;
     }
     
-    public int getId_Leilao() {
-        return Id_Leilao;
+    public Leilao getLeilao() {
+        return leilao;
     }
     
-    public int getId_Concorrente() {
-        return Id_Concorrente;
+    public Concorrente getConcorrente() {
+        return concorrente;
     }
     
     public double getValor() {
-        return Valor;
+        return valor;
     }
     
     // Setters
@@ -63,24 +63,22 @@ public class Lance {
         Id = id;
     }
     
-    public void setId_Leilao(int id_leilao) throws Exception {
-    	Verificacoes.isIdValido(id_leilao);
-        Id_Leilao = id_leilao;
+    public void setLeilao(Leilao leilao) {
+        this.leilao = leilao;
     }
     
-    public void setId_Concorrente(int id_concorrente) throws Exception {
-    	Verificacoes.isIdValido(id_concorrente);
-        Id_Concorrente = id_concorrente;
+    public void setConcorrente(Concorrente concorrente) {
+        this.concorrente = concorrente;
     }
     
     public void setValor(double valor) throws Exception {
     	Verificacoes.isValorValido(valor);
-        Valor = valor;
+        this.valor = valor;
     }
     
     // Método ToString
     @Override
     public String toString() {
-        return "Lance [Id=" + Id + ", Id_Leilao=" + Id_Leilao + ", Id_Concorrente=" + Id_Concorrente + ", Valor=" + Valor + "]";
+        return "Lance [Id=" + Id + ", Id_Leilao=" + leilao.getId() + ", Id_Concorrente=" + concorrente.getId() + ", Valor=" + valor + "]";
     }
 }

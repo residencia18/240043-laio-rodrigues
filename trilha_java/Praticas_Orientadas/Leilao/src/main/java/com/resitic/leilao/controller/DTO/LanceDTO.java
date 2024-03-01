@@ -11,8 +11,8 @@ public class LanceDTO {
 	
 	// Construtor do DTO a partir do objeto Lance
 	public LanceDTO(Lance lance) {
-		this.Id_Leilao = lance.getId_Leilao();
-        this.Id_Concorrente = lance.getId_Concorrente();
+		this.Id_Leilao = lance.getLeilao().getId();
+        this.Id_Concorrente = lance.getConcorrente().getId();
         this.Valor = lance.getValor();
 	}
 	

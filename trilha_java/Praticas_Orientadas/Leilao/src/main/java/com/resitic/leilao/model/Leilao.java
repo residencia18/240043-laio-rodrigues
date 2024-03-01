@@ -14,7 +14,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Tb_Leilao")
+@Table(name = "Leilao")
 public class Leilao {
 	
 	// Atributos da classe Leilão
@@ -27,7 +27,7 @@ public class Leilao {
 	private double ValorMinimo;
 	@Column(name = "Status")
 	private boolean Status;
-	@OneToMany(mappedBy = "Tb_Leilao", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "leilao", cascade = CascadeType.ALL)
 	private List<Lance> Lances;
 	
 	// Construtores
