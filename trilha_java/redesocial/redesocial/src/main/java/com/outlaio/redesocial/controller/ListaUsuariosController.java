@@ -1,14 +1,18 @@
 package com.outlaio.redesocial.controller;
 
-import java.util.ArrayList;
+import java.net.URI;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
-import com.outlaio.redesocial.controller.DTO.UserDTO;
+import com.outlaio.redesocial.controller.form.UsuarioDTO;
+import com.outlaio.redesocial.controller.form.UsuarioForm;
 import com.outlaio.redesocial.model.Usuario;
 import com.outlaio.redesocial.repository.UsuarioRepository;
 
@@ -18,22 +22,15 @@ public class ListaUsuariosController {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
-	@GetMapping
-	public ArrayList<UserDTO> listaUsuarios(String nome) {
-		ArrayList<Usuario> listaUsuarios;
+	@PostMapping
+	public ResponseEntity<UsuarioDTO> inserir(@RequestBody UsuarioForm uf, UriComponentsBuilder uriBuilder) {
+		Usuario usuario = uf.criaUsuario();
+		usuarioRepository.save(usuario);
+		UsuarioDTO udto = new UsuarioDTO(usuario);
 		
-		if (nome != null) 
-			listaUsuarios = (ArrayList<Usuario>) usuarioRepository.findByNome(nome);
-		else
-			listaUsuarios = (ArrayList<Usuario>) usuarioRepository.findAll();
+		uriBuilder.path("/usuario/{id}");
+		URI uri = uriBuilder.buildAndExpand(usuario.getId()).toUri();
 		
-		ArrayList<UserDTO> listaDTO = new ArrayList<UserDTO>();
-		
-		for (Usuario usuario : listaUsuarios) {
-			UserDTO udto = new UserDTO(usuario);
-			listaDTO.add(udto);
-		}
-		
-		return listaDTO;
-    }
+		return ResponseEntity.created(uri).body(udto);
+	}
 }
