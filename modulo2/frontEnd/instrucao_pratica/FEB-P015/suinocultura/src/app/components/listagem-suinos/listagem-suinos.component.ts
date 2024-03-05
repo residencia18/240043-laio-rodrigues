@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { NgbHighlight } from '@ng-bootstrap/ng-bootstrap';
 
-const COUNTRIES: Suino[] = [
+const SUINOS: Suino[] = [
   {
     brinco: 'ABC123',
     brinco_pai: 'DEF456',
@@ -66,16 +66,19 @@ const COUNTRIES: Suino[] = [
 ];
 
 function search(text: string, pipe: PipeTransform): Suino[] {
-  return COUNTRIES.filter((suino) => {
+  return SUINOS.filter((suino) => {
     const term = text.toLowerCase();
     return (
       suino.brinco.toLowerCase().includes(term) ||
+      pipe.transform(suino.brinco_mae).includes(term) ||
       pipe.transform(suino.brinco_pai).includes(term) ||
-      pipe.transform(suino.brinco_mae).includes(term)
+      pipe.transform(suino.dt_nasc).includes(term) ||
+      pipe.transform(suino.dt_saida).includes(term) ||
+      pipe.transform(suino.status).includes(term) ||
+      pipe.transform(suino.sexo).includes(term)
     );
   });
 }
-
 
 @Component({
   selector: 'app-listagem-suinos',
@@ -84,11 +87,12 @@ function search(text: string, pipe: PipeTransform): Suino[] {
   providers: [DecimalPipe],
 })
 export class ListagemSuinosComponent {
-  countries$: Observable<Suino[]>;
+  suinos$: Observable<Suino[]>;
+
   filter = new FormControl('', { nonNullable: true });
 
   constructor(pipe: DecimalPipe) {
-    this.countries$ = this.filter.valueChanges.pipe(
+    this.suinos$ = this.filter.valueChanges.pipe(
       startWith(''),
       map((text) => search(text, pipe))
     );
