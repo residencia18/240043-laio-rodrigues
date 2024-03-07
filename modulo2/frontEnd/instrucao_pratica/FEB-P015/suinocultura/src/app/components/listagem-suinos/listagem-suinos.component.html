@@ -1,49 +1,56 @@
-<p>
-    You can filter table data in this case with observables and our <code>NgbHighlight</code> component used in Typeahead
-</p>
-
-<form>
-    <div class="mb-3 row">
-        <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Full text search:</label>
-        <div class="col-xs-3 col-sm-auto">
-            <input id="table-filtering-search" class="form-control" type="text" [formControl]="filter" />
-        </div>
+<div class="mb-3 row">
+    <label for="filter-criteria" class="col-xs-3 col-sm-auto col-form-label">Filtrar por:</label>
+    <div class="col-xs-3 col-sm-auto">
+      <select id="filter-criteria" class="form-control" [(ngModel)]="campoSelecionado">
+        <option *ngFor="let campo of camposSuino" [ngValue]="campo">{{ campo }}</option>
+      </select>
     </div>
-</form>
+  </div>
 
-<table class="table table-striped">
+  <div class="mb-3 row">
+    <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Pesquisa :</label>
+    <div class="col-xs-3 col-sm-auto">
+      <input id="table-filtering-search" class="form-control" type="text" [formControl]="filter" />
+    </div>
+  </div>
+
+  <table class="table table-striped">
     <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Brinco</th>
-            <th scope="col">Brinco Pai</th>
-            <th scope="col">Brinco Mãe</th>
-            <th scope="col">Data Nascimento</th>
-            <th scope="col">Data Saída</th>
-            <th scope="col">Status</th>
-            <th scope="col">Sexo</th>
-        </tr>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Brinco</th>
+        <th scope="col">Brinco Pai</th>
+        <th scope="col">Brinco Mãe</th>
+        <th scope="col">Data Nascimento</th>
+        <th scope="col">Data Saída</th>
+        <th scope="col">Status</th>
+        <th scope="col">Sexo</th>
+        <th scope="col">Idade</th>
+        <th scope="col"></th>
+      </tr>
     </thead>
     <tbody>
-        <ng-container *ngIf="suinos$ | async as suinosList; else loading">
-            <ng-container *ngIf="suinosList.length > 0; else noData">
-                <tr *ngFor="let suino of suinosList; let i = index">
-                    <th scope="row">{{ i + 1 }}</th>
-                    <td><ngb-highlight [result]="suino.brinco" [term]="filter.value"></ngb-highlight></td>
-                    <td><ngb-highlight [result]="suino.brinco_pai" [term]="filter.value"></ngb-highlight></td>
-                    <td><ngb-highlight [result]="suino.brinco_mae" [term]="filter.value"></ngb-highlight></td>
-                    <td><ngb-highlight [result]="suino.dt_nasc" [term]="filter.value"></ngb-highlight></td>
-                    <td><ngb-highlight [result]="suino.dt_saida" [term]="filter.value"></ngb-highlight></td>
-                    <td><ngb-highlight [result]="suino.status" [term]="filter.value"></ngb-highlight></td>
-                    <td><ngb-highlight [result]="suino.sexo" [term]="filter.value"></ngb-highlight></td>
-                </tr>
-            </ng-container>
-        </ng-container>
-        <ng-template #noData>
-            <tr>
-                <td colspan="8" style="text-align: center">No suinos found</td>
-            </tr>
-        </ng-template>
+      <ng-container *ngIf="suinosFiltrados$ | async as suinosFiltrados; else noData">
+        <tr *ngFor="let suino of suinosFiltrados; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ suino.brinco }}</td>
+          <td>{{ suino.brinco_pai }}</td>
+          <td>{{ suino.brinco_mae }}</td>
+          <td>{{ suino.dt_nasc }}</td>
+          <td>{{ suino.dt_saida }}</td>
+          <td>{{ suino.status }}</td>
+          <td>{{ suino.sexo }}</td>
+          <td>{{suino.dt_nasc | idade}}</td>
+          <td>
+            <img src="../../../assets/editar.png" title="Editar" alt="Editar" (click)="onEditar(suino)">
+            <img src="../../../assets/lixeira.png" title="Excluir" alt="Excluir" (click)="onExcluir(suino)">
+          </td>
+        </tr>
+      </ng-container>
+      <ng-template #noData>
+        <tr>
+          <td colspan="8" style="text-align: center">Nenhum suíno encontrado</td>
+        </tr>
+      </ng-template>
     </tbody>
-</table>
-<ng-template #loading>Loading...</ng-template>
+  </table>

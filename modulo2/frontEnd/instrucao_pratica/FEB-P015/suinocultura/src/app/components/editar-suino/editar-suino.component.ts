@@ -1,18 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { SuinosService } from '../../services/suinos.service';
-import { Suino } from '../../model/suino';
 
 @Component({
-  selector: 'app-cadastro-suino',
-  templateUrl: './cadastro-suino.component.html',
-  styleUrl: './cadastro-suino.component.css',
+  selector: 'app-editar-suino',
+  templateUrl: './editar-suino.component.html',
+  styleUrl: './editar-suino.component.css',
 })
-export class CadastroSuinoComponent {
+export class EditarSuinoComponent {
   cadastro_suino: FormGroup;
   lista_status: string[] = ['Ativo', 'Vendido', 'Morto'];
+  suino: any;
+  sexo: string = '';
 
-  constructor(private suinosService: SuinosService) {
+  constructor(public dialogRef: MatDialogRef<EditarSuinoComponent>,@Inject(MAT_DIALOG_DATA) public data: any, private suinoService: SuinosService) {
+    this.suino = {...data};
+    this.sexo = this.suino.sexo;
     this.cadastro_suino = new FormGroup({
       brinco: new FormControl('', [
         Validators.required,
@@ -38,6 +42,7 @@ export class CadastroSuinoComponent {
       sexo: new FormControl('', [Validators.required]),
     });
   }
+
 
   // Data de nascimento Validator
 
@@ -79,11 +84,17 @@ export class CadastroSuinoComponent {
 
     return nascimento > saida ? { invalido: true } : null;
   };
-  onSubmit() {
-    if(this.cadastro_suino.invalid)
-      return;
 
-    let suino: Suino;
+  salvarAlteracoes(): void {
+    console.log('Alterações salvas:', this.suino);
+    this.dialogRef.close();
+  };
 
-  }
+  cancelar(): void {
+    if(this.cadastro_suino.valueChanges)
+      if(confirm("Deseja sair sem salvar as alterações?")){
+        this.dialogRef.close();
+      }
+  };
+
 }

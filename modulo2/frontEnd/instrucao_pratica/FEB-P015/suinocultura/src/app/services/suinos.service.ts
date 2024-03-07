@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Suino } from '../suino';
+import { Suino } from '../model/suino';
 
 @Injectable({
   providedIn: 'root'
