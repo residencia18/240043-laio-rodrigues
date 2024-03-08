@@ -14,7 +14,9 @@ import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/d
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
 import { MatButtonModule } from '@angular/material/button'
 import { MatFormFieldModule } from '@angular/material/form-field'
-import { MatInputModule } from '@angular/material/input'
+import { MatInputModule } from '@angular/material/input';
+import { CadastrarPesoComponent } from './components/cadastrar-peso/cadastrar-peso.component'
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { MatInputModule } from '@angular/material/input'
     CadastroSuinoComponent,
     ListagemSuinosComponent,
     IdadePipe,
-    EditarSuinoComponent
+    EditarSuinoComponent,
+    CadastrarPesoComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import { MatInputModule } from '@angular/material/input'
     MatDialogModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    NgMultiSelectDropDownModule
   ],
   providers: [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}},
