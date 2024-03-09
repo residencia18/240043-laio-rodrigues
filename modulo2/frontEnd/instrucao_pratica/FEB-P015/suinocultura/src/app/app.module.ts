@@ -17,6 +17,7 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input';
 import { CadastrarPesoComponent } from './components/cadastrar-peso/cadastrar-peso.component'
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { EditarPesoComponent } from './components/editar-peso/editar-peso.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     ListagemSuinosComponent,
     IdadePipe,
     EditarSuinoComponent,
-    CadastrarPesoComponent
+    CadastrarPesoComponent,
+    EditarPesoComponent
   ],
   imports: [
     BrowserModule,

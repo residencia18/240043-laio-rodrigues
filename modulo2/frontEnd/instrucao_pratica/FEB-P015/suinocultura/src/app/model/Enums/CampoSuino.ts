@@ -5,5 +5,5 @@ export enum CampoSuino {
   dt_nasc = 'dt_nasc',
   dt_saida = 'dt_saida',
   status = 'status',
-  sexo = 'sexo',
+  sexo = 'sexo'
 }

@@ -68,13 +68,12 @@ const SUINOS: Suino[] = [
   },
 ];
 
-
 @Component({
-  selector: 'app-cadastrar-peso',
-  templateUrl: './cadastrar-peso.component.html',
-  styleUrl: './cadastrar-peso.component.css',
+  selector: 'app-editar-peso',
+  templateUrl: './editar-peso.component.html',
+  styleUrl: './editar-peso.component.css',
 })
-export class CadastrarPesoComponent {
+export class EditarPesoComponent {
   selectedItems: Suino[] = [];
   dropdownSettings: IDropdownSettings = {};
   suinos: Suino[] = SUINOS;
@@ -82,12 +81,11 @@ export class CadastrarPesoComponent {
   campoBloqueado: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   campoBloqueado$: boolean = true;
 
-
   dataPesagemValidator = () => {
     // Verifica se o formulário está inicializado
     console.log('ok 1');
     if (!this.formCadastro) {
-      console.log('falha')
+      console.log('falha');
       return null;
     }
 
@@ -108,7 +106,7 @@ export class CadastrarPesoComponent {
     const saida = new Date(dataSaida);
 
     console.log('ok 5');
-    if (pesagem >= nascimento && pesagem <= saida){
+    if (pesagem >= nascimento && pesagem <= saida) {
       return null;
     }
     console.log('ok 6');
@@ -119,10 +117,10 @@ export class CadastrarPesoComponent {
     this.formCadastro = new FormGroup({
       brinco: new FormControl('', [Validators.required]),
       dt_pesagem: new FormControl(
-        { value: '', disabled: this.campoBloqueado$},
+        { value: '', disabled: this.campoBloqueado$ },
         [Validators.required, this.dataPesagemValidator]
       ),
-      peso: new FormControl({ value: '', disabled: this.campoBloqueado$}, [
+      peso: new FormControl({ value: '', disabled: this.campoBloqueado$ }, [
         Validators.required,
         Validators.pattern('[0-9]+$'),
       ]),
@@ -138,11 +136,11 @@ export class CadastrarPesoComponent {
       itemsShowLimit: 4,
       allowSearchFilter: true,
     };
-    this.campoBloqueado.subscribe(valor => {
-      if(valor){
+    this.campoBloqueado.subscribe((valor) => {
+      if (valor) {
         this.formCadastro.get('dt_pesagem')?.disable();
         this.formCadastro.get('peso')?.disable();
-      }else{
+      } else {
         this.formCadastro.get('dt_pesagem')?.enable();
         this.formCadastro.get('peso')?.enable();
       }
@@ -163,17 +161,19 @@ export class CadastrarPesoComponent {
   }
   onSubmit() {
     console.log(this.formCadastro);
-    if(this.formCadastro.valid){
+    if (this.formCadastro.valid) {
       this.suinos.forEach((suino) => {
         if (suino.brinco === this.formCadastro.get('brinco')?.value) {
-          const obj = {peso: this.formCadastro.get('peso')?.value, dt_pesagem: this.formCadastro.get('dt_pesagem')?.value};
+          const obj = {
+            peso: this.formCadastro.get('peso')?.value,
+            dt_pesagem: this.formCadastro.get('dt_pesagem')?.value,
+          };
           suino.pesos.push(obj);
           this.formCadastro.reset();
-          alert('Pesagem cadastrada!')
+          alert('Pesagem cadastrada!');
         }
       });
       console.log(this.suinos);
     }
-
   }
 }

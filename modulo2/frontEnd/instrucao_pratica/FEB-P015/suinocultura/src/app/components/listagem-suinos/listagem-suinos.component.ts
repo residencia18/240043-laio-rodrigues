@@ -18,6 +18,7 @@ const SUINOS: Suino[] = [
     dt_saida: '2021-05-20',
     status: 'Vendido',
     sexo: 'Fêmea',
+    pesos: [],
   },
   {
     brinco: 'DEF456',
@@ -27,6 +28,7 @@ const SUINOS: Suino[] = [
     dt_saida: ' ',
     status: 'Ativo',
     sexo: 'Macho',
+    pesos: [],
   },
   {
     brinco: 'ABC456',
@@ -36,6 +38,7 @@ const SUINOS: Suino[] = [
     dt_saida: '2021-05-20',
     status: 'Vendido',
     sexo: 'Fêmea',
+    pesos: [],
   },
   {
     brinco: 'DEF789',
@@ -45,6 +48,7 @@ const SUINOS: Suino[] = [
     dt_saida: ' ',
     status: 'Ativo',
     sexo: 'Macho',
+    pesos: [],
   },
   {
     brinco: 'ABC789',
@@ -54,6 +58,7 @@ const SUINOS: Suino[] = [
     dt_saida: '2021-05-20',
     status: 'Vendido',
     sexo: 'Fêmea',
+    pesos: [],
   },
   {
     brinco: 'DEF231',
@@ -63,6 +68,7 @@ const SUINOS: Suino[] = [
     dt_saida: ' ',
     status: 'Ativo',
     sexo: 'Macho',
+    pesos: [],
   },
 ];
 
