@@ -1,0 +1,33 @@
+<div class="box-body">
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="row g-3">
+    <div class="col-md-2">
+      <label for="date" class="form-label">Data da consulta:</label>
+      <input type="date" class="form-control" name="date" formControlName="dt_atendimento">
+    </div>
+    <div class="col-md-10">
+      <label for="tutor" class="form-label">Nome do tutor:</label>
+      <input type="text" class="form-control" name="tutor" formControlName="dono">
+    </div>
+    <div class="col-md-4">
+      <label for="name" class="form-label">Nome do pet:</label>
+      <input type="text" class="form-control" name="name" formControlName="pet_nome">
+    </div>
+    <div class="col-md-4">
+      <label for="type" class="form-label">Tipo:</label>
+      <select class="form-select" name="type" formControlName="pet_tipo">
+        <option *ngFor="let animal of animais">{{ animal }}</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label for="breed" class="form-label">Raça:</label>
+      <input type="text" class="form-control" name="breed" formControlName="pet_raca">
+    </div>
+    <div class="mb-3">
+      <label for="details" class="form-label">Observação:</label>
+      <textarea class="form-control" name="details" formControlName="detalhes"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary col-1"> {{ editMode ? 'Atualizar' : 'Cadastrar' }}</button>
+  </form>
+
+</div>
