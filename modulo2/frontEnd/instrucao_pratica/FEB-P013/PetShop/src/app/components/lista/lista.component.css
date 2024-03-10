@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: auto;
+  padding: 30px;
+}
+
+.row{
+  border: 1px solid #000;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #f1f1f1;
+  box-shadow: 0px 0px 10px #000;
+}
+
+section {
+  border: 1px solid #000;
+
+}
+
+section:hover {
+  cursor: pointer;
+  background-color: #fff;
+}
