@@ -1,4 +1,4 @@
-package com.resitic.clinica.controller;
+package com.resitic.clinica.infra.exception;
 
 import java.sql.SQLIntegrityConstraintViolationException;
 
