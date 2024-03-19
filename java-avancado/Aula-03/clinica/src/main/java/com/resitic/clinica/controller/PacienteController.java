@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.resitic.clinica.controller.DTO.PacienteDTO;
 import com.resitic.clinica.controller.DTO.PacienteDetails;
@@ -34,8 +35,11 @@ public class PacienteController {
 	
 	@PostMapping
 	@Transactional
-	public void cadastrar(@RequestBody @Valid PacienteFORM pacienteFORM) {
-		repository.save(new Paciente(pacienteFORM));
+	public ResponseEntity<?> cadastrar(@RequestBody @Valid PacienteFORM pacienteFORM, UriComponentsBuilder uriBuilder) {
+		var paciente = new Paciente(pacienteFORM);
+		repository.save(paciente);
+		var uri = uriBuilder.path("/pacientes/{id}").buildAndExpand(paciente.getId()).toUri();
+		return ResponseEntity.created(uri).body(new PacienteDetails(paciente));
 	}
 	
 	@GetMapping
