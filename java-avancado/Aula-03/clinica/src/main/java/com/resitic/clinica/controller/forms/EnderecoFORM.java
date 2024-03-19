@@ -6,20 +6,20 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
 public record EnderecoFORM(
-		@NotBlank
+		@NotBlank(message = "{logradouro.obrigatorio}")
 		String logradouro, 
 		
-		@NotBlank
+		@NotBlank(message = "{bairro.obrigatorio}")
 		String bairro, 
 		
-		@NotBlank
-		@Pattern(regexp = "\\d{8}")
+		@NotBlank(message = "{cep.obrigatorio}")
+		@Pattern(regexp = "\\d{8}", message = "{cep.invalido}")
 		String cep, 
 		
-		@NotBlank
+		@NotBlank(message = "{cidade.obrigatoria}")
 		String cidade, 
 		
-		@NotBlank
+		@NotBlank(message = "{uf.obrigatorio}")
 		String uf, 
 		
 		String complemento, 
