@@ -1,4 +1,4 @@
-package com.resitic.clinica.controller.forms;
+package com.resitic.clinica.enums;
 
 public enum EspecialidadeENUM {
 	ORTOPEDIA,

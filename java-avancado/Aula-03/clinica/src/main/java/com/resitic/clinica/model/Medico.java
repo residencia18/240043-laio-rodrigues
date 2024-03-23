@@ -1,8 +1,8 @@
 package com.resitic.clinica.model;
 
-import com.resitic.clinica.controller.forms.EspecialidadeENUM;
 import com.resitic.clinica.controller.forms.MedicoFORM;
 import com.resitic.clinica.controller.forms.UpdateMedicoFORM;
+import com.resitic.clinica.enums.EspecialidadeENUM;
 
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;

@@ -1,7 +1,7 @@
 package com.resitic.clinica.controller.DTO;
 
 import com.resitic.clinica.controller.forms.EnderecoFORM;
-import com.resitic.clinica.controller.forms.EspecialidadeENUM;
+import com.resitic.clinica.enums.EspecialidadeENUM;
 import com.resitic.clinica.model.Medico;
 
 public record MedicoDetails(boolean ativo, String nome, String email, String telefone, String crm, EspecialidadeENUM especialidade, EnderecoFORM endereco) {
