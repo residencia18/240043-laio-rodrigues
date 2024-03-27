@@ -14,10 +14,12 @@ import com.resitic.clinica.controller.forms.CancelConsultaFORM;
 import com.resitic.clinica.controller.forms.ConsultaFORM;
 import com.resitic.clinica.controller.services.ConsultaService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/consultas")
+@SecurityRequirement(name = "bearer-key")
 public class ConsultaController {
 	
 	@Autowired
@@ -33,9 +35,7 @@ public class ConsultaController {
 	@DeleteMapping
 	@Transactional
     public ResponseEntity<?> cancelar(@RequestBody @Valid CancelConsultaFORM cancelamentoFORM) {
-		System.out.println("ok 1");
         service.cancelar(cancelamentoFORM);
-        System.out.println("ok 2");
         return ResponseEntity.ok().build();
     }
 }

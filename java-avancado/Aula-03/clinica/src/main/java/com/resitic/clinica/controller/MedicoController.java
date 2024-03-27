@@ -23,10 +23,12 @@ import com.resitic.clinica.controller.forms.UpdateMedicoFORM;
 import com.resitic.clinica.controller.repository.MedicoRepository;
 import com.resitic.clinica.model.Medico;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/medicos")
+@SecurityRequirement(name = "bearer-key")
 public class MedicoController {
 
 	@Autowired
