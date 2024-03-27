@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.resitic.clinica.enums.EspecialidadeENUM;
+import com.resitic.clinica.controller.enums.EspecialidadeENUM;
 import com.resitic.clinica.model.Consulta;
 
 import jakarta.validation.constraints.Future;

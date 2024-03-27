@@ -1,6 +1,6 @@
 package com.resitic.clinica.controller.DTO;
 
-import com.resitic.clinica.enums.EspecialidadeENUM;
+import com.resitic.clinica.controller.enums.EspecialidadeENUM;
 import com.resitic.clinica.model.Medico;
 
 public record MedicoDTO(long id, String nome, String email, String crm, EspecialidadeENUM Especialidade) {

@@ -1,4 +1,4 @@
-package com.resitic.clinica.enums;
+package com.resitic.clinica.controller.enums;
 
 public enum StatusConsultaENUM {
 	AGENDADA,

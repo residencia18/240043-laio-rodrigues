@@ -2,8 +2,8 @@ package com.resitic.clinica.model;
 
 import java.time.LocalDateTime;
 
-import com.resitic.clinica.enums.MotivoENUM;
-import com.resitic.clinica.enums.StatusConsultaENUM;
+import com.resitic.clinica.controller.enums.MotivoENUM;
+import com.resitic.clinica.controller.enums.StatusConsultaENUM;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

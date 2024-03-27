@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.resitic.clinica.controller.DTO.ConsultaDetails;
 import com.resitic.clinica.controller.forms.CancelConsultaFORM;
 import com.resitic.clinica.controller.forms.ConsultaFORM;
 import com.resitic.clinica.controller.services.ConsultaService;
@@ -25,8 +26,8 @@ public class ConsultaController {
 	@PostMapping
 	@Transactional
 	public ResponseEntity<?> agendar(@RequestBody @Valid ConsultaFORM consultaFORM) {
-		service.agendar(consultaFORM);
-		return ResponseEntity.ok().build();
+		ConsultaDetails consulta = service.agendar(consultaFORM);
+		return ResponseEntity.ok(consulta);
 	}
 	
 	@DeleteMapping

@@ -4,6 +4,7 @@ import java.sql.SQLIntegrityConstraintViolationException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageConversionException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -12,6 +13,8 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import com.fasterxml.jackson.databind.exc.InvalidDefinitionException;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -23,6 +26,11 @@ public class ErrorHandler {
 		return ResponseEntity.notFound().build();
 	}
 	
+	@ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<?> ErrorIllegalArgument(IllegalArgumentException exception) {
+        return ResponseEntity.badRequest().body(exception.getMessage());
+    }
+	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<?> ErrorArgumentsNotValid(MethodArgumentNotValidException exception) {
 		var errors = exception.getFieldErrors();
@@ -31,13 +39,28 @@ public class ErrorHandler {
 	
 	@ExceptionHandler(HttpMessageNotReadableException.class)
 	public ResponseEntity<?> ErrorArgumentsNotReadable(HttpMessageNotReadableException exception) {
-		return ResponseEntity.badRequest().body(exception.getHttpInputMessage());
+		return ResponseEntity.badRequest().body(exception.getMessage());
+	}
+	
+	@ExceptionHandler(HttpMessageConversionException.class)
+	public ResponseEntity<?> ErrorArgumentsConversion(HttpMessageConversionException exception) {
+		return ResponseEntity.badRequest().body(exception.getMessage());
+	}
+	
+	@ExceptionHandler(InvalidDefinitionException.class)
+	public ResponseEntity<?> ErrorInvalidDefinition(InvalidDefinitionException exception) {
+		return ResponseEntity.badRequest().body(exception.getMessage());
 	}
 	
 	@ExceptionHandler(SQLIntegrityConstraintViolationException.class)
     public ResponseEntity<?> ErrorIllegalArgument(SQLIntegrityConstraintViolationException exception) {
         return ResponseEntity.badRequest().body(exception.getMessage());
     }
+	
+	@ExceptionHandler(ValidationException.class)
+	public ResponseEntity<?> ErrorValidationFailure(ValidationException ex){
+		return ResponseEntity.badRequest().body(ex.getMessage());
+	}
 	
 	@ExceptionHandler(BadCredentialsException.class)
     public ResponseEntity<?> ErrorBadCredentials() {

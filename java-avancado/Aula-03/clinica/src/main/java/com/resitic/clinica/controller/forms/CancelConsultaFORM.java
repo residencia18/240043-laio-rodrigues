@@ -1,6 +1,6 @@
 package com.resitic.clinica.controller.forms;
 
-import com.resitic.clinica.enums.MotivoENUM;
+import com.resitic.clinica.controller.enums.MotivoENUM;
 
 import jakarta.validation.constraints.NotNull;
 

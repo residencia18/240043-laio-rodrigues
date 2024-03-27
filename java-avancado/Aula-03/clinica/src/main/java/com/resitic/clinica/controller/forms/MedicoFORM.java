@@ -1,6 +1,6 @@
 package com.resitic.clinica.controller.forms;
 
-import com.resitic.clinica.enums.EspecialidadeENUM;
+import com.resitic.clinica.controller.enums.EspecialidadeENUM;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
