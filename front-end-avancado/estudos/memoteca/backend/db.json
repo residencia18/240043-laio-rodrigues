@@ -1,0 +1,74 @@
+{
+  "pensamentos": [
+    {
+      "id": "4",
+      "conteudo": "Finalizando CRUD",
+      "autoria": "Dev Alura",
+      "modelo": "modelo2",
+      "favorito": true
+    },
+    {
+      "id": "3",
+      "conteudo": "Criando primeiro pensamento",
+      "autoria": "Dev Alura",
+      "modelo": "modelo2",
+      "favorito": true
+    },
+    {
+      "id": "2",
+      "conteudo": "Primeiros Passos Angular Alura",
+      "autoria": "Dev Alura",
+      "modelo": "modelo3",
+      "favorito": true
+    },
+    {
+      "id": "cf57",
+      "conteudo": "Criando quarto pensamento",
+      "autoria": "Dev Alura",
+      "modelo": "modelo1",
+      "favorito": false
+    },
+    {
+      "id": "ef19",
+      "conteudo": "Não tinha medo o tal João de Santo Cristo era o que todos diziam quando ele se perdeu. Deiuxou pra trás todo o marasmo da fazenda só pra sentir no seu sangue o ódio que Jesus lhe deu. Quando criança só poensava em ser bandido ainda mais quando com um tiro de soldado o pai morreu. Era o terror da cercanilha onde morava e na escola até o professor com ele aprendeu.",
+      "autoria": "Renato Russo",
+      "modelo": "modelo3",
+      "favorito": false
+    },
+    {
+      "id": "406e",
+      "conteudo": "Criando sexto pensamento",
+      "autoria": "Angular",
+      "modelo": "modelo3",
+      "favorito": false
+    },
+    {
+      "id": "7aa2",
+      "conteudo": "Criando sétimo pensamento",
+      "autoria": "Dev Alura",
+      "modelo": "modelo1",
+      "favorito": false
+    },
+    {
+      "id": "685e",
+      "conteudo": "Criando oitavo pensamento",
+      "autoria": "Angular",
+      "modelo": "modelo3",
+      "favorito": false
+    },
+    {
+      "conteudo": "Não tinha medo o tal João de Santo Cristo era o que todos diziam quando ele se perdeu. Deiuxou pra trás todo o marasmo da fazenda só pra sentir no seu sangue o ódio que Jesus lhe deu. Quando criança só poensava em ser bandido ainda mais quando com um tiro de soldado o pai morreu. Era o terror da cercanilha onde morava e na escola até o professor com ele aprendeu.",
+      "autoria": "Renato Russo",
+      "modelo": "modelo1",
+      "favorito": false,
+      "id": "H1ULSr4"
+    },
+    {
+      "conteudo": "O verdadeiro mestre, é um eterno aprendiz!",
+      "autoria": "Yi, Master",
+      "modelo": "modelo3",
+      "favorito": false,
+      "id": "XgSfrLf"
+    }
+  ]
+}
