@@ -17,7 +17,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@SuppressWarnings("serial")
 @Entity(name = "Usuario")
 @Table(name = "usuarios")
 @Getter
